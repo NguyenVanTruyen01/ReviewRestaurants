@@ -1,9 +1,8 @@
-import { HttpException, HttpStatus, Injectable, Res } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { UserModel, UserSchema } from "../../users/models/user.model";
 import { CreateUserDto } from "../../users/dto/create-user.dto";
-import { Response } from "express";
 import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
 

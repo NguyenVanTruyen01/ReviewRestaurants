@@ -3,7 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="c0fbe14f-aea5-4c52-af93-ae2974bf2987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/dto/create-auth.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/dto/login-auth.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/auth/dto/login-auth.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/auth/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/dto/create-info-restaurant.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/dto/create-info-restaurant.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/models/info-restaurant.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/models/info-restaurant.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/dto/create-post.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/posts/dto/create-post.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/controllers/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/dto/create-user.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/dto/update-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/dto/update-user.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/models/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/services/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +39,18 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Administrator\\WebstormProjects\\ReviewRestaurants\\review-restaurant\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant\node_modules" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,6 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1666664815920</updated>
       <workItem from="1666664817316" duration="1026000" />
+      <workItem from="1666712257170" duration="4084000" />
+      <workItem from="1666746351183" duration="5686000" />
     </task>
     <servers />
   </component>

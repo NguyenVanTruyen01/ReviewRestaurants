@@ -3,6 +3,8 @@ import { timestamp } from "rxjs";
 
 export const InfoRestaurantSchema = new mongoose.Schema({
     idRestaurant: { type: String, required: true },
+    nameRestaurant: { type: String, required: true },
+
     characteristics: { type: Array, default: [] },
     menu: { type: Array, default: [] },
     minPrice: { type: Number, default: null },
@@ -15,13 +17,11 @@ export const InfoRestaurantSchema = new mongoose.Schema({
     introduce: String,
     rating: { type: Number, default: 0 },
     images: { type: Array, default: [] }
-
   },
   { timestamps: true });
 
 export interface InfoRestaurantModel {
   idRestaurant: String,
-
 
   minPrice: Number,
   maxPrice: Number,
