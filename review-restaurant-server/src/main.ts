@@ -12,6 +12,8 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, "..", "views"));
   app.setViewEngine("hbs");
 
+  app.enableCors();
+
 
   await app.listen(5000);
   console.log("Server listening on port 5000...");

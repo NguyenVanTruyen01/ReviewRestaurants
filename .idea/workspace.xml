@@ -2,20 +2,107 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0fbe14f-aea5-4c52-af93-ae2974bf2987" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/api/AuthAPI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Login.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/nest-cli.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/app.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/app.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/auth.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/controllers/auth.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/dto/login-auth.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/info-restaurant/controllers/info-restaurant.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/info-restaurant/dto/create-info-restaurant.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/info-restaurant/dto/update-info-restaurant.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/info-restaurant/info-restaurant.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/info-restaurant/models/info-restaurant.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/info-restaurant/services/info-restaurant.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/middlewares/auth.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/controllers/posts.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/dto/create-post.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/dto/update-post.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/models/posts.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/posts.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/services/posts.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/controllers/users.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/dto/create-user.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/dto/update-user.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/models/user.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/services/users.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/users.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/test/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/test/jest-e2e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/tsconfig.build.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ReviewRestaurants.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ReviewRestaurants.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/dto/create-auth.dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/dto/login-auth.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/auth/dto/login-auth.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/auth/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/dto/create-info-restaurant.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/dto/create-info-restaurant.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/models/info-restaurant.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/models/info-restaurant.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/dto/create-post.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/posts/dto/create-post.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/controllers/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/dto/create-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/dto/update-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/dto/update-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant/src/users/services/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/client.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/nest-cli.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/app.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/app.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/auth.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/controllers/auth.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/dto/login-auth.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/auth/services/auth.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/controllers/info-restaurant.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/dto/create-info-restaurant.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/dto/update-info-restaurant.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/info-restaurant.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/models/info-restaurant.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/info-restaurant/services/info-restaurant.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/controllers/posts.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/dto/create-post.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/dto/update-post.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/models/posts.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/posts.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/posts/services/posts.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/controllers/users.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/dto/create-user.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/dto/update-user.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/models/user.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/services/users.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/src/users/users.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/test/app.e2e-spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/test/jest-e2e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/tsconfig.build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/views/auth/login.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant/views/auth/signup.hbs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,25 +116,32 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GbkkhVDFtykgPtkDSoUTSHHQdd" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Administrator\\WebstormProjects\\ReviewRestaurants\\review-restaurant\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "ts.external.directory.path": "C:\\Users\\Administrator\\WebstormProjects\\ReviewRestaurants\\review-restaurant-server\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants" />
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant\views" />
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant\views\posts" />
       <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant\node_modules" />
     </key>
   </component>
@@ -61,7 +155,13 @@
       <updated>1666664815920</updated>
       <workItem from="1666664817316" duration="1026000" />
       <workItem from="1666712257170" duration="4084000" />
-      <workItem from="1666746351183" duration="6494000" />
+      <workItem from="1666746351183" duration="11493000" />
+      <workItem from="1666834532309" duration="1513000" />
+      <workItem from="1666836802323" duration="4305000" />
+      <workItem from="1666881076848" duration="5000" />
+      <workItem from="1666881095171" duration="5306000" />
+      <workItem from="1666916880524" duration="1092000" />
+      <workItem from="1666918045527" duration="5139000" />
     </task>
     <servers />
   </component>
@@ -78,5 +178,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
