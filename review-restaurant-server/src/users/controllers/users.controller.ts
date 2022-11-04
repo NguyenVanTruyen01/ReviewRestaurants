@@ -1,7 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Render } from "@nestjs/common";
+import { Controller, Get,Put, Body, Patch, Param, Delete } from "@nestjs/common";
 import { UsersService } from "../services/users.service";
-import { CreateUserDto } from "../dto/create-user.dto";
 import { UpdateUserDto } from "../dto/update-user.dto";
+import * as mongoose from "mongoose";
+import {FollowUserDto} from "../dto/follow-user.dto";
+
+const {ObjectId} = mongoose.Schema.Types
 
 @Controller("users")
 export class UsersController {
@@ -21,6 +24,11 @@ export class UsersController {
   @Patch(":id")
   update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
+  }
+
+  @Put("follow/:id")
+  follow(@Param("id") id: string, @Body() followUserDto : FollowUserDto){
+  return this.usersService.follow(id, followUserDto);
   }
 
   @Delete(":id")
