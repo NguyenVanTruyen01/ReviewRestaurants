@@ -139,9 +139,10 @@ const Register = () => {
 								<div className="btm-tx">
 									<span className="d-block">
 										Already have an account?
-										<a href="sign-in.html" title="">
-											Log in
-										</a>
+										<Link to="/login"> Register now </Link>
+										{/*<a href="sign-in.html" title="">*/}
+										{/*	Log in*/}
+										{/*</a>*/}
 									</span>
 								</div>
 							</div>

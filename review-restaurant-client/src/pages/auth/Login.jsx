@@ -7,13 +7,15 @@ import "../../assets/js/lib/slick/slick-theme.css";
 import "../../assets/css/flaticon.css";
 import "../../assets/css/style.css";
 import "../../assets/css/responsive.css";
-
 import "../../assets/js/scripts";
 
-import { login } from "../../api/AuthAPI";
 import Header from "../../components/main/Header";
 import MobileMenu from "../../components/main/MobileMenu";
 import Footer from "../../components/main/Footer";
+import {Link} from "react-router-dom";
+
+import {useDispatch} from "react-redux";
+import {login} from "../../redux/actions/authActions";
 
 const Login = () => {
 	const [data, setData] = useState({
@@ -21,15 +23,16 @@ const Login = () => {
 		password: "",
 	});
 
+	const dispatch = useDispatch()
+
 	const handleChange = (e) => {
 		setData({ ...data, [e.target.name]: e.target.value });
-		console.log(e.target.value);
 	};
 
 	const handleSummit = async (e) => {
 		e.preventDefault();
-		const user = await login(data);
-		console.log(user.data);
+
+		await dispatch(login(data))
 	};
 
 	return (
@@ -87,13 +90,14 @@ const Login = () => {
 								<div className="or">
 									<span>or</span>
 								</div>
-								<form>
+								<form onSubmit={handleSummit}>
 									<div className="form-group">
 										<input
 											type="text"
-											name="name"
-											placeholder="Username or Email *"
+											name="email"
+											placeholder="Email *"
 											className="form-control"
+											onInput={handleChange}
 										/>
 									</div>
 									<div className="form-group">
@@ -102,10 +106,14 @@ const Login = () => {
 											name="password"
 											placeholder="Password *"
 											className="form-control"
+											onInput={handleChange}
 										/>
 									</div>
 									<div className="form-group">
-										<button type="submit" className="btn-default w-100">
+										<button
+											type="submit"
+											className="btn-default w-100"
+										>
 											Log In <span></span>
 										</button>
 									</div>
@@ -113,9 +121,10 @@ const Login = () => {
 								<div className="btm-tx text-left">
 									<span>
 										No account?
-										<a href="sign-up.html" title="">
-											Register now
-										</a>
+										<Link to="/register"> Register now </Link>
+										{/*<a href="sign-up.html" title="">*/}
+										{/*	Register now*/}
+										{/*</a>*/}
 									</span>
 									<a href="#" title="">
 										Forgot password?

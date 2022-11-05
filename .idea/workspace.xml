@@ -2,23 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0fbe14f-aea5-4c52-af93-ae2974bf2987" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/dto/follow-user.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/actions/authActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/actions/notifyActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/authReducers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/notifyReducers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/utils/fetchData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/auth/controllers/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/controllers/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/auth/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/users/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/controllers/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/users/dto/update-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/dto/update-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/users/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/users/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/services/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ad" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/api/AuthAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/api/AuthAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Register.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,6 +91,7 @@
       <workItem from="1667460534364" duration="8524000" />
       <workItem from="1667495505521" duration="6452000" />
       <workItem from="1667543617920" duration="14721000" />
+      <workItem from="1667660405402" duration="11118000" />
     </task>
     <servers />
   </component>
