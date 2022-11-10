@@ -3,7 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 import * as jwt from "jsonwebtoken";
 
 @Injectable()
-export class AuthMiddleware implements NestMiddleware {
+export class AuthAdminMiddleware implements NestMiddleware {
+
     use(req: Request, res: Response, next: NextFunction) {
         const secret = process.env.JWT_SECRET;
 
@@ -12,15 +13,19 @@ export class AuthMiddleware implements NestMiddleware {
             const accessToken = token.split(" ")[1];
             const decoded = jwt.verify(accessToken, secret, (err,user)=>{
                 if(err){
-                   return res.status(400).json({message: "Token is not valid"})
+                    res.status(400).json("Token is not valid")
                 }
-                req.body._id = user?.userID;
-                next();
+                if(user.role === "ADMIN"){
+                    next()
+                }
+                else {
+                    res.status(400).json("Action forbidden")
+                }
             });
 
         }
         else {
-            return res.status(400).json({message:"You are not authenticated"})
+            res.status(400).json("You are not authenticated")
         }
     }
 }

@@ -2,21 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0fbe14f-aea5-4c52-af93-ae2974bf2987" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/actions/authActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/actions/notifyActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/authReducers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/notifyReducers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/utils/fetchData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/notify/Notify.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/loading/Loading.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/loading/Loading.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/authSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/notifySlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/authRequests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/middlewares/authAdmin.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-server/src/middlewares/authRestaurant.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ad" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review-restaurant-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/api/AuthAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/api/AuthAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/auth/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/actions/authActions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/actions/notifyActions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/authReducers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/reducers/notifyReducers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/utils/fetchData.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/utils/fetchData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/auth/controllers/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/controllers/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/auth/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/auth/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/middlewares/auth.middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/users/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/controllers/users.controller.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +44,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -50,6 +68,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/WebstormProjects/ReviewRestaurants/review-restaurant-client/public/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -59,11 +79,15 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant-client\public\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant-client\src\components\main\header" />
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant-client\src\assets\images" />
+      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant-client\src\pages\loading" />
       <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants" />
       <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant\views" />
-      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant\views\posts" />
-      <recent name="C:\Users\Administrator\WebstormProjects\ReviewRestaurants\review-restaurant\node_modules" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -91,7 +115,18 @@
       <workItem from="1667460534364" duration="8524000" />
       <workItem from="1667495505521" duration="6452000" />
       <workItem from="1667543617920" duration="14721000" />
-      <workItem from="1667660405402" duration="11118000" />
+      <workItem from="1667660405402" duration="11548000" />
+      <workItem from="1667703756225" duration="32496000" />
+      <workItem from="1667807991983" duration="15246000" />
+      <workItem from="1667874611686" duration="13126000" />
+      <workItem from="1667918794860" duration="3424000" />
+      <workItem from="1667959442464" duration="18289000" />
+      <workItem from="1668002186623" duration="296000" />
+      <workItem from="1668008190196" duration="250000" />
+      <workItem from="1668009681988" duration="27000" />
+      <workItem from="1668039641949" duration="2733000" />
+      <workItem from="1668042869868" duration="4550000" />
+      <workItem from="1668059813411" duration="517000" />
     </task>
     <servers />
   </component>

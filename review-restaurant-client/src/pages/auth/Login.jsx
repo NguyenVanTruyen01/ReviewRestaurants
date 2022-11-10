@@ -12,10 +12,10 @@ import "../../assets/js/scripts";
 import Header from "../../components/main/Header";
 import MobileMenu from "../../components/main/MobileMenu";
 import Footer from "../../components/main/Footer";
-import {Link} from "react-router-dom";
 
+import {Link,useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {login} from "../../redux/actions/authActions";
+import {login} from "../../redux/requestAPI/authRequests"
 
 const Login = () => {
 	const [data, setData] = useState({
@@ -23,7 +23,8 @@ const Login = () => {
 		password: "",
 	});
 
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleChange = (e) => {
 		setData({ ...data, [e.target.name]: e.target.value });
@@ -31,8 +32,7 @@ const Login = () => {
 
 	const handleSummit = async (e) => {
 		e.preventDefault();
-
-		await dispatch(login(data))
+		await login(data,dispatch,navigate)
 	};
 
 	return (
@@ -122,9 +122,6 @@ const Login = () => {
 									<span>
 										No account?
 										<Link to="/register"> Register now </Link>
-										{/*<a href="sign-up.html" title="">*/}
-										{/*	Register now*/}
-										{/*</a>*/}
 									</span>
 									<a href="#" title="">
 										Forgot password?

@@ -1,14 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
 import iconPhone from "../../assets/images/icons/phone.svg";
 import iconSearch from "../../assets/images/icons/search.svg";
 import iconCart from "../../assets/images/icons/cart.svg";
 import iconSignIn from "../../assets/images/icons/sign-in.svg";
+import {useDispatch, useSelector} from "react-redux";
+
+import {logout} from "../../redux/requestAPI/authRequests";
 
 const Header = () => {
+
+	const user = useSelector(state => state.auth.login.currentUser)
+	const token = useSelector(state => state.auth.login?.access_token)
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleLogout = async ()=>{
+		await logout(token,user._id,dispatch,navigate);
+	}
+
 	return (
+
 		<header>
 			<div className="container-fluid">
 				<div className="header-content d-flex flex-wrap align-items-center">
@@ -129,9 +143,12 @@ const Header = () => {
 							<span className="cart-item-num">0</span>
 						</li>
 						<li>
-							<a href="sign-in.html" title className="cart-ico">
-								Sign in <img src={iconSignIn} alt="" />
-							</a>
+							{user ?
+								<a  title className="cart-ico">
+									Hi,{user.firstName} {user.lastName} <img src={iconSignIn} alt="" onClick={handleLogout} />
+								</a> :
+								<Link to='/login'>Login</Link>
+							}
 						</li>
 					</ul>
 				</div>

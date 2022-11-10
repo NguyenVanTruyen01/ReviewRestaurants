@@ -8,14 +8,16 @@ import * as jwt from "jsonwebtoken";
 import {Request, Response} from "express";
 import {LoginAuthDto} from "../dto/login-auth.dto";
 
+let arrRefreshToken: string[] = []
+
 @Injectable({})
 export class AuthService {
 
   constructor(
-    @InjectModel("User") private userModel: Model<UserModel>) {
+      @InjectModel("User") private userModel: Model<UserModel>) {
   }
 
-  async signup(createUserDto: CreateUserDto, @Res({ passthrough: true }) response: Response) {
+  async signup(createUserDto: CreateUserDto) {
 
     try {
       const newUser = new this.userModel(createUserDto);
@@ -28,15 +30,7 @@ export class AuthService {
         }, HttpStatus.NOT_ACCEPTABLE);
       }
 
-      const access_token = await this.createAccessToken({ userID: user._id, userEmail: user.email });
-
-      const refresh_token = await this.createRefreshToken({ userID: user._id, userEmail: user.email });
-
-      response.cookie('refreshtoken', refresh_token, {
-        httpOnly: true,
-        path: '/auth/refresh_token',
-        maxAge: 30*24*60*60*1000 // 30days
-      })
+      const access_token = await this.createAccessToken({ userID: user._id, role: user.role});
 
       return {
         success: true,
@@ -46,16 +40,16 @@ export class AuthService {
       };
 
     } catch (err) {
+      console.log(err)
       throw new HttpException({
         success: false,
-        message: err.message
+        message: err.code === 11000 ? "Email already used. Please use another email" : err.message
       }, HttpStatus.BAD_REQUEST);
     }
 
   }
 
-
-  async login(loginAuthDto: LoginAuthDto, @Res({ passthrough: true }) response: Response) {
+  async login(loginAuthDto: LoginAuthDto,@Res({passthrough :true}) res: Response) {
     const { email, password } = loginAuthDto;
     try {
       const user = await this.userModel.findOne({ email: email });
@@ -65,29 +59,22 @@ export class AuthService {
 
         if (isMatch) {
 
-          // const access_token = await jwt.sign({ userID: user._id, userEmail: user.email },
-          //     process.env.JWT_SECRET,
-          //     { expiresIn: process.env.JWT_TIME });
+          const access_token = await this.createAccessToken({ userID: user._id, role: user.role });
+          const refresh_token = await this.createRefreshToken({ userID: user._id, role: user.role });
+          arrRefreshToken.push(refresh_token);
 
-          // const refresh_token = await jwt.sign({ userID: user._id, userEmail: user.email },
-          //     process.env.JWT_SECRET,
-          //     { expiresIn: process.env.JWT_REFRESH_TIME });
-
-          const access_token = await this.createAccessToken({ userID: user._id, userEmail: user.email });
-
-          const refresh_token = await this.createRefreshToken({ userID: user._id, userEmail: user.email });
-
-          response.cookie('refreshtoken', refresh_token, {
+          res.cookie("refreshtoken",refresh_token, {
             httpOnly: true,
-            path: '/auth/refresh_token',
-            maxAge: 30*24*60*60*1000 // 30days
-          })
+            secure: false,
+            path : "/",
+            sameSite : "strict",
+          } )
 
           return {
             success: true,
             user,
             access_token,
-            message: " Login successfully"
+            message: " login successfully"
           };
 
         } else {
@@ -103,7 +90,7 @@ export class AuthService {
           message: "Account does not exist"
         }, HttpStatus.NOT_FOUND);
       }
-      
+
     } catch (err) {
       throw  new HttpException({
         success: false,
@@ -113,35 +100,24 @@ export class AuthService {
 
   }
 
-  async logout(@Res({ passthrough: true }) response : Response){
-    try{
+  async refresh_token(@Req() req : Request, @Res({passthrough :true}) res: Response) {
 
-      response.clearCookie('refreshtoken', {path: '/auth/refresh_token'})
-      return {
-        success: true,
-        message: "Logout successfully !"
-      }
-
-    }catch (err){
-      throw  new HttpException({
-        success: false,
-        message: err.message
-      }, HttpStatus.SERVICE_UNAVAILABLE);
-    }
-  }
-
-
-  async refresh_token(@Req() request : Request, @Res({passthrough:true})  response : Response) {
     try {
 
-      const rf_token = request.cookies.refreshtoken //lay cookie
+      const rf_token = req.cookies.refreshtoken //lay cookie
+
       if(!rf_token)
         throw  new HttpException({
               message: "Please login now."
             }, HttpStatus.BAD_REQUEST);
 
-      const decoded = await jwt.verify(rf_token, process.env.JWT_SECRET);
+      if(!arrRefreshToken.includes(rf_token)){
+        throw  new HttpException({
+          message: "Refresh token is not valid"
+        }, HttpStatus.BAD_REQUEST);
+      }
 
+      const decoded = await jwt.verify(rf_token, process.env.JWT_REFRESH_SECRET);
 
       if(!decoded)
         throw  new HttpException({
@@ -149,6 +125,7 @@ export class AuthService {
         }, HttpStatus.BAD_REQUEST);
 
       else {
+
         const user = await this.userModel.findById(decoded.userID).select("-password")
 
         if(!user)
@@ -158,7 +135,18 @@ export class AuthService {
 
         else
         {
-          const access_token = await this.createAccessToken({ userID: user._id, userEmail: user.email })
+          arrRefreshToken  = arrRefreshToken.filter((token) => token !== rf_token)
+          const access_token = await this.createAccessToken({ userID: user._id, role: user.role})
+          const refresh_token = await this.createRefreshToken({ userID: user._id, role: user.role})
+          arrRefreshToken.push(refresh_token)
+
+          res.cookie("refreshtoken", refresh_token, {
+            httpOnly: true,
+            secure: false,
+            path: "/",
+            sameSite: "strict"
+          })
+
           return {
             success: true,
             access_token,
@@ -175,6 +163,27 @@ export class AuthService {
     }
   }
 
+    async logout(@Req() req : Request, @Res({passthrough :true}) res: Response){
+    try{
+
+      res.clearCookie('refreshtoken')
+      arrRefreshToken = arrRefreshToken.filter(token => token !== req.cookies.refreshtoken);
+
+      return {
+        success: true,
+        message: "Logout successfully !"
+      }
+
+    }catch (err){
+      throw  new HttpException({
+        success: false,
+        message: err.message
+      }, HttpStatus.SERVICE_UNAVAILABLE);
+    }
+  }
+
+
+
   async createAccessToken(payload){
     return await jwt.sign(payload,
         process.env.JWT_SECRET,
@@ -183,7 +192,8 @@ export class AuthService {
 
   async createRefreshToken(payload){
     return await jwt.sign(payload,
-        process.env.JWT_SECRET,
+        process.env.JWT_REFRESH_SECRET,
         { expiresIn: process.env.JWT_REFRESH_TIME });
   }
+
 }

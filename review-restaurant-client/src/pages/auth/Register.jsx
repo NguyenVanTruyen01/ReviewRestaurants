@@ -1,15 +1,52 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import Footer from "../../components/main/Footer";
 import Header from "../../components/main/Header";
 import MobileMenu from "../../components/main/MobileMenu";
+import {useDispatch} from "react-redux";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+import {register} from "../../redux/requestAPI/authRequests";
 
 const Register = () => {
+
+	const [data, setData] = useState({
+		email: "",
+		password: "",
+		firstName: "",
+		lastName: "",
+		address: "",
+	});
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleChange = (e) => {
+		setData({ ...data, [e.target.name]: e.target.value.trim() });
+	};
+
+	const handleSummit = async (e) => {
+		e.preventDefault();
+		const isEmpty = validateInput(data);
+
+		if(isEmpty){
+			toast.warn("Please complete registration information !")
+		}else{
+			await register(data,dispatch,navigate);
+		}
+	};
+
+	const  validateInput = (data) =>{
+		const isEmpty = Object.values(data).some(x => x === null || x === '');
+		return isEmpty
+	}
+
 	return (
 		<div>
+			<ToastContainer autoClose={2000} />
 			<Header />
 			<MobileMenu />
-
 			<section className="pager-section text-center">
 				<div className="fixed-bg bg4"></div>
 				<div className="container">
@@ -62,15 +99,16 @@ const Register = () => {
 								<div className="or">
 									<span>or</span>
 								</div>
-								<form>
+								<form onSubmit={handleSummit}>
 									<div className="row">
 										<div className="col-md-6">
 											<div className="form-group">
 												<input
 													type="text"
-													name="first-name"
+													name="firstName"
 													placeholder="First name *"
 													className="form-control"
+													onInput={handleChange}
 												/>
 											</div>
 										</div>
@@ -78,9 +116,10 @@ const Register = () => {
 											<div className="form-group">
 												<input
 													type="text"
-													name="last-name"
+													name="lastName"
 													placeholder="Last name *"
 													className="form-control"
+													onInput={handleChange}
 												/>
 											</div>
 										</div>
@@ -88,9 +127,10 @@ const Register = () => {
 											<div className="form-group">
 												<input
 													type="text"
-													name="phone"
-													placeholder="Phone number *"
+													name="address"
+													placeholder="Address *"
 													className="form-control"
+													onInput={handleChange}
 												/>
 											</div>
 										</div>
@@ -101,6 +141,7 @@ const Register = () => {
 													name="email"
 													placeholder="Email *"
 													className="form-control"
+													onInput={handleChange}
 												/>
 											</div>
 										</div>
@@ -114,6 +155,7 @@ const Register = () => {
 													name="password"
 													placeholder="Password *"
 													className="form-control"
+													onInput={handleChange}
 												/>
 											</div>
 										</div>
@@ -139,10 +181,7 @@ const Register = () => {
 								<div className="btm-tx">
 									<span className="d-block">
 										Already have an account?
-										<Link to="/login"> Register now </Link>
-										{/*<a href="sign-in.html" title="">*/}
-										{/*	Log in*/}
-										{/*</a>*/}
+										<Link to="/login"> Login </Link>
 									</span>
 								</div>
 							</div>

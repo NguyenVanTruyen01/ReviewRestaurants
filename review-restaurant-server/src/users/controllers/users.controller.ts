@@ -1,10 +1,8 @@
 import { Controller, Get,Put, Body, Patch, Param, Delete } from "@nestjs/common";
 import { UsersService } from "../services/users.service";
-import { UpdateUserDto } from "../dto/update-user.dto";
-import * as mongoose from "mongoose";
+import { UpdateUserDto } from "../dto/update-user.dto";;
 import {FollowUserDto} from "../dto/follow-user.dto";
 
-const {ObjectId} = mongoose.Schema.Types
 
 @Controller("users")
 export class UsersController {
