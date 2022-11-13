@@ -6,15 +6,21 @@ import * as jwt from "jsonwebtoken";
 export class AuthMiddleware implements NestMiddleware {
     use(req: Request, res: Response, next: NextFunction) {
         const secret = process.env.JWT_SECRET;
-        try {
-            const token = req.headers.authorization.split(" ")[1];
-            if (token) {
-                const decoded = jwt.verify(token, secret);
-                req.body._id = decoded?.userID;
-            }
-            next();
-        } catch (error) {
-            console.log(error);
+
+        const token = req.headers.authorization;
+        if (token) {
+            const accessToken = token.split(" ")[1];
+            const decoded = jwt.verify(accessToken, secret, (err,user)=>{
+                if(err){
+                   return res.status(400).json({message: "Token is not valid"})
+                }
+                req.body._id = user?.userID;
+                next();
+            });
+
+        }
+        else {
+            return res.status(400).json({message:"You are not authenticated"})
         }
     }
 }

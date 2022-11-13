@@ -1,16 +1,24 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Render } from "@nestjs/common";
+import { Controller, Get,Put, Body, Patch, Param, Delete,Query } from "@nestjs/common";
 import { UsersService } from "../services/users.service";
-import { CreateUserDto } from "../dto/create-user.dto";
-import { UpdateUserDto } from "../dto/update-user.dto";
+import { UpdateUserDto } from "../dto/update-user.dto";;
+import {FollowUserDto} from "../dto/follow-user.dto";
+
 
 @Controller("users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {
   }
 
+
+
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Get("search")
+  searchUsers(@Query('key') key){
+    return this.usersService.searchUsers(key);
   }
 
   @Get(":id")
@@ -18,15 +26,23 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
+
   @Patch(":id")
   update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
+  }
+
+  @Put("follow/:id")
+  follow(@Param("id") id: string, @Body() followUserDto : FollowUserDto){
+  return this.usersService.follow(id, followUserDto);
   }
 
   @Delete(":id")
   remove(@Param("id") id: string) {
     return this.usersService.remove(id);
   }
+
+
 }
 
 
