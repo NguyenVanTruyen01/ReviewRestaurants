@@ -17,7 +17,7 @@ import {Link,useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {login} from "../../redux/requestAPI/authRequests"
 
-const Login = () => {
+const LoginPage = () => {
 	const [data, setData] = useState({
 		email: "",
 		password: "",
@@ -137,4 +137,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default LoginPage;

@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import {register} from "../../redux/requestAPI/authRequests";
 
-const Register = () => {
+const RegisterPage = () => {
 
 	const [data, setData] = useState({
 		email: "",
@@ -195,4 +195,4 @@ const Register = () => {
 	);
 };
 
-export default Register;
+export default RegisterPage;

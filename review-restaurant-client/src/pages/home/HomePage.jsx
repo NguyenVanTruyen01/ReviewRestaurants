@@ -11,6 +11,7 @@ import "../../assets/js/scripts";
 
 import Header from "../../components/main/Header";
 import MobileMenu from "../../components/main/MobileMenu";
+import SearchUsers from "../../components/search-user/SearchUsers";
 
 const Home = () => {
 	return (
@@ -25,18 +26,7 @@ const Home = () => {
 							<span className="semi-bold text-capitalize">
 								Get it delivered right to your door.
 							</span>
-							<form>
-								<input
-									type="text"
-									name="location"
-									className="half-radius"
-									placeholder="Enter your location"
-								/>
-								<button type="submit" className="btn-default">
-									Search Food
-									<span />
-								</button>
-							</form>
+							<SearchUsers/>
 						</div>
 						{/*banner-text end*/}
 					</div>

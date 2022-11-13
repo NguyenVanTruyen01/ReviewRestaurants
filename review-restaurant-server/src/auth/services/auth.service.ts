@@ -26,7 +26,7 @@ export class AuthService {
       if (!user) {
         throw new HttpException({
           success: false,
-          message: "Register fail"
+          message: "RegisterPage fail"
         }, HttpStatus.NOT_ACCEPTABLE);
       }
 

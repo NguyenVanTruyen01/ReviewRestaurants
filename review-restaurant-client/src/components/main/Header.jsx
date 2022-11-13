@@ -128,10 +128,6 @@ const Header = () => {
 					{/*menu-bar end*/}
 					<ul className="oth-lnks ml-auto">
 						<li>
-							<img src={iconPhone} alt="" />
-							+1 654 847 52 25
-						</li>
-						<li>
 							<a href="#" title className="search-icon">
 								<img src={iconSearch} alt="" />
 							</a>
@@ -144,9 +140,13 @@ const Header = () => {
 						</li>
 						<li>
 							{user ?
-								<a  title className="cart-ico">
-									Hi,{user.firstName} {user.lastName} <img src={iconSignIn} alt="" onClick={handleLogout} />
-								</a> :
+								<>
+									<img src={user.avatar} style={{width: "40px", height: "40px", borderRadius: "50%"}}/>
+									<Link to={`/profile/${user._id}`} title className="cart-ico" >
+										Hi,{user.firstName} {user.lastName} <img src={iconSignIn} alt="" onClick={handleLogout} />
+									</Link>
+								</>
+								 :
 								<Link to='/login'>Login</Link>
 							}
 						</li>
@@ -155,8 +155,8 @@ const Header = () => {
 				<div className="search-bar">
 					<div className="container">
 						<form>
-							<input type="text" name="search" placeholder="Search" />
 						</form>
+						<input type="text" name="search" placeholder="Search" />
 					</div>
 				</div>
 			</div>

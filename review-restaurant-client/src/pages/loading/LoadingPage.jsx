@@ -1,7 +1,7 @@
 import React from "react";
 import './Loading.css'
 
-const Loading = () => {
+const LoadingPage = () => {
     return (
         <div className = "body">
             <div className= "text-loading">Loading...</div>
@@ -14,4 +14,4 @@ const Loading = () => {
     )
 }
 
-export default Loading
+export default LoadingPage

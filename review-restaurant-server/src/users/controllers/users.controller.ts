@@ -1,4 +1,4 @@
-import { Controller, Get,Put, Body, Patch, Param, Delete } from "@nestjs/common";
+import { Controller, Get,Put, Body, Patch, Param, Delete,Query } from "@nestjs/common";
 import { UsersService } from "../services/users.service";
 import { UpdateUserDto } from "../dto/update-user.dto";;
 import {FollowUserDto} from "../dto/follow-user.dto";
@@ -9,15 +9,23 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {
   }
 
+
+
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Get("search")
+  searchUsers(@Query('key') key){
+    return this.usersService.searchUsers(key);
   }
 
   @Get(":id")
   findOne(@Param("id") id: string) {
     return this.usersService.findOne(id);
   }
+
 
   @Patch(":id")
   update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
@@ -33,6 +41,8 @@ export class UsersController {
   remove(@Param("id") id: string) {
     return this.usersService.remove(id);
   }
+
+
 }
 
 

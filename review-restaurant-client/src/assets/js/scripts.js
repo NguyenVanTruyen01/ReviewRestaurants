@@ -158,7 +158,7 @@ $(window).on("load", function () {
 				data: $(form).serialize(),
 				beforeSend: function () {
 					$("#contact-form .response").html(
-						'<div class="text-info"><img src="assets/images/preloader.gif"> Loading...</div>'
+						'<div class="text-info"><img src="assets/images/preloader.gif"> LoadingPage...</div>'
 					);
 				},
 				success: function (data) {

@@ -1,4 +1,4 @@
-import {flatten, HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {HttpException, HttpStatus, Injectable, Query} from '@nestjs/common';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserModel } from "../models/user.model";
 import { InjectModel } from "@nestjs/mongoose";
@@ -8,7 +8,9 @@ import {FollowUserDto} from "../dto/follow-user.dto";
 @Injectable()
 export class UsersService {
 
-  constructor(@InjectModel('User') private readonly userModel: Model<UserModel> ) {
+  constructor(
+      @InjectModel('User') private readonly userModel: Model<UserModel>
+) {
   }
 
   async findAll() {
@@ -46,6 +48,19 @@ export class UsersService {
         message: err.message,
       }, HttpStatus.NOT_FOUND)
     }
+  }
+
+  async searchUsers(@Query('key') key){
+
+    const users = await this.userModel.find(
+        {lastName: {$regex: key, '$options': 'i'}}
+    )
+
+    return {
+      success: true,
+      users
+    }
+
   }
 
 

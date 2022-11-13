@@ -27,13 +27,13 @@ import  {AuthMiddleware} from "./middlewares/auth.middleware"
 export class AppModule {
 
   configure(consumer: MiddlewareConsumer) {
-    consumer
-        .apply(AuthMiddleware)
-        .forRoutes('users');
-
-    consumer
-        .apply(AuthMiddleware)
-        .forRoutes('auth/logout');
+    // consumer
+    //     .apply(AuthMiddleware)
+    //     .forRoutes('users');
+    //
+    // consumer
+    //     .apply(AuthMiddleware)
+    //     .forRoutes('auth/logout');
   }
 
 }
