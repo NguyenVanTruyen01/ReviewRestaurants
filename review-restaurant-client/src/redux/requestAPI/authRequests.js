@@ -45,7 +45,6 @@ export const logout = async (token,id,dispatch,navigate) =>{
     try {
 
         const res = await postDataAPI("auth/logout",id,token);
-        console.log(res.data)
         dispatch(logoutSuccess());
         dispatch(notifySuccess(res.data.message));
         toast.success(res.data.message);

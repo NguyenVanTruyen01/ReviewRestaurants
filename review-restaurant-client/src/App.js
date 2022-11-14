@@ -13,6 +13,7 @@ function App() {
 		<Router>
 			<Notify/>
 			<Routes>
+				<Route exact path="/" element={<HomePage/>} />
 				<Route exact path="/home" element={<HomePage/>} />
 				<Route exact path="/login" element={<LoginPage/>} />
 				<Route exact path="/register" element={<RegisterPage />} />

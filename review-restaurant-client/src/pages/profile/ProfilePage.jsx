@@ -1,8 +1,15 @@
 import React from "react";
+import PostShareModal from "../../modals/postshare/PostShareModal";
+import ListPost from "../../components/listpost/ListPost";
 
 const ProfilePage = ()=>{
     return(
-        <h1>Profile</h1>
+        <>
+
+            <PostShareModal/>
+            <ListPost/>
+        </>
+
     )
 }
 

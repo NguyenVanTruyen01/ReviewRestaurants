@@ -1,0 +1,16 @@
+.show-img #file_img{
+    position: relative;
+}
+.show-img #file_img span{
+    position: absolute;
+    top:-1px;
+    right: -2px;
+    z-index: 100;
+    background:white;
+    color: crimson;
+    padding: 3px 7px ;
+    border: 1px solid crimson;
+    border-radius: 50%;
+    font-weight: bolder;
+    cursor: pointer;
+}

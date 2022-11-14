@@ -1,18 +1,16 @@
 import * as mongoose from "mongoose";
 
-export const PostsSchema = new mongoose.Schema({
-    reviewer: {
-      id: String,
-      firstName: String,
-      lastName: String,
-      avatar: String
-    },
+const {ObjectId} = mongoose.Schema.Types
 
-    idRestaurant: { type: String, required: true },
-    content: { type: String },
-    likes: { type: Array, default: [] },
-    ratingRes: { type: Number, default: 0 },
-    images: { type: Array, default: [] }
+export const PostsSchema = new mongoose.Schema({
+        user:  {type: ObjectId, ref: 'User'},
+
+        idRestaurant: { type: String, required: true },
+        content: { type: String },
+        likes: [{ type: ObjectId, ref: 'User' }],
+        ratingRes: { type: Number, default: 0 },
+        images: { type: Array, default: [] },
+        comments: [{ type: ObjectId, ref: 'Comment' }]
   },
   { timestamps: true });
 

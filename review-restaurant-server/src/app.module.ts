@@ -8,6 +8,7 @@ import { AuthModule } from "./auth/auth.module";
 import { InfoRestaurantModule } from "./info-restaurant/info-restaurant.module";
 import { PostsModule } from "./posts/posts.module";
 import  {AuthMiddleware} from "./middlewares/auth.middleware"
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import  {AuthMiddleware} from "./middlewares/auth.middleware"
     ),
     AuthModule,
     PostsModule,
-    InfoRestaurantModule
+    InfoRestaurantModule,
+    CommentsModule
   ],
   controllers: [AppController],
   providers: [AppService]
