@@ -1,9 +1,10 @@
-import {HttpException, HttpStatus, Injectable} from "@nestjs/common";
+import {Body, HttpException, HttpStatus, Injectable, Param} from "@nestjs/common";
 import { CreatePostDto } from "../dto/create-post.dto";
 import { UpdatePostDto } from "../dto/update-post.dto";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {PostsModel} from "../models/posts.model";
+const mongoose = require('mongoose');
 
 @Injectable()
 export class PostsService {
@@ -50,6 +51,21 @@ export class PostsService {
     }
   }
 
+  async getTimeLinePosts(currentUser){
+    try {
+        const timeline = await this.postModel.find({user: [...currentUser.following, currentUser._id]})
+            .populate("user", "avatar firstName ").sort("-createAt")
+        return {
+          success: true,
+          posts: timeline,
+          message: "Get timeline post"
+        }
+    }catch (err){
+      throw new HttpException({
+        message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+    }
+  }
+
   async findOne(id: string) {
     try {
       const posts  = await this.postModel.findById({_id : id});
@@ -72,19 +88,133 @@ export class PostsService {
   }
 
   async update(id: string, updatePostDto: UpdatePostDto) {
-    return `This action updates a #${id} post`;
+
+    if( !mongoose.Types.ObjectId.isValid(id) )
+      throw new HttpException({
+        message: `Id : "${id}" invalid!`
+      }, HttpStatus.BAD_REQUEST)
+
+    const {currentUserId, post} = updatePostDto;
+
+    const posts = await this.postModel.findById({_id: id});
+
+    if(!posts){
+      throw new HttpException({
+        message: `Can't update post with id : ${id}`
+      }, HttpStatus.NOT_FOUND)
+
+    }else {
+
+      if (currentUserId !== posts.user.toString()) {
+        throw new HttpException({
+          message: "Action forbidden!"
+        }, HttpStatus.FORBIDDEN)
+      }
+      try {
+        const newPost = await this.postModel.findByIdAndUpdate(id, post, {new: true})
+        return {
+          success: true,
+          posts: newPost,
+          message: "Update post successfully!"
+        }
+
+      } catch (err) {
+        throw new HttpException({
+          message: "Server error. Please try again"
+        }, HttpStatus.BAD_REQUEST)
+      }
+    }
   }
 
-  async remove(id: string) {
-    try{
+  async remove(id: string, currentUserId) {
 
-      const post = await this.postModel.findByIdAndDelete({_id: id})
-      return "Remove post"
+    const post = await this.postModel.findOne({_id : id});
+    if(!post){
+      throw new HttpException({
+        message: `Can't remove post with id : ${id}`}, HttpStatus.NOT_FOUND)
+    }
+    else {
 
+      if(currentUserId !== post.user.toString()){
+        throw new HttpException({
+          message: `Action forbidden!`}, HttpStatus.FORBIDDEN)
+      }
+      else {
+
+        try{
+          await post.remove();
+          return {
+            success: true,
+            message: "Remove post successfully!"
+          }
+
+        }catch (err){
+          throw new HttpException({
+            message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+        }
+
+      }
+
+    }
+  }
+
+  async likePost(id: string, currentUserId : string){
+    const post = await this.postModel.findById(id);
+    if(!post){
+      throw new HttpException({
+        message: `Can't find post by id ${id}`}, HttpStatus.BAD_REQUEST)
+
+    }
+
+
+    if(post.likes.includes(currentUserId)){
+      throw new HttpException({
+        message: `You liked this post!`}, HttpStatus.BAD_REQUEST)
+    }
+
+    try {
+      const posts = await this.postModel.findByIdAndUpdate(id,{
+          $push :{likes: currentUserId}
+      }, {new:true})
+
+      return {
+        success: true,
+        posts,
+        message: "Liked post!"
+      }
     }catch (err){
       throw new HttpException({
         message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+    }
+  }
 
+  async unLikePost(id: string, currentUserId){
+
+    const post = await this.postModel.findById(id);
+    if(!post){
+      throw new HttpException({
+        message: `Can't find post by id ${id}`}, HttpStatus.BAD_REQUEST)
+
+    }
+
+    if(!post.likes.includes(currentUserId)){
+      throw new HttpException({
+        message: `You have not liked this post. So you can't unlike it `}, HttpStatus.BAD_REQUEST)
+    }
+
+    try {
+      const posts = await this.postModel.findByIdAndUpdate(id,{
+        $pull :{likes: currentUserId}
+      }, {new:true})
+
+      return {
+        success: true,
+        posts,
+        message: "Liked post!"
+      }
+    }catch (err){
+      throw new HttpException({
+        message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
     }
   }
 }

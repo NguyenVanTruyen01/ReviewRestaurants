@@ -23,8 +23,6 @@ export const UserSchema = new mongoose.Schema({
     following: [{ type: ObjectId, ref: "User" }],
 
     infoRestaurant: {
-        nameRestaurant: { type: String },
-
         characteristics: { type: Array, default: [] },
         menu: { type: Array, default: [] },
         minPrice: { type: Number, default: null },

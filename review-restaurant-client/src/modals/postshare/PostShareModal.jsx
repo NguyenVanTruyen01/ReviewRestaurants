@@ -1,9 +1,8 @@
 import React, {useState,useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { Modal, useMantineTheme ,Textarea ,Button, SimpleGrid } from '@mantine/core';
-import "./PostShareModal.css"
+import "./PostShareModal.scss"
 import {createPost} from "../../redux/requestAPI/postRequests"
-import {imageUpload} from "../../utils/imageUpload";
 
 const PostShareModal = ()=>{
     const theme = useMantineTheme();
@@ -55,76 +54,126 @@ const PostShareModal = ()=>{
     }
 
 
-return (
-    <>
-        <button onClick={()=>setOpenModal(!openModal)}>
-            {currentUser.lastName}, what are you thinking?
-        </button>
+    return (
+        <>
 
-        <Modal
-            overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
-            overlayOpacity={0.55}
-            overlayBlur={3}
-            size={"50%"}
-            closeOnClickOutside={true}
-            opened={openModal}
-            onClose={() => setOpenModal(!openModal)}
-        >
+            <div className="PostShare">
+                <div className="postshare-top" onClick={()=>setOpenModal(!openModal)}>
+                    <img src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"/>
+                    <div>
+                        <button >
+                            {currentUser.lastName}, bạn đang nghĩ gì ?
+                        </button>
 
-            <Textarea
-                placeholder="What are you thinking ?"
-                withAsterisk
-                onChange={(e)=>setContent(e.target.value)}
-            />
+                        <div className="attachments">
+                            <ul>
+                                <li>
+                            <span className="add-loc">
+                                <i className="fas fa-map-marker-alt" style={{color:"#dc3545"}}></i>
+                            </span>
+                                </li>
+                                <li>
+                                    <i className="fa fa-music"></i>
+                                </li>
+                                <li>
+                                    <i className="fa fa-image"></i>
+                                </li>
+                                <li>
+                                    <i className="fas fa-video"></i>
+                                </li>
+                                <li>
+                                    <i className="fa fa-camera"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button className="btn-post" onClick={()=>setOpenModal(!openModal)}>Đăng</button>
 
 
-            <div className="input_image">
-                <input type="file" name = "file" id={"file"}
-                       multiple accept="image/*"
-                       onChange={handleOnChangeImage}/>
             </div>
 
 
-            <SimpleGrid
-                cols={3}
-                breakpoints={[
-                    { maxWidth: 980, cols: 3, spacing: 'md' },
-                    { maxWidth: 755, cols: 2, spacing: 'sm' },
-                    { maxWidth: 600, cols: 1, spacing: 'sm' },
-                ]}
-                className="show-img"
+            <Modal
+                overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
+                overlayOpacity={0.55}
+                overlayBlur={3}
+                size={"50%"}
+                closeOnClickOutside={true}
+                opened={openModal}
+                onClose={() => setOpenModal(!openModal)}
+                title="Tạo bài viết"
             >
-                {
-                    images.map((img,index) => {
-                        return (
-                            <div key={index}
-                                 id="file_img"
-                                 style={{width: "128px", height: "128px"}} >
-                                <img src={URL.createObjectURL(img)}
-                                     alt={"images"}
-                                     style={{objectFit: "cover",width: "128px", height: "128px"}}
-                                />
-                                <span
-                                    onClick={()=>deleteImages(index)}
-                                >&times;</span>
-                            </div>
+
+                <div className="header-modal">
+                    <img src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"/>
+                    <span>Nguyễn Văn Truyền</span>
+                </div>
+
+
+                <Textarea
+                    placeholder="Bạn đang nghĩ gì?"
+                    withAsterisk
+                    onChange={(e)=>setContent(e.target.value)}
+                />
+
+
+                <SimpleGrid
+                    cols={4}
+                    breakpoints={[
+                        { maxWidth: 980, cols: 3, spacing: 'md' },
+                        { maxWidth: 755, cols: 2, spacing: 'sm' },
+                        { maxWidth: 600, cols: 1, spacing: 'sm' },
+                    ]}
+                    className="show-img"
+                >
+                    {
+                        images.map((img,index) => {
+                            return (
+                                <div key={index}
+                                     className="grid-img"
+                                     id="file_img"
+                                     style={{width: "128px", height: "128px"}} >
+
+                                    <img src={URL.createObjectURL(img)}
+                                         alt={"images"}
+                                         style={{objectFit: "cover",width: "128px", height: "128px"}}
+                                    />
+                                    <span
+                                        className="delete-img"
+                                        onClick={()=>deleteImages(index)}
+                                    ><i className="fas fa-times"></i></span>
+                                </div>
                             )
 
-                })
-                }
-            </SimpleGrid>
+                        })
+                    }
+                </SimpleGrid>
 
 
-            <Button variant="gradient"
-                    gradient={{ from: 'teal', to: 'lime', deg: 105 }}
-                    onClick={handleSharePost}
-            >Share post</Button>
+                <div className="input_image">
+                    <label>
+                        <i className="fa fa-camera"></i>
+                        <input type="file" name = "file" id={"file"}
+                               multiple accept="image/*"
+                               onChange={handleOnChangeImage}/>
+                    </label>
 
-        </Modal>
-    </>
+                </div>
 
-    )
-}
+
+                <div className= "btn-post"
+                          onClick={handleSharePost}
+                > Đăng </div>
+
+
+            </Modal>
+        </>
+
+        )
+    }
 
 export default PostShareModal
 

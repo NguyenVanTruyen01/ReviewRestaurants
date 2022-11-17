@@ -15,10 +15,11 @@ export const PostsSchema = new mongoose.Schema({
   { timestamps: true });
 
 export interface PostsModel {
-  reviewer: Object,
-  idRestaurant: String,
-  content: String,
-  likes: [],
-  ratingRes: Number,
-  images: []
+    user: String,
+    idRestaurant: String,
+    content: String,
+    likes: string [],
+    ratingRes: Number,
+    images: Object[]
+    comments: String
 }

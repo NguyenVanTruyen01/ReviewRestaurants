@@ -137,27 +137,24 @@ export class UsersService {
         const currentUser = await this.userModel.findById(_id);
         const followUser = await  this.userModel.findById(id);
 
-        console.log("dsadas" + id)
-        console.log(_id)
-
         if (!currentUser.following.includes(id)){
           await currentUser.updateOne({$push:{following: id}},{new:true})
           await followUser.updateOne({$push: {followers: _id}},{new:true})
 
-          throw new HttpException({
+          return {
             success: true,
             message: "Followed user"
-          }, HttpStatus.OK)
+          }
         }
 
         else {
           await currentUser.updateOne({$pull: {following: id}},{new:true})
           await followUser.updateOne({$pull: {followers: _id}},{new:true})
 
-          throw new HttpException({
+          return {
             success: true,
             message: "Unfollowed user"
-          }, HttpStatus.OK)
+          }
         }
 
       }catch (err){
