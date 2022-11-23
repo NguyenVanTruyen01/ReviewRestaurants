@@ -27,11 +27,11 @@ export const UserSchema = new mongoose.Schema({
         menu: { type: Array, default: [] },
         minPrice: { type: Number, default: null },
         maxPrice: { type: Number, default: null },
-        openTime: Date,
-        closeTime: Date,
+        openTime: String,
+        closeTime: String,
         utilities: { type: Array, default: [] }, //tiện ích
-        facebook: { type: String, default: null },
-        instagram: { type: String, default: null },
+        facebook: { type: String, default: "Chưa cập nhật" },
+        instagram: { type: String, default: "Chưa cập nhật" },
         introduce: String,
         rating: { type: Number, default: 0 },
         images: { type: Array, default: [] }

@@ -2,13 +2,23 @@ import {postDataAPI} from "../../utils/fetchData"
 import {loginSuccess,loginFail,logoutSuccess} from "../authSlice"
 import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import { toast } from "react-toastify";
+import {imageUpload} from "../../utils/imageUpload";
+import infoRestaurant from "../../components/info-restaurent/InfoRestaurant";
 
-export const register = async (data,dispatch,navigate) => {
+export const register = async (data,images,dispatch,navigate) => {
     dispatch(notifyLoading())
 
     try{
 
-        const res = await postDataAPI("auth/signup",data);
+        //save images on cloudinary
+        let media = []
+        if(images.length > 0){
+            media = await imageUpload(images);
+        }
+        const newData = {...data, infoRestaurant :{ ...data.infoRestaurant, images: media}}
+
+        const res = await postDataAPI("auth/signup", newData
+        );
         dispatch(notifySuccess(res.data.message))
         toast.success(res.data.message)
         navigate("/login")

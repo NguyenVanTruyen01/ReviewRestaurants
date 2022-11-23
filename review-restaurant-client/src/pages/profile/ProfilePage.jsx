@@ -53,13 +53,13 @@ const ProfilePage = ()=>{
                     </div>
 
                     <ol className="folw-detail">
-                        <li><span>Posts</span>
+                        <li><span>Bài đăng</span>
                             <a>101</a>
                         </li>
-                        <li><span>Followers</span>
+                        <li><span>Người theo dõi</span>
                             <a>1.3K</a>
                         </li>
-                        <li><span>Following</span>
+                        <li><span>Đang theo dõi</span>
                             <a>22</a>
                         </li>
                     </ol>

@@ -1,4 +1,4 @@
-import {HttpException, HttpStatus, Injectable, Query} from '@nestjs/common';
+import {Body, HttpException, HttpStatus, Injectable, Query} from '@nestjs/common';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserModel } from "../models/user.model";
 import { InjectModel } from "@nestjs/mongoose";
@@ -50,10 +50,10 @@ export class UsersService {
     }
   }
 
-  async searchUsers(@Query('key') key){
+  async searchByUserName(@Query('key') key){
 
     const users = await this.userModel.find(
-        {lastName: {$regex: key, '$options': 'i'}}
+        {userName: {$regex: key, '$options': 'i'}}
     )
 
     return {
@@ -63,6 +63,50 @@ export class UsersService {
 
   }
 
+  async searchManyFields(@Body() search){
+    try {
+      const {regions,benefits,minPrice,maxPrice,purposes} = search;
+
+      const query = {};
+
+      if(regions){
+        query["address"] =  {$regex: regions, '$options': 'i'}
+      }
+
+      if(purposes.length > 0){
+        query["infoRestaurant.characteristics"] = { $all: purposes }
+      }
+
+      if(benefits.length > 0){
+        query["infoRestaurant.utilities"] = { $all: benefits }
+      }
+
+      if(minPrice !== -1){
+        query["infoRestaurant.minPrice"] = { $lte: maxPrice }
+      }
+
+      if(maxPrice !== -1){
+        query["infoRestaurant.maxPrice"] = { $lte: maxPrice }
+      }
+
+      const users = await this.userModel.find(
+          query
+      )
+
+      return {
+        amount: users.length,
+        success: true,
+        users
+      }
+    }catch (err){
+      throw new HttpException({
+        message: "Server is error"
+      }, HttpStatus.FORBIDDEN)
+    }
+
+
+
+  }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
 
@@ -91,7 +135,6 @@ export class UsersService {
     }
     else{
       throw new HttpException({
-        success: false,
         message: "Action forbidden"
       }, HttpStatus.FORBIDDEN)
     }
@@ -167,4 +210,14 @@ export class UsersService {
     }
 
   }
+
+  async  deleteAllUser(){
+    await this.userModel.deleteMany();
+    return {
+      success: true,
+      message: "Delete all users successfully"
+    }
+  }
+
+
 }

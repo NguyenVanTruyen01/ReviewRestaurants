@@ -49,4 +49,9 @@ export class PostsController {
   unLikePost(@Param("id") id: string,  @Body("currentUserId") currentUserId: string){
     return this.postsService.unLikePost(id,currentUserId)
   }
+
+  @Delete()
+  deleteAllPost() {
+    return this.postsService.deleteAllPost();
+  }
 }

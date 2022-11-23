@@ -6,6 +6,8 @@
   "dependencies": {
     "@mantine/core": "^5.7.2",
     "@mantine/dropzone": "^5.7.2",
+    "@mantine/form": "^5.8.0",
+    "@mantine/hooks": "^5.8.0",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

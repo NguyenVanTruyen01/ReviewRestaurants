@@ -155,7 +155,7 @@ const PostShareModal = ()=>{
 
                 <div className="input_image">
                     <label>
-                        <i className="fa fa-camera"></i>
+                        <i className="fa fa-image"></i>
                         <input type="file" name = "file" id={"file"}
                                multiple accept="image/*"
                                onChange={handleOnChangeImage}/>

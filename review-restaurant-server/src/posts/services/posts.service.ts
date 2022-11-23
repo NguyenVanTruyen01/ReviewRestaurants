@@ -54,8 +54,17 @@ export class PostsService {
   async getTimeLinePosts(currentUser){
     try {
         const timeline = await this.postModel.find({user: [...currentUser.following, currentUser._id]})
-            .populate("user", "avatar firstName ").sort("-createAt")
-        return {
+            .sort('-createAt')
+            .populate("user idRestaurant likes", "avatar userName ")
+            .populate({
+              path: "comments",
+              populate:{
+                path: "user",
+                select: "avatar userName"
+              }
+            })
+
+      return {
           success: true,
           posts: timeline,
           message: "Get timeline post"
@@ -215,6 +224,14 @@ export class PostsService {
     }catch (err){
       throw new HttpException({
         message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+    }
+  }
+
+  async deleteAllPost(){
+    await this.postModel.deleteMany();
+    return{
+      success: true,
+      message: "Delete all posts successfully!"
     }
   }
 }

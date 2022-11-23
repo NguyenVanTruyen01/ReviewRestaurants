@@ -4,12 +4,19 @@ import Post from "../post/Post";
 const ListPost = ()=>{
     return (
         <>
-            <Post></Post>
-            <Post></Post>
-            <Post></Post>
-            <Post></Post>
-            <Post></Post>
-            <Post></Post>
+
+            <div className="ListPost" style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px"
+            }}>
+
+                <Post></Post>
+                <Post></Post>
+                <Post></Post>
+
+            </div>
+
         </>
 
     )

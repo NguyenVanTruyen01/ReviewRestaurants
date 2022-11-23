@@ -9,16 +9,18 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {
   }
 
-
-
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
   @Get("search")
-  searchUsers(@Query('key') key){
-    return this.usersService.searchUsers(key);
+  searchByUserName(@Query('key') key){
+    return this.usersService.searchByUserName(key);
+  }
+  @Get("searchManyFields")
+  searchManyFields(@Body() search){
+    return this.usersService.searchManyFields(search);
   }
 
   @Get(":id")
@@ -41,6 +43,13 @@ export class UsersController {
   remove(@Param("id") id: string) {
     return this.usersService.remove(id);
   }
+
+
+  @Delete()
+  deleteAllUser() {
+    return this.usersService.deleteAllUser();
+  }
+
 
 
 }
