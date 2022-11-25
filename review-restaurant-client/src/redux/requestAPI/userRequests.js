@@ -8,7 +8,7 @@ export const search = async (key) =>{
     return res.data
 }
 
-export const getUser = async (id, dispatch,navigate ) => {
+export const getProfileUser = async (id, dispatch,navigate ) => {
     dispatch(notifyLoading())
 
     try{

@@ -6,9 +6,12 @@ import './CommentCard.scss'
 import {useDispatch, useSelector} from "react-redux";
 import CommentMenu from "../comment-menu/CommentMenu";
 import { Textarea } from '@mantine/core';
-import {updateComment} from "../../../redux/requestAPI/commentRequest"
+import InputComment from "../comment-input/InputComment"
+import {updateComment,likeComment,unlikeComment} from "../../../redux/requestAPI/commentRequest"
 
-const CommentCard = ({comment,post})=>{
+import {getProfileUser} from "../../../redux/requestAPI/userRequests";
+
+const CommentCard = ({children,comment,post,commentId})=>{
 
     const {currentUser} = useSelector(state => state.auth?.login)
     const dispatch = useDispatch();
@@ -17,10 +20,19 @@ const CommentCard = ({comment,post})=>{
     const [readMore,setReadMore] = useState(false)
 
     const [isLike,setIsLike] = useState(false);
-    const [onEdit,setOnEdit] = useState(false)
+    const [onEdit,setOnEdit] = useState(false);
+    const [loadLike,setLoadLike] = useState(false);
+
+    const [onReply,setOnReply] = useState(false)
 
     useEffect(()=>{
         setContent(comment.content)
+        setIsLike(false)
+        setOnReply(false)
+        if(comment.likes.find(like => like._id === currentUser._id)){
+            setIsLike(true)
+        }
+
     },[comment])
 
     const styleCard = {
@@ -28,12 +40,22 @@ const CommentCard = ({comment,post})=>{
         pointerEvents : comment._id ? 'inherit' : 'none'
     }
 
-    const handleLike = ()=>{
+    const handleLike = async ()=>{
+        if (loadLike) return;
         setIsLike(true)
+
+        setLoadLike(true)
+        await likeComment({comment,post,currentUser,dispatch});
+        setLoadLike(false)
     }
 
-    const handleUnLike = () => {
+    const handleUnLike = async () => {
+        if(loadLike) return;
         setIsLike(false)
+
+        setLoadLike(true)
+        await unlikeComment({comment,post,currentUser,dispatch});
+        setLoadLike(false)
     }
 
     const handleUpdate = async () =>{
@@ -43,6 +65,11 @@ const CommentCard = ({comment,post})=>{
        }else {
            setOnEdit(false)
        }
+    }
+
+    const handleReply = async () =>{
+        if(onReply) return setOnReply(false)
+        setOnReply({...comment,commentId})
     }
 
     return (
@@ -88,11 +115,21 @@ const CommentCard = ({comment,post})=>{
                             :
                             <div>
                         <span>
-                        {
-                            content.length <150 ? content :
-                                readMore ? content + ' ':
-                                    content.slice(0,150) + '...'
-                        }
+                            {
+                                comment.tag && comment.tag._id !== comment.user._id &&
+                                    <Link to={`/profile/${comment?.tag._id}`}
+                                          style={{marginRight: "6px", color:"blue"}}
+                                          onClick={() => getProfileUser(comment?.tag._id)}
+                                    >
+                                        @{comment?.tag.userName}
+                                    </Link>
+                            }
+                            {
+
+                                content.length <150 ? content :
+                                    readMore ? content + ' ':
+                                        content.slice(0,150) + '...'
+                            }
                         </span>
 
                                 {
@@ -130,14 +167,36 @@ const CommentCard = ({comment,post})=>{
                             {comment.likes.length} like
                         </small>
 
-                        <small>
+                        <small onClick={() => handleReply()}>
                             <i className="fal fa-reply"></i>
-                            reply
+                            {
+                                onReply ? 'cancel': 'reply'
+                            }
                         </small>
                     </div>
 
 
                 </div>
+
+
+                {
+                    onReply &&
+                    <div style={{marginTop: "6px"}}>
+                        <InputComment post={post}
+                                      onReply = {onReply}
+                                      setOnReply = {setOnReply}
+                        >
+                            <Link to={`/profile/${onReply?.user._id}`}
+                                  style={{marginRight: "6px", color:"blue"}}
+                                  onClick={() => getProfileUser(onReply?.user._id)}
+                            >
+                                @{onReply?.user.userName}
+                            </Link>
+                        </InputComment>
+                    </div>
+                }
+
+                {children}
 
             </div>
 

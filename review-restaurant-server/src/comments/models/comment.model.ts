@@ -19,7 +19,7 @@ export interface CommentModel {
     content: string,
     tag: Object,
     reply: string,
-    likes: [],
+    likes: string[],
     user: Object,
     postId: string,
     postUserId: string

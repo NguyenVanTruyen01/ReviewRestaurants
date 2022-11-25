@@ -6,6 +6,7 @@ import iconSignIn from '../../assets/images/icons/sign-in.svg';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from '../../redux/requestAPI/authRequests';
+import {getProfileUser} from '../../redux/requestAPI/userRequests'
 
 const Header = () => {
 	const user = useSelector((state) => state.auth.login.currentUser);
@@ -137,9 +138,14 @@ const Header = () => {
 							{user ? (
 								<>
 									<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
-									<Link to={`/profile/${user._id}`} title className="cart-ico">
-										Hi,{user.userName} <img src={iconSignIn} alt="" onClick={handleLogout} />
+									<Link to={`/profile/${user._id}`} title className="cart-ico"
+										  onClick={()=> getProfileUser(user._id,dispatch,navigate)}
+									>
+										Hi,{user.userName}
 									</Link>
+									<i className="fal fa-sign-out-alt"
+									   style={{fontSize: "20px", cursor: "pointer"}}
+									   onClick={handleLogout} ></i>
 								</>
 							) : (
 								<Link to="/login">Login</Link>

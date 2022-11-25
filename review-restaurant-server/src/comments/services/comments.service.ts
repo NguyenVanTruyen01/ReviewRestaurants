@@ -1,4 +1,4 @@
-import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {Body, HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import { CreateCommentDto } from '../dto/create-comment.dto';
 import { UpdateCommentDto } from '../dto/update-comment.dto';
 import {InjectModel} from "@nestjs/mongoose";
@@ -98,8 +98,30 @@ export class CommentsService {
 
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} comment`;
+  async remove(id: string , currentUserId: string) {
+    try{
+        const comments = await this.commentModel.findOneAndDelete({
+            _id :id,
+            $or:[
+                {user: currentUserId},
+                {postUserId: currentUserId}
+            ]
+        })
+
+        await this.postModel.findOneAndUpdate({_id : comments.postId},{
+            $pull: {comments: id}
+        })
+
+        return {
+            success: true,
+            comments,
+            message: "Delete comment successfully!"
+        }
+
+    }catch (err){
+        throw new HttpException(
+            {message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+    }
   }
 
   async deleteAllComments(){
@@ -114,4 +136,68 @@ export class CommentsService {
               message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
       }
   }
+
+  async likeComment(id: string, currentUserId : string){
+        const comment = await this.commentModel.findById(id);
+
+        if(!comment){
+            throw new HttpException({
+                message: `Can't find post by id ${id}`}, HttpStatus.BAD_REQUEST)
+
+        }
+
+        if(comment.likes.includes(currentUserId)){
+            throw new HttpException({
+                message: `You liked this comment!`}, HttpStatus.BAD_REQUEST)
+        }
+
+        try {
+            const comments = await this.commentModel.findByIdAndUpdate(id,{
+                $push :{likes: currentUserId}
+            }, {new:true})
+                .sort('-createAt')
+                .populate("user likes", "avatar userName ")
+
+            return {
+                success: true,
+                comments,
+                message: "Liked comment!!"
+            }
+        }catch (err){
+            throw new HttpException({
+                message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+        }
+    }
+
+    async unLikeComment(id: string, currentUserId){
+
+        const comment = await this.commentModel.findById(id);
+        if(!comment){
+            throw new HttpException({
+                message: `Can't find post by id ${id}`}, HttpStatus.BAD_REQUEST)
+
+        }
+
+        if(!comment.likes.includes(currentUserId)){
+            throw new HttpException({
+                message: `You have not liked this comment. So you can't unlike it `}, HttpStatus.BAD_REQUEST)
+        }
+
+        try {
+            const comments = await this.commentModel.findByIdAndUpdate(id,{
+                $pull :{likes: currentUserId}
+            }, {new:true})
+                .sort('-createAt')
+                .populate("user likes", "avatar userName ")
+
+            return {
+                success: true,
+                comments,
+                message: "Unliked post!"
+            }
+        }catch (err){
+            throw new HttpException({
+                message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+        }
+    }
 }

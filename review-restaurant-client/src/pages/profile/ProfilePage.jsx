@@ -5,6 +5,7 @@ import "./ProfilePage.scss"
 import { Rating } from '@mantine/core';
 import InfoRestaurant from "../../components/info-restaurent/InfoRestaurant";
 import {useSelector} from "react-redux";
+import Header from "../../components/main/Header";
 
 const ProfilePage = ()=>{
 
@@ -14,6 +15,7 @@ const ProfilePage = ()=>{
 
     return(
         <>
+            <Header></Header>
             <div className="container" >
 
                 <div className="user-profile">

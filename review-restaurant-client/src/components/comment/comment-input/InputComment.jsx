@@ -3,7 +3,8 @@ import './InputComment.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {createComment} from "../../../redux/requestAPI/commentRequest"
 
-const InputComment = ({children,post})=>{
+const InputComment = ({children,post, onReply,setOnReply})=>{
+
     const [content,setContent] = useState('');
 
     const {currentUser} = useSelector(state => state.auth?.login);
@@ -11,7 +12,10 @@ const InputComment = ({children,post})=>{
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        if(!content.trim()) return;
+        if(!content.trim()) {
+            if(setOnReply) return setOnReply(false);
+            return ;
+        }
 
         setContent("");
 
@@ -19,11 +23,13 @@ const InputComment = ({children,post})=>{
             content,
             likes:[],
             user: currentUser,
-            createdAt:new Date().toISOString()
+            createdAt:new Date().toISOString(),
+            reply: onReply && onReply.commentId,
+            tag: onReply && onReply.user
         }
 
-       await createComment(post,newComment,currentUser,dispatch)
-
+       await createComment(post,newComment,currentUser,dispatch);
+        if(setOnReply) return setOnReply(false)
     }
 
     return(

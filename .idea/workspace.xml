@@ -3,8 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="c0fbe14f-aea5-4c52-af93-ae2974bf2987" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Category.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Category.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/Comments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/Comments.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/CommentsDisplay.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/CommentsDisplay.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-card/CommentCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-card/CommentCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-input/InputComment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-input/InputComment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-menu/CommentMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-menu/CommentMenu.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/post/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/profile/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/profile/ProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/commentRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/commentRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/userRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/userRequests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/utils/fetchData.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/utils/fetchData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/comments/controllers/comments.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/comments/controllers/comments.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/comments/dto/create-comment.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/comments/dto/create-comment.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/comments/models/comment.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/comments/models/comment.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/comments/services/comments.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/comments/services/comments.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/posts/services/posts.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/services/posts.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

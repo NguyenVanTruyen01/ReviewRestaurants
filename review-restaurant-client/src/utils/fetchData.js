@@ -29,8 +29,9 @@ export const patchDataAPI = async (url, post, token) => {
     return res;
 }
 
-export const deleteDataAPI = async (url, token) => {
+export const deleteDataAPI = async (url,data, token) => {
     const res = await API.delete(`/${url}`, {
+        data:data,
         headers: { authorization: `Bearer ${token}`}
     })
     return res;

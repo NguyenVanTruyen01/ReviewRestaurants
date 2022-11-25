@@ -157,7 +157,7 @@ const Post = ({post})=>{
 
                           <div className= "action-comment">
                               <span>{post.comments.length} bình luận</span>
-                              <i className="fas fa-comment-dots" style={{color: "#23d2e2"}}></i>
+                              <i className="fal fa-comment" style={{color: "blue"}}></i>
                           </div>
                       </div>
 

@@ -1,13 +1,14 @@
 import React from "react";
 import {useDispatch} from "react-redux";
+import {deleteComment} from "../../../redux/requestAPI/commentRequest"
 
 const CommentMenu = ({post,comment,auth,setOnEdit}) =>{
 
     const dispatch = useDispatch()
 
-    const handleRemove = () => {
+    const handleRemove =async () => {
         if(post.user._id === auth._id || comment.user._id === auth._id){
-            // dispatch(deleteComment({post, auth, comment, socket}))
+          await  deleteComment({post, auth, comment,dispatch})
         }
     }
 

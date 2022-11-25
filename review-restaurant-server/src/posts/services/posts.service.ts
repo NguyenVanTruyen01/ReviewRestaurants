@@ -240,7 +240,7 @@ export class PostsService {
       return {
         success: true,
         posts,
-        message: "Liked post!"
+        message: "Unliked post!"
       }
     }catch (err){
       throw new HttpException({

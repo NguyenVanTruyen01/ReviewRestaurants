@@ -28,13 +28,24 @@ export class CommentsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.commentsService.remove(+id);
+  remove(@Param('id') id: string, @Body("currentUserId") currentUserId: string) {
+    return this.commentsService.remove(id,currentUserId);
   }
 
   @Delete()
   deleteAllComments() {
     return this.commentsService.deleteAllComments();
   }
+
+  @Patch(":id/like")
+  likePost(@Param("id") id: string, @Body("currentUserId") currentUserId: string){
+    return this.commentsService.likeComment(id,currentUserId)
+  }
+
+  @Patch(":id/unlike")
+  unLikePost(@Param("id") id: string,  @Body("currentUserId") currentUserId: string){
+    return this.commentsService.unLikeComment(id,currentUserId)
+  }
+
 
 }
