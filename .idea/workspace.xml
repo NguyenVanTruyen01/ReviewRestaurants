@@ -2,43 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0fbe14f-aea5-4c52-af93-ae2974bf2987" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/Comments.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/CommentsDisplay.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-card/CommentCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-card/CommentCard.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-input/InputComment.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-input/InputComment.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-menu/CommentMenu.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/comment/comment-menu/CommentMenu.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/globalHandle/globalHandle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/commentRequest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/userSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ReviewRestaurants.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ReviewRestaurants.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/assets/images/home/home_container.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Category.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/category.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/search/SearchPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review-restaurant-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/info-restaurent/InfoRestaurant.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/info-restaurent/InfoRestaurant.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/info-restaurent/InfoRestaurant.scss" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/info-restaurent/InfoRestaurant.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/listpost/ListPost.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/listpost/ListPost.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/post/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/post/Post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/post/Post.scss" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/post/Post.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/modals/postshare/PostShareModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/modals/postshare/PostShareModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/modals/postshare/PostShareModal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/modals/postshare/PostShareModal.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/profile/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/profile/ProfilePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/postSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/postSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/authRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/authRequests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/postRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/postRequests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/userRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/requestAPI/userRequests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/comments/controllers/comments.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/comments/controllers/comments.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/comments/services/comments.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/comments/services/comments.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/posts/dto/create-post.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/dto/create-post.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/posts/posts.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/posts.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/posts/services/posts.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/posts/services/posts.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-server/src/users/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-server/src/users/models/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/search-user/SearchUsers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/search-user/SearchUsers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/home/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/home/HomePage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +133,7 @@
       <workItem from="1669187325536" duration="39355000" />
       <workItem from="1669258911772" duration="23731000" />
       <workItem from="1669303954233" duration="16260000" />
+      <workItem from="1669359351060" duration="497000" />
     </task>
     <servers />
   </component>
