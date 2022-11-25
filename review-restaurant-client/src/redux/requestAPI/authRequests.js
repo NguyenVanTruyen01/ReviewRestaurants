@@ -3,7 +3,6 @@ import {loginSuccess,loginFail,logoutSuccess} from "../authSlice"
 import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import { toast } from "react-toastify";
 import {imageUpload} from "../../utils/imageUpload";
-import infoRestaurant from "../../components/info-restaurent/InfoRestaurant";
 
 export const register = async (data,images,dispatch,navigate) => {
     dispatch(notifyLoading())

@@ -17,6 +17,7 @@ import storage from 'redux-persist/lib/storage'
 import authReducers from './authSlice'
 import notifyReducers from "./notifySlice"
 import postReducers from "./postSlice"
+import userReducers from "./userSlice";
 
 const persistConfig = {
     key: 'root',
@@ -27,7 +28,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authReducers,
     notify: notifyReducers,
-    post: postReducers
+    post: postReducers,
+    user: userReducers,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

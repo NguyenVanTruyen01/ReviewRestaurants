@@ -60,7 +60,7 @@ export class CommentsService {
     }
   }
 
-  findOne(id: string) {
+  async findOne(id: string) {
    try {
 
    }catch (err){
@@ -70,8 +70,32 @@ export class CommentsService {
    }
   }
 
-  update(id: number, updateCommentDto: UpdateCommentDto) {
-    return `This action updates a #${id} comment`;
+  async update(id: string, newData) {
+      try {
+
+          const {content,currentUserId} = newData;
+
+          const comment = await this.commentModel.findById(id);
+
+          if(comment.user.toString() !== currentUserId){
+              throw new HttpException({
+                  message: "Action forbidden!"}, HttpStatus.FORBIDDEN)
+          }
+
+          const newComment = await this.commentModel.findByIdAndUpdate(id,{content},{new :true})
+
+          return {
+              success: true,
+              comment: newComment,
+              message: "Update comment successfully!"
+          }
+
+      }catch (err){
+          throw new HttpException({
+              message: "Server error. Please try again"}, HttpStatus.BAD_REQUEST)
+
+      }
+
   }
 
   remove(id: number) {

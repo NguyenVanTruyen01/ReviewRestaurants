@@ -1,12 +1,46 @@
+
+.PostShare-Con{
+    display: flex;
+    .banner{
+        display: flex;
+        width: 50%;
+        height: 100%;
+        align-items: center;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius:0 8px 8px 0;
+        background: linear-gradient(90deg,#ffffff,#ffddd8,#ffb8b8);
+        .banner-img{
+            width: 50%;
+            height: 100%;
+            >img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+
+        .banner-content{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            .title{
+                font-size: 18px;
+            }
+        }
+    }
+}
+
 .PostShare{
-    width: 100%;
+    width: 50%;
     margin-top: 20px;
     padding: 10px 20px;
     background: #ffffff;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    border-radius: 8px;
+    border-radius: 8px 0 0 8px;
 
     .postshare-top{
         display: flex;
@@ -67,7 +101,9 @@
         margin-right: 20px;
     }
     span{
+        font-size: 18px;
         font-weight: bold;
+        color: #fa6342;
     }
 
 }
@@ -91,6 +127,7 @@
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    align-items: center;
     label{
         i{
             font-size: 28px;
@@ -131,6 +168,19 @@
                 color: #ffffff;
             }
         }
+    }
+}
+
+//---------------------------------------
+.content-modal{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    >div{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 }
 

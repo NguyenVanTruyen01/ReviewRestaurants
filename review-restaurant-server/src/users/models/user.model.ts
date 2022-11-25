@@ -21,6 +21,7 @@ export const UserSchema = new mongoose.Schema({
 
     followers: [{ type: ObjectId, ref: "User" }],
     following: [{ type: ObjectId, ref: "User" }],
+        rating: [],
 
     infoRestaurant: {
         characteristics: { type: Array, default: [] },
@@ -33,7 +34,6 @@ export const UserSchema = new mongoose.Schema({
         facebook: { type: String, default: "Chưa cập nhật" },
         instagram: { type: String, default: "Chưa cập nhật" },
         introduce: String,
-        rating: { type: Number, default: 0 },
         images: { type: Array, default: [] }
     }
 

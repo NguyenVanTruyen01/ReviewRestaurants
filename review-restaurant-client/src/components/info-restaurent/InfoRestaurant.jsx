@@ -2,9 +2,10 @@ import React, {useEffect} from "react";
 import "./InfoRestaurant.scss"
 import image from "../../assets/images/resources/profile-image.jpg"
 import { AspectRatio } from '@mantine/core';
-import { Rating, Button } from '@mantine/core';
+import { Rating } from '@mantine/core';
+import {useSelector} from "react-redux";
 
-const InfoRestaurant = ()=>{
+const InfoRestaurant = ({user,posts})=>{
 
     useEffect(()=>{
         const root = document.querySelector(".slider");
@@ -18,6 +19,7 @@ const InfoRestaurant = ()=>{
         }
     })
 
+
     return (
         <>
             <div className="restaurant-in4">
@@ -26,17 +28,27 @@ const InfoRestaurant = ()=>{
                     <div className="introduction-content">
                         <div className="title"> Giới thiệu</div>
                         <span className="introduction-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                    </span>
+                            {user.infoRestaurant?.introduce}
+                        </span>
                     </div>
 
                     <div className="image-grid">
-                        <img className="image-grid-col-2 image-grid-row-2" src={image}
-                             alt="architecture"/>
-                        <img src={image} alt="architecture"/>
-                        <img src={image} alt="architecture"/>
-                        <img src={image} alt="architecture"/>
-                        <img src={image} alt="architecture"/>
+                        {
+                            user.infoRestaurant.images.slice(0, 5).map((image,index) =>{
+                                if(index === 0){
+                                    return  <img className="image-grid-col-2 image-grid-row-2" src={user.infoRestaurant.images[0].url}
+                                                 alt="architecture"/>
+                                }
+                                return   <img src={user.infoRestaurant.images[index].url} alt="architecture"/>
+                            })
+                        }
+
+                        {/*<img className="image-grid-col-2 image-grid-row-2" src={image}*/}
+                        {/*     alt="architecture"/>*/}
+                        {/*<img src={image} alt="architecture"/>*/}
+                        {/*<img src={image} alt="architecture"/>*/}
+                        {/*<img src={image} alt="architecture"/>*/}
+                        {/*<img src={image} alt="architecture"/>*/}
                     </div>
 
                 </div>
@@ -44,10 +56,86 @@ const InfoRestaurant = ()=>{
                 <div className="slider">
                     <div className="marquee">
                         <ul className="marquee-content">
-                            <li><i className="fab fa-github"></i></li>
-                            <li><i className="fab fa-codepen"></i></li>
-                            <li><i className="fab fa-free-code-camp"></i></li>
-                            <li><i className="fab fa-dev"></i></li>
+
+                            {
+                                user.infoRestaurant.utilities.map((uti) =>{
+                                    if(uti===1){
+                                      return <li>
+                                          <i className="fas fa-wifi"></i>
+                                          <span>Wifi miễn phí</span>
+                                      </li>
+                                    }
+                                    if(uti===2){
+                                        return <li>
+                                            <i className="fas fa-car"></i>
+                                            <span>Giữ xe miễn phí</span>
+                                        </li>
+                                    }
+
+                                    if(uti===3){
+                                        return <li>
+                                            <i className="fas fa-paw"></i>
+                                            <span>Mang thú cưng</span>
+                                        </li>
+                                    }
+                                    if(uti===4){
+                                        return <li>
+                                            <i className="fas fa-credit-card"></i>
+                                            <span>Thanh toán bằng thẻ</span>
+                                        </li>
+                                    }
+                                    if(uti===5){
+                                        return <li>
+                                            <i className="fas fa-wind"></i>
+                                            <span>Điều hòa</span>
+                                        </li>
+                                    }
+                                    if(uti===6){
+                                        return <li>
+                                            <i className="fas fa-cloud-sun"></i>
+                                            <span>Bàn ngoài trời</span>
+                                        </li>
+                                    }
+                                    if(uti===7){
+                                        return <li>
+                                            <i className="fas fa-baby"></i>
+                                            <span>Chỗ chơi trẻ em</span>
+                                        </li>
+                                    }
+                                    if(uti===8){
+                                        return <li>
+                                            <i className="fas fa-smoking"></i>
+                                            <span>Khu vực hút thuốc</span>
+                                        </li>
+                                    }
+                                    if(uti===9){
+                                        return <li>
+                                            <i className="fas fa-futbol"></i>
+                                            <span>Chiếu bóng đá</span>
+                                        </li>
+                                    }
+                                    if(uti===10){
+                                        return <li>
+                                            <i className="fas fa-truck"></i>
+                                            <span>Giao hàng</span>
+                                        </li>
+                                    }
+                                    if(uti===11){
+                                        return <li>
+                                            <i className="fas fa-hamburger"></i>
+                                            <span>Mang đồ ăn ngoài</span>
+                                        </li>
+                                    }
+                                    if(uti===12){
+                                        return <li>
+                                            <i className="fas fa-cookie-bite"></i>
+                                            <span>Ăn vặt</span>
+                                        </li>
+                                    }
+
+                                })
+                            }
+
                             {/*<li><i className="fab fa-react"></i></li>*/}
                             {/*<li><i className="fab fa-vuejs"></i></li>*/}
                             {/*<li><i className="fab fa-angular"></i></li>*/}
@@ -64,22 +152,38 @@ const InfoRestaurant = ()=>{
 
                     <div className="rating-detail i4-cart">
                         <div className="title">Đánh giá</div>
-                        <Rating size="xl" className= "rating" defaultValue={3} />
+                        <Rating size="xl" className= "rating"  readOnly defaultValue={+user.rating} />
                         <div className="count-report">
                             <div className="item">
                                 <i className="fas fa-flag"></i>
                             </div>
-                            <span>2 đánh giá</span>
+                            <span>{posts.filter((post) => post.idRestaurant._id === user._id).length} đánh giá</span>
 
                         </div>
 
                         <div className="title">Phù hợp</div>
                         <div className="character">
-                            <span  className="character-item">Sống ảo</span>
-                            <span  className="character-item">Hẹn hò</span>
-                            <span  className="character-item">Làm việc</span>
-                            <span  className="character-item">Đọc sách</span>
-                            <span  className="character-item">Chill</span>
+                            {
+                                user.infoRestaurant.characteristics.map((character)=>{
+                                    if(character === 1){
+                                       return <span  className="character-item">Sống ảo</span>
+                                    }
+                                    if(character === 2){
+                                        return  <span  className="character-item">Hẹn hò</span>
+                                    }
+                                    if(character === 3){
+                                        return <span  className="character-item">Làm việc</span>
+                                    }
+                                    if(character === 4){
+                                        return <span  className="character-item">Đọc sách</span>
+                                    }
+                                    if(character === 5){
+                                        return <span  className="character-item">Chill</span>
+                                    }
+                                })
+                            }
+
+
                         </div>
 
                     </div>
@@ -90,14 +194,14 @@ const InfoRestaurant = ()=>{
                             <div className="item">
                                 <i className="fas fa-dollar-sign"></i>
                             </div>
-                            <span>30.000đ - 60.000đ</span>
+                            <span>{user.infoRestaurant.minPrice.toLocaleString('de-DE')}đ - {user.infoRestaurant.maxPrice.toLocaleString('de-DE')}đ</span>
                         </div>
                         <div className="time">
                             <div className="item">
                                 <i className="far fa-clock"></i>
                             </div>
 
-                            <span>07:00 - 23:00</span>
+                            <span>{user.infoRestaurant.openTime} - {user.infoRestaurant.closeTime}</span>
                         </div>
 
                         <div className="telephone">
@@ -112,14 +216,19 @@ const InfoRestaurant = ()=>{
                             <div className="item">
                                 <i className="fab fa-facebook-f"></i>
                             </div>
-                            <span>0777360973</span>
+                            <a href={user.infoRestaurant?.facebook}
+                               target="_blank"
+                               style={{textOverflow: "ellipsis"}}
+                            >{user.userName}</a>
                         </div>
 
                         <div className="instagram">
                             <div className="item">
                                 <i className="fab fa-instagram"></i>
                             </div>
-                            <span>0777360973</span>
+                            <a href={user.infoRestaurant?.instagram}
+                               target="_blank"
+                            >{user.userName}</a>
                         </div>
 
                     </div>

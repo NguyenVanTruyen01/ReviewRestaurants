@@ -7,6 +7,8 @@ export class CreatePostDto {
     @IsNotEmpty()
     idRestaurant: string
 
+    ratingRes: number
+
     @IsNotEmpty()
     content: string
 }

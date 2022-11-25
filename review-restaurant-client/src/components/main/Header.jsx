@@ -9,16 +9,21 @@ import iconSignIn from "../../assets/images/icons/sign-in.svg";
 import {useDispatch, useSelector} from "react-redux";
 
 import {logout} from "../../redux/requestAPI/authRequests";
+import {getUser} from "../../redux/requestAPI/userRequests";
 
 const Header = () => {
 
-	const user = useSelector(state => state.auth.login.currentUser)
+	const user = useSelector(state => state.auth.login?.currentUser)
 	const token = useSelector(state => state.auth.login?.access_token)
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const handleLogout = async ()=>{
 		await logout(token,user._id,dispatch,navigate);
+	}
+
+	const getUserProfile = async (id)=>{
+		await getUser(id,dispatch,navigate);
 	}
 
 	return (
@@ -142,9 +147,10 @@ const Header = () => {
 							{user ?
 								<>
 									<img src={user.avatar} style={{width: "40px", height: "40px", borderRadius: "50%"}}/>
-									<Link to={`/profile/${user._id}`} title className="cart-ico" >
-										Hi,{user.firstName} {user.lastName} <img src={iconSignIn} alt="" onClick={handleLogout} />
+									<Link onClick={()=>getUserProfile(user._id)} title className="cart-ico" >
+										Hi,{user.userName}
 									</Link>
+									<img src={iconSignIn} alt="" onClick={handleLogout} />
 								</>
 								 :
 								<Link to='/login'>Login</Link>

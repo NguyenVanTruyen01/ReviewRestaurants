@@ -4,13 +4,15 @@ import { UpdatePostDto } from "../dto/update-post.dto";
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {PostsModel} from "../models/posts.model";
+import {UserModel} from "../../users/models/user.model";
 const mongoose = require('mongoose');
 
 @Injectable()
 export class PostsService {
   
   constructor(
-      @InjectModel("Posts") private readonly postModel: Model<PostsModel>
+      @InjectModel("Posts") private readonly postModel: Model<PostsModel>,
+      @InjectModel("User") private readonly userModel: Model<UserModel>
   ) {
   }
   
@@ -19,6 +21,11 @@ export class PostsService {
     try {
 
       const  newPost = await new this.postModel(createPostDto);
+
+      const  user = await this.userModel.findByIdAndUpdate(createPostDto.idRestaurant,{
+        $push: {rating: createPostDto.ratingRes}
+      });
+
       const posts = await newPost.save();
 
       if(!posts){
@@ -40,7 +47,16 @@ export class PostsService {
 
   async findAll() {
     try{
-      const posts = await this.postModel.find();
+      const posts = await this.postModel.find()
+          .sort('-createAt')
+          .populate("user idRestaurant likes", "avatar userName ")
+          .populate({
+            path: "comments",
+            populate:{
+              path: "user",
+              select: "avatar userName"
+            }
+          })
       return{
         posts,
         message: "Get posts successfully!"
@@ -77,7 +93,8 @@ export class PostsService {
 
   async findOne(id: string) {
     try {
-      const posts  = await this.postModel.findById({_id : id});
+      const posts  = await this.postModel.findById({_id : id})
+          .populate("user idRestaurant likes", "avatar userName ");
       if(posts){
         return {
           posts,
@@ -185,6 +202,8 @@ export class PostsService {
       const posts = await this.postModel.findByIdAndUpdate(id,{
           $push :{likes: currentUserId}
       }, {new:true})
+          .sort('-createAt')
+          .populate("user idRestaurant likes", "avatar userName ")
 
       return {
         success: true,
@@ -215,6 +234,8 @@ export class PostsService {
       const posts = await this.postModel.findByIdAndUpdate(id,{
         $pull :{likes: currentUserId}
       }, {new:true})
+          .sort('-createAt')
+          .populate("user idRestaurant likes", "avatar userName ")
 
       return {
         success: true,

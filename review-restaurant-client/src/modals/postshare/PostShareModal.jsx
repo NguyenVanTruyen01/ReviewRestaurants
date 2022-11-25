@@ -1,10 +1,11 @@
-import React, {useState,useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { Modal, useMantineTheme ,Textarea ,Button, SimpleGrid } from '@mantine/core';
 import "./PostShareModal.scss"
 import {createPost} from "../../redux/requestAPI/postRequests"
+import { Rating } from '@mantine/core';
 
-const PostShareModal = ()=>{
+const PostShareModal = ({user})=>{
     const theme = useMantineTheme();
 
     const dispatch = useDispatch();
@@ -13,10 +14,11 @@ const PostShareModal = ()=>{
 
     const [openModal,setOpenModal] =  useState(false);
 
+    const [rating,setRating] = useState(0);
+
     const [content,setContent] = useState("");
 
     const [images,setImages] = useState([]);
-
 
     const deleteImages = (index) =>{
        const newArr = [...images]
@@ -49,20 +51,24 @@ const PostShareModal = ()=>{
     }
 
     const handleSharePost = async ()=>{
-       const media =  await createPost( currentUser._id, currentUser._id, content,images,dispatch, access_token);
+       const media =  await createPost( currentUser._id,user._id, rating, content,images,dispatch, access_token);
        setOpenModal(!openModal)
     }
 
-
     return (
-        <>
-
+        <div className="PostShare-Con">
             <div className="PostShare">
                 <div className="postshare-top" onClick={()=>setOpenModal(!openModal)}>
                     <img src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"/>
                     <div>
                         <button >
-                            {currentUser.lastName}, bạn đang nghĩ gì ?
+                            {currentUser.userName}
+                            {
+                                currentUser._id !== user._id ?
+                                    `, Hãy đánh giá về địa điểm này?` :
+                                    `, Bạn đang nghĩ gì?`
+
+                            }
                         </button>
 
                         <div className="attachments">
@@ -89,12 +95,32 @@ const PostShareModal = ()=>{
                     </div>
 
                 </div>
-
                 <button className="btn-post" onClick={()=>setOpenModal(!openModal)}>Đăng</button>
-
 
             </div>
 
+            <div className="banner">
+                <div className="banner-img"><img
+                    src="https://ik.imagekit.io/reviewcafe/Online_Review-cuate_wG_WzURJF.svg"/>
+                </div>
+                {
+                    currentUser._id !== user._id ?
+                        <div className="banner-content">
+                            <span className="title">Bạn đã từng đến đây?</span>
+                            <span>Chia sẻ trải nghiệm và cảm nhận của bản thân cho mọi người cùng biết
+                        <i className="fas fa-heart" style={{color:"red"}}></i></span>
+                            <span>Những review chất lượng sẽ được xuất hiện ở bảng tin đấy!</span>
+                        </div>
+                        :
+                        <div className="banner-content">
+                            <span className="title">Hôm nay bạn đã đi đâu?</span>
+                            <span>Chia sẻ trải nghiệm và cảm nhận của bản thân về địa điểm bạn tới cho mọi người cùng biết
+                        <i className="fas fa-heart" style={{color:"red"}}></i></span>
+                            <span>Những review chất lượng sẽ được xuất hiện ở bảng tin đấy!</span>
+                        </div>
+                }
+
+            </div>
 
             <Modal
                 overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
@@ -109,16 +135,30 @@ const PostShareModal = ()=>{
 
                 <div className="header-modal">
                     <img src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"/>
-                    <span>Nguyễn Văn Truyền</span>
+                    <span>{currentUser.userName}</span>
                 </div>
 
+                <div className="content-modal">
 
-                <Textarea
-                    placeholder="Bạn đang nghĩ gì?"
-                    withAsterisk
-                    onChange={(e)=>setContent(e.target.value)}
-                />
+                    <span style={{fontWeight: "bold", fontSize: "18px"}}
+                    >Đánh giá của bạn về {user.userName}</span>
 
+                    <div>
+                        <span>Xếp hạng</span>
+                        <Rating size="lg" defaultValue={0} onChange={setRating}/>
+                    </div>
+
+                    <div>
+                        <span>Đánh giá </span>
+                        <Textarea
+                            placeholder="Bạn đang nghĩ gì?"
+                            withAsterisk
+                            onChange={(e)=>setContent(e.target.value)}
+                        />
+                    </div>
+
+
+                </div>
 
                 <SimpleGrid
                     cols={4}
@@ -165,12 +205,11 @@ const PostShareModal = ()=>{
 
 
                 <div className= "btn-post"
-                          onClick={handleSharePost}
+                     onClick={handleSharePost}
                 > Đăng </div>
 
-
             </Modal>
-        </>
+        </div>
 
         )
     }
