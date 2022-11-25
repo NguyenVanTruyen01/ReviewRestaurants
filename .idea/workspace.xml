@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0fbe14f-aea5-4c52-af93-ae2974bf2987" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/assets/images/home/home_container.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Category.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/category.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/search/SearchPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/search-user/SearchUsers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/search-user/SearchUsers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/pages/home/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/pages/home/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Category.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/review-restaurant-client/src/components/main/Category.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,19 +125,58 @@
       <workItem from="1669187325536" duration="39355000" />
       <workItem from="1669258911772" duration="23731000" />
       <workItem from="1669303954233" duration="16260000" />
-      <workItem from="1669359351060" duration="497000" />
+      <workItem from="1669359351060" duration="2495000" />
+      <workItem from="1669361903427" duration="300000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="comment1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>

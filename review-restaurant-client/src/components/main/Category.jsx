@@ -1,6 +1,5 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
 import './category.css';
