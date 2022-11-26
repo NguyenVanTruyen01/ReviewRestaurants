@@ -2059,7 +2059,7 @@ header .menu-btn.active span.bar3 {
 .sidebar .widget-filter .label {
   display: block;
   position: relative;
-  padding-left: 35px;
+  padding-left: 28px;
   margin-bottom: 12px;
   cursor: pointer;
   font-size: 16px;
@@ -2068,6 +2068,8 @@ header .menu-btn.active span.bar3 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  align-items: center;
 }
 .sidebar .widget-filter .label input {
   position: absolute;
@@ -2078,7 +2080,7 @@ header .menu-btn.active span.bar3 {
 }
 .sidebar .widget-filter .label .checkmark {
   position: absolute;
-  top: 0;
+  top: 3px;
   left: 0;
   height: 20px;
   width: 20px;

@@ -1,10 +1,22 @@
-import React from 'react';
+import { Axios } from 'axios';
+import React, { useState } from 'react';
+import { Collapse } from 'antd';
+
 import Header from '../../components/main/Header';
 import MobileMenu from '../../components/main/MobileMenu';
+import ListSearch from '../../components/restaurant/ListSearch';
+import HeaderFilter from './HeaderFilter';
+import './styleSearch.css';
+
 const SearchPage = () => {
   let params = new URLSearchParams(document.location.search);
+  const { Panel } = Collapse;
+
+  const [expandIconPosition, setExpandIconPosition] = useState('end');
+
   const q = params.get('q');
   console.log(q);
+
   return (
     <div>
       <div className="wrapper">
@@ -18,86 +30,243 @@ const SearchPage = () => {
                 <div class="sidebar left-sidebar">
                   <form>
                     <div class="widget widget-filter">
-                      <h3 class="widget-title">Filter</h3>
-                      <ul>
-                        <li>
-                          <label class="label">
-                            Beverages
-                            <input type="checkbox" checked="checked" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Burgers
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Meat & Steaks
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Pastry
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Pasta
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Pizza
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Sandwiches
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Seafood
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Soup & Salads
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Sushi
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="label">
-                            Vegetarian Food
-                            <input type="checkbox" />
-                            <span class="checkmark"></span>
-                          </label>
-                        </li>
-                      </ul>
+                      <Collapse
+                        defaultActiveKey={['0', '1', '2']}
+                        ghost={true}
+                        header={<HeaderFilter />}
+                        expandIconPosition={expandIconPosition}
+                      >
+                        {/* <h3 class="widget-title">Khu vực</h3> */}
+                        <Panel header={<HeaderFilter title="Khu vực" />}>
+                          <ul className="list-filter">
+                            <li>
+                              <label class="label">
+                                Quận 1
+                                <input type="checkbox" checked="checked" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 2
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 3
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 4
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 5
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 6
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 7
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 8
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 9
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 10
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 11
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Quận 12
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                TP Thủ Đức
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                          </ul>
+                        </Panel>
+
+                        <Panel header={<HeaderFilter title="Mục đích" />}>
+                          <ul className="list-filter">
+                            <li>
+                              <label class="label">
+                                Chill
+                                <input type="checkbox" checked="checked" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Hẹn hò
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Đọc sách
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Làm việc
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                              <label class="label">
+                                Sống ảo
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                          </ul>
+                        </Panel>
+
+                        <Panel header={<HeaderFilter title="Tiện ích" />}>
+                          <ul className="list-filter">
+                            <li>
+                              <label class="label">
+                                Bàn ngoài trời
+                                <input type="checkbox" checked="checked" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Bánh ngọt
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Chiếu bóng đá
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Chố chơi cho trẻ em
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Chố đậu ôtô
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Giao hàng
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Giữ xe máy
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Khu vực hút thuốc
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Mang đồ ăn ra ngoài
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Mang thú cưng
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Máy lạnh và điều hòa
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Thanh toán bằng thẻ
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Wifi free
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                          </ul>
+                        </Panel>
+                      </Collapse>
                     </div>
                     <div class="widget widget-tags">
                       <h3 class="widget-title">Tags</h3>
@@ -174,318 +343,7 @@ const SearchPage = () => {
                     </div>
                   </form>
                 </div>
-                <div class="listing-products">
-                  <div class="listing-product">
-                    <div class="product-thumb">
-                      <img
-                        src="https://via.placeholder.com/262x240
-"
-                        alt=""
-                        class="w-100"
-                      />
-                      <div class="cl-logo">
-                        <img
-                          src="https://via.placeholder.com/150x150
-"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="product-info">
-                      <h3>
-                        <a href="restaurant-details.html" title="">
-                          Vegetarian Fresh life
-                        </a>
-                      </h3>
-                      <ul class="rating">
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                      </ul>
-                      <p>
-                        Salads, soups, sneaks, burgers, drinks, seafood, grill, fish, vegetarian menu, wine, hot meals,
-                        steaks...
-                      </p>
-                      <ul class="btm">
-                        <li>
-                          <a href="#" title="">
-                            Restaurant
-                          </a>
-                        </li>
-                        <li>
-                          <span>
-                            <b class="statuss"></b>Open now
-                          </span>
-                        </li>
-                      </ul>
-                      <a href="restaurant-details.html" title="" class="view-menu">
-                        View Menu <i class="fa fa-long-arrow-alt-right"></i>
-                      </a>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                  <div class="listing-product">
-                    <div class="product-thumb">
-                      <img
-                        src="https://via.placeholder.com/262x240
-"
-                        alt=""
-                        class="w-100"
-                      />
-                      <div class="cl-logo">
-                        <img
-                          src="https://via.placeholder.com/150x150
-"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="product-info">
-                      <h3>
-                        <a href="restaurant-details.html" title="">
-                          beer power
-                        </a>
-                      </h3>
-                      <ul class="rating">
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                      </ul>
-                      <p>
-                        Salads, soups, sneaks, burgers, drinks, seafood, grill, fish, vegetarian menu, wine, hot meals,
-                        steaks...
-                      </p>
-                      <ul class="btm">
-                        <li>
-                          <a href="#" title="">
-                            Pub
-                          </a>
-                        </li>
-                        <li>
-                          <span>
-                            <b class="statuss"></b>Open now
-                          </span>
-                        </li>
-                      </ul>
-                      <a href="restaurant-details.html" title="" class="view-menu">
-                        View Menu <i class="fa fa-long-arrow-alt-right"></i>
-                      </a>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                  <div class="listing-product">
-                    <div class="product-thumb">
-                      <img
-                        src="https://via.placeholder.com/262x240
-"
-                        alt=""
-                        class="w-100"
-                      />
-                      <div class="cl-logo">
-                        <img
-                          src="https://via.placeholder.com/150x150
-"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="product-info">
-                      <h3>
-                        <a href="restaurant-details.html" title="">
-                          Hot pastry cafe
-                        </a>
-                      </h3>
-                      <ul class="rating">
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                      </ul>
-                      <p>
-                        Salads, soups, sneaks, burgers, drinks, seafood, grill, fish, vegetarian menu, wine, hot meals,
-                        steaks...
-                      </p>
-                      <ul class="btm">
-                        <li>
-                          <a href="#" title="">
-                            Cafe
-                          </a>
-                        </li>
-                        <li>
-                          <span>
-                            <b class="statuss"></b>Open now
-                          </span>
-                        </li>
-                      </ul>
-                      <a href="restaurant-details.html" title="" class="view-menu">
-                        View Menu <i class="fa fa-long-arrow-alt-right"></i>
-                      </a>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                  <div class="listing-product">
-                    <div class="product-thumb">
-                      <img
-                        src="https://via.placeholder.com/262x240
-"
-                        alt=""
-                        class="w-100"
-                      />
-                      <div class="cl-logo">
-                        <img
-                          src="https://via.placeholder.com/150x150
-"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="product-info">
-                      <h3>
-                        <a href="restaurant-details.html" title="">
-                          Sushi Taste
-                        </a>
-                      </h3>
-                      <ul class="rating">
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                      </ul>
-                      <p>
-                        Salads, soups, sneaks, burgers, drinks, seafood, grill, fish, vegetarian menu, wine, hot meals,
-                        steaks...
-                      </p>
-                      <ul class="btm">
-                        <li>
-                          <a href="#" title="">
-                            Asian Food
-                          </a>
-                        </li>
-                        <li>
-                          <span>
-                            <b class="statuss"></b>Open now
-                          </span>
-                        </li>
-                      </ul>
-                      <a href="restaurant-details.html" title="" class="view-menu">
-                        View Menu <i class="fa fa-long-arrow-alt-right"></i>
-                      </a>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                  <div class="listing-product">
-                    <div class="product-thumb">
-                      <img
-                        src="https://via.placeholder.com/262x240
-"
-                        alt=""
-                        class="w-100"
-                      />
-                      <div class="cl-logo">
-                        <img
-                          src="https://via.placeholder.com/150x150
-"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="product-info">
-                      <h3>
-                        <a href="restaurant-details.html" title="">
-                          bulgarian restaurant
-                        </a>
-                      </h3>
-                      <ul class="rating">
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                        <li>
-                          <i class="fa fa-star"></i>
-                        </li>
-                      </ul>
-                      <p>
-                        Salads, soups, sneaks, burgers, drinks, seafood, grill, fish, vegetarian menu, wine, hot meals,
-                        steaks...
-                      </p>
-                      <ul class="btm">
-                        <li>
-                          <a href="#" title="">
-                            Restaurant
-                          </a>
-                        </li>
-                        <li>
-                          <span>
-                            <b class="statuss closed"></b>Closed
-                          </span>
-                        </li>
-                      </ul>
-                      <a href="restaurant-details.html" title="" class="view-menu">
-                        View Menu <i class="fa fa-long-arrow-alt-right"></i>
-                      </a>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="load-more mt-40 text-center">
-                  <a href="#" title="" class="btn-default">
-                    Load More <span></span>
-                  </a>
-                </div>
+                <ListSearch />
               </div>
             </div>
           </div>
