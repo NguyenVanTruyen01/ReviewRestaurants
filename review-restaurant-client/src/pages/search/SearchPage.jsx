@@ -14,6 +14,12 @@ const SearchPage = () => {
 
   const [expandIconPosition, setExpandIconPosition] = useState('end');
 
+  const [region, setRegion] = useState('');
+  const [purposes, setPurposes] = useState(['']);
+  const [benefits, setBenefits] = useState(['']);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+
   const q = params.get('q');
   console.log(q);
 

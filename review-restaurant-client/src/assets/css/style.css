@@ -2327,9 +2327,10 @@ header .menu-btn.active span.bar3 {
   margin-bottom: 30px;
 }
 .listing-products .listing-product .product-thumb {
-  flex: 0 0 262px;
-  max-width: 262px;
+  flex: 0 0 320px;
+  /* width: 320px !; */
   position: relative;
+  overflow: hidden;
 }
 .listing-products .listing-product .product-thumb:before {
   content: '';
@@ -2338,12 +2339,21 @@ header .menu-btn.active span.bar3 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #2f3237;
-  opacity: 0.3;
+  /* background-color: #2f3237; */
+  opacity: 0.1;
   border-radius: 10px;
 }
 .listing-products .listing-product .product-thumb > img {
   border-radius: 10px 0 0 10px;
+  height: 240px;
+  transition: transform 0.5s;
+  object-fit: cover;
+  width: 100%;
+  /* width: 100%; */
+  /* width: 320px; */
+}
+.listing-products .listing-product .product-thumb:hover > img {
+  transform: scale(1.1);
 }
 .listing-products .listing-product .product-thumb .cl-logo {
   position: absolute;
@@ -2356,7 +2366,7 @@ header .menu-btn.active span.bar3 {
   text-align: center;
 }
 .listing-products .listing-product .product-info {
-  max-width: calc(100% - 262px);
+  max-width: calc(100% - 320px);
   padding: 0 50px;
 }
 .listing-products .listing-product .product-info > h3 {
