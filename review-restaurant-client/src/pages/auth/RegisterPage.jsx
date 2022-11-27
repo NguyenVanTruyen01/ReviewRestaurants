@@ -357,6 +357,7 @@ const RegisterPage = () => {
 
 
 
+
 			{/*<Header />*/}
 
 			{/*<MobileMenu />*/}

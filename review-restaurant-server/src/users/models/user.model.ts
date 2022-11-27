@@ -24,6 +24,7 @@ export const UserSchema = new mongoose.Schema({
         rating: [],
 
     infoRestaurant: {
+        regions: String,
         characteristics: { type: Array, default: [] },
         menu: { type: Array, default: [] },
         minPrice: { type: Number, default: null },
