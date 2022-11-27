@@ -65,9 +65,13 @@ export class UsersService {
 
   async searchManyFields(@Body() search){
     try {
-      const {regions,benefits,minPrice,maxPrice,purposes} = search;
+      const {key,regions,benefits,minPrice,maxPrice,purposes} = search;
 
       const query = {};
+
+      if(key.trim()){
+        query["userName"] =  {$regex: key, '$options': 'i'}
+      }
 
       if(regions){
         let keywords = regions,
