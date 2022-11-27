@@ -70,7 +70,15 @@ export class UsersService {
       const query = {};
 
       if(regions){
-        query["address"] =  {$regex: regions, '$options': 'i'}
+        let keywords = regions,
+            regex = keywords.join("|");
+
+        query["address"] =  {
+          "$regex": regex,
+          "$options": "i"
+        }
+
+        // query["address"] =  {$regex: regions, '$options': 'i'}
       }
 
       if(purposes.length > 0){
