@@ -1,6 +1,6 @@
 import { Axios } from 'axios';
 import React, { useState } from 'react';
-import { Collapse } from 'antd';
+import { Collapse, Slider } from 'antd';
 
 import Header from '../../components/main/Header';
 import MobileMenu from '../../components/main/MobileMenu';
@@ -20,6 +20,7 @@ const SearchPage = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
 
+  const onChangePrice = () => {};
   const q = params.get('q');
   console.log(q);
 
@@ -43,6 +44,32 @@ const SearchPage = () => {
                         expandIconPosition={expandIconPosition}
                       >
                         {/* <h3 class="widget-title">Khu vực</h3> */}
+                        <Panel header={<HeaderFilter title="Lọc" />}>
+                          <ul className="list-filter">
+                            <li>
+                              <label class="label">
+                                Tất cả
+                                <input type="checkbox" checked="checked" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Gần tôi nhất
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Điểm đánh giá
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                          </ul>
+                        </Panel>
+
                         <Panel header={<HeaderFilter title="Khu vực" />}>
                           <ul className="list-filter">
                             <li>
@@ -272,6 +299,9 @@ const SearchPage = () => {
                             </li>
                           </ul>
                         </Panel>
+                        <Panel header={<HeaderFilter title="Khoảng giá" />}>
+                          <Slider range step={10} defaultValue={[20, 50]} onChange={onChangePrice} />
+                        </Panel>
                       </Collapse>
                     </div>
                     <div class="widget widget-tags">
@@ -324,7 +354,7 @@ const SearchPage = () => {
                         </li>
                       </ul>
                     </div>
-                    <div class="widget widget-price-filter">
+                    {/* <div class="widget widget-price-filter">
                       <h3 class="widget-title">Rating</h3>
                       <div id="slider-range"></div>
                       <div class="price-bx">
@@ -334,7 +364,7 @@ const SearchPage = () => {
                     </div>
                     <button type="submit" class="btn-default w-100">
                       Search <span></span>
-                    </button>
+                    </button> */}
                   </form>
                 </div>
               </div>

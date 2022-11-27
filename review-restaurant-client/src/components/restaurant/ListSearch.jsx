@@ -10,6 +10,11 @@ const ListSearch = () => {
 
   const onChangePage = (page) => {
     // console.log(page);
+    // window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     setCurrentPage(page);
   };
 
@@ -34,7 +39,11 @@ const ListSearch = () => {
     <div>
       <div class="listing-products">
         {listRestaurant?.map((item, idx) => {
-          if (idx >= 10 * (currentPage - 1) && idx <= Math.min(listRestaurant?.length, 10 * (currentPage - 1) + 9)) {
+          if (
+            idx >= 10 * (currentPage - 1) &&
+            idx <= Math.min(listRestaurant?.length, 10 * (currentPage - 1) + 9) &&
+            listRestaurant[idx]?.role === 'RESTAURANT'
+          ) {
             return (
               <div class="listing-product">
                 {console.log(idx)}
