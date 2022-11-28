@@ -12,12 +12,17 @@ const userSlice = createSlice({
         getUserFail: (state) =>{
             state.user= null;
         },
+        updateUser: (state,action) =>{
+            state.user = action.payload
+        }
+
     }
 })
 
 export  const {
     getUserSuccess,
     getUserFail,
+    updateUser
 
 } = userSlice.actions
 

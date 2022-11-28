@@ -1,4 +1,4 @@
-import {Body, HttpException, HttpStatus, Injectable, Query} from '@nestjs/common';
+ import {Body, HttpException, HttpStatus, Injectable, Query} from '@nestjs/common';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserModel } from "../models/user.model";
 import { InjectModel } from "@nestjs/mongoose";
@@ -69,7 +69,7 @@ export class UsersService {
 
       const query = {};
 
-      if(key.trim()){
+      if(key){
         query["userName"] =  {$regex: key, '$options': 'i'}
       }
 
