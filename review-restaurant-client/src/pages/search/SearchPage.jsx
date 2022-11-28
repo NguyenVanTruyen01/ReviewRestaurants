@@ -1,6 +1,6 @@
 import { Axios } from 'axios';
-import React, { useState } from 'react';
-import { Collapse, Slider } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Collapse, Slider, Tooltip } from 'antd';
 
 import Header from '../../components/main/Header';
 import MobileMenu from '../../components/main/MobileMenu';
@@ -14,13 +14,59 @@ const SearchPage = () => {
 
   const [expandIconPosition, setExpandIconPosition] = useState('end');
 
-  const [region, setRegion] = useState('');
-  const [purposes, setPurposes] = useState(['']);
-  const [benefits, setBenefits] = useState(['']);
+  const [region, setRegion] = useState([]);
+  const [purposes, setPurposes] = useState([]);
+  const [benefits, setBenefits] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(30);
 
-  const onChangePrice = () => {};
+  useEffect(() => {
+    console.log(region);
+    console.log(purposes);
+    console.log(benefits);
+  }, [region, purposes, benefits]);
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  const handleChangeRegion = (event) => {
+    if (region.includes(event.target.value)) {
+      var index = region.indexOf(event.target.value);
+      if (index !== -1) {
+        setRegion(region.filter((item, idx) => idx !== index));
+      }
+    } else {
+      setRegion([...region, event.target.value]);
+    }
+  };
+  const handleChangePurposes = (event) => {
+    if (purposes.includes(event.target.value)) {
+      var index = purposes.indexOf(event.target.value);
+      if (index !== -1) {
+        setPurposes(purposes.filter((item, idx) => idx !== index));
+      }
+    } else {
+      setPurposes([...purposes, event.target.value]);
+    }
+  };
+  const handleChangeBenefits = (event) => {
+    if (benefits.includes(event.target.value)) {
+      var index = benefits.indexOf(event.target.value);
+      if (index !== -1) {
+        setBenefits(benefits.filter((item, idx) => idx !== index));
+      }
+    } else {
+      setBenefits([...benefits, event.target.value]);
+    }
+  };
+
+  const onChangePrice = (value) => {
+    setMinPrice(value[0]);
+    setMaxPrice(value[1]);
+    console.log(value);
+  };
+
   const q = params.get('q');
   console.log(q);
 
@@ -38,7 +84,7 @@ const SearchPage = () => {
                   <form>
                     <div class="widget widget-filter">
                       <Collapse
-                        defaultActiveKey={['0', '1', '2']}
+                        defaultActiveKey={['0', '1', '2', '3', '4']}
                         ghost={true}
                         header={<HeaderFilter />}
                         expandIconPosition={expandIconPosition}
@@ -75,91 +121,156 @@ const SearchPage = () => {
                             <li>
                               <label class="label">
                                 Quận 1
-                                <input type="checkbox" checked="checked" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 1'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 1') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 2
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 2'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 2') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 3
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 3'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 3') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 4
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 4'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 4') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 5
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 4'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 5') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 6
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 6'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 6') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 7
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 7'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 7') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 8
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 8'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 8') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 9
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 9'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 9') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 10
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 10'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 10') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 11
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 11'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 11') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Quận 12
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Quận 12'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('Quận 12') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 TP Thủ Đức
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'TP Thủ Đức'}
+                                  onChange={(e) => handleChangeRegion(e)}
+                                  defaultChecked={region.includes('TP Thủ Đức') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
@@ -171,33 +282,58 @@ const SearchPage = () => {
                             <li>
                               <label class="label">
                                 Chill
-                                <input type="checkbox" checked="checked" />
+                                <input
+                                  type="checkbox"
+                                  value={'Chill'}
+                                  onChange={(e) => handleChangePurposes(e)}
+                                  defaultChecked={purposes.includes('Chill') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Hẹn hò
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Hẹn hò'}
+                                  onChange={(e) => handleChangePurposes(e)}
+                                  defaultChecked={purposes.includes('Hẹn hò') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Đọc sách
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Đọc sách'}
+                                  onChange={(e) => handleChangePurposes(e)}
+                                  defaultChecked={purposes.includes('Đọc sách') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Làm việc
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Làm việc'}
+                                  onChange={(e) => handleChangePurposes(e)}
+                                  defaultChecked={purposes.includes('Làm việc') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                               <label class="label">
                                 Sống ảo
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Sống ảo'}
+                                  onChange={(e) => handleChangePurposes(e)}
+                                  defaultChecked={purposes.includes('Sống ảo') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
@@ -209,98 +345,176 @@ const SearchPage = () => {
                             <li>
                               <label class="label">
                                 Bàn ngoài trời
-                                <input type="checkbox" checked="checked" />
+                                <input
+                                  type="checkbox"
+                                  value={'Bàn ngoài trời'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Bàn ngoài trời') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Bánh ngọt
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Bánh ngọt'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Bánh ngọt') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Chiếu bóng đá
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Chiếu bóng đá'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Chiếu bóng đá') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Chố chơi cho trẻ em
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Chố chơi cho trẻ em'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Chố chơi cho trẻ em') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Chố đậu ôtô
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Chố đậu ôtô'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Chố đậu ôtô') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Giao hàng
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Giao hàng'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Giao hàng') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Giữ xe máy
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Giữ xe máy'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Giữ xe máy') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Khu vực hút thuốc
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Khu vực hút thuốc'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Khu vực hút thuốc') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Mang đồ ăn ra ngoài
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Mang đồ ăn ra ngoài'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Mang đồ ăn ra ngoài') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Mang thú cưng
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Mang thú cưng'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Mang thú cưng') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Máy lạnh và điều hòa
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Máy lạnh và điều hòa'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Máy lạnh và điều hòa') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Thanh toán bằng thẻ
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Thanh toán bằng thẻ'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Thanh toán bằng thẻ') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
                                 Wifi free
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  value={'Wifi free'}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes('Wifi free') ? true : false}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                           </ul>
                         </Panel>
+
                         <Panel header={<HeaderFilter title="Khoảng giá" />}>
-                          <Slider range step={10} defaultValue={[20, 50]} onChange={onChangePrice} />
+                          <div className="price-text">
+                            {numberWithCommas(minPrice * 10000)} ~ {numberWithCommas(maxPrice * 10000)}
+                          </div>
+
+                          <Slider
+                            range
+                            step={1}
+                            defaultValue={[minPrice, maxPrice]}
+                            min={0}
+                            max={50}
+                            onChange={onChangePrice}
+                            tooltipVisible={false}
+                          />
                         </Panel>
                       </Collapse>
                     </div>
@@ -379,7 +593,13 @@ const SearchPage = () => {
                     </div>
                   </form>
                 </div>
-                <ListSearch />
+                <ListSearch
+                  region={region}
+                  purposes={purposes}
+                  benefits={benefits}
+                  minPrice={minPrice}
+                  maxPrice={maxPrice}
+                />
               </div>
             </div>
           </div>

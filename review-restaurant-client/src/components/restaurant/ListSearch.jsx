@@ -1,12 +1,22 @@
 import { useState } from 'react';
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import useAxios from 'axios-hooks';
+
 import { Pagination } from 'antd';
 import './listSearchPage.css';
 
-const ListSearch = () => {
+const ListSearch = (props) => {
   const [listRestaurant, setListRestaurant] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    console.log('search');
+    console.log(props.region);
+    console.log(props.purposes);
+    console.log(props.benefits);
+    console.log('search');
+  }, []);
 
   const onChangePage = (page) => {
     // console.log(page);
@@ -18,35 +28,64 @@ const ListSearch = () => {
     setCurrentPage(page);
   };
 
+  // const [{ data, loading, error }, refetch] = useAxios({
+  //   url: 'http://localhost:5000/users/searchManyFields',
+  //   method: 'GET',
+  //   body: {
+  //     regions: props.region,
+  //     purposes: props.purposes,
+  //     benefits: props.benefits,
+  //     minPrice: props.minPrice,
+  //     maxPrice: props.maxPrice,
+  //   },
+  // });
+  // // useEffect(() => {
+  // //   refetch({ url: '' });
+  // // }, []);
+  // console.log('a');
+  // console.log(data);
+  // console.log('a');
   useEffect(() => {
-    const getListReataurant = async () => {
+    const getListReataurantByField = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/users');
+        const res = await axios.get(
+          'http://localhost:5000/users/searchManyFields',
+          {
+            key: '',
+            regions: props.region,
+            purposes: props.purposes,
+            benefits: props.benefits,
+            minPrice: props.minPrice,
+            maxPrice: props.maxPrice,
+          },
+          {
+            header: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+          },
+        );
         setListRestaurant(res.data.users);
       } catch (err) {
         console.log(err);
       }
     };
-    getListReataurant();
+    getListReataurantByField();
   }, []);
 
-  console.log(listRestaurant);
-  console.log(listRestaurant[5]?.infoRestaurant.images[0].url);
-  console.log(listRestaurant.length);
+  // console.log(listRestaurant);
+  // console.log(listRestaurant[5]?.infoRestaurant.images[0].url);
+  // console.log(listRestaurant.length);
 
   console.log();
   return (
     <div>
       <div class="listing-products">
         {listRestaurant?.map((item, idx) => {
-          if (
-            idx >= 10 * (currentPage - 1) &&
-            idx <= Math.min(listRestaurant?.length, 10 * (currentPage - 1) + 9) &&
-            listRestaurant[idx]?.role === 'RESTAURANT'
-          ) {
+          if (idx >= 10 * (currentPage - 1) && idx <= Math.min(listRestaurant?.length, 10 * (currentPage - 1) + 9)) {
             return (
               <div class="listing-product">
-                {console.log(idx)}
+                {/* {console.log(idx)} */}
                 <div class="product-thumb">
                   <img src={listRestaurant[idx]?.infoRestaurant?.images[0]?.url} alt="" />
                 </div>
