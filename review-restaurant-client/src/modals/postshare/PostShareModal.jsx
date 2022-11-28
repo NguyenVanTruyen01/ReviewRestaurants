@@ -47,7 +47,6 @@ const PostShareModal = ({user})=>{
 
             setImages([...images, ...newImages]);
 
-        console.log(images)
     }
 
     const handleSharePost = async ()=>{

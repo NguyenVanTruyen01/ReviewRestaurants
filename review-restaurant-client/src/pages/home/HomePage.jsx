@@ -30,7 +30,9 @@ const Home = () => {
   return (
     <div>
       <div className="wrapper">
+
         <Header />
+        
         <MobileMenu />
         <section className="main-banner">
           <div className="container">

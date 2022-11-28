@@ -1,4 +1,4 @@
-import {Body, HttpException, HttpStatus, Injectable, Query} from '@nestjs/common';
+ import {Body, HttpException, HttpStatus, Injectable, Query} from '@nestjs/common';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserModel } from "../models/user.model";
 import { InjectModel } from "@nestjs/mongoose";
@@ -65,9 +65,13 @@ export class UsersService {
 
   async searchManyFields(@Body() search){
     try {
-      const {regions,benefits,minPrice,maxPrice,purposes} = search;
+      const {key,regions,benefits,minPrice,maxPrice,purposes} = search;
 
       const query = {};
+
+      if(key){
+        query["userName"] =  {$regex: key, '$options': 'i'}
+      }
 
       if(regions){
         let keywords = regions,
