@@ -281,12 +281,12 @@ const SearchPage = () => {
                           <ul className="list-filter">
                             <li>
                               <label class="label">
-                                Chill
+                                Sống ảo
                                 <input
                                   type="checkbox"
-                                  value={'Chill'}
+                                  value={1}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes('Chill') ? true : false}
+                                  defaultChecked={purposes.includes(1) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -296,21 +296,9 @@ const SearchPage = () => {
                                 Hẹn hò
                                 <input
                                   type="checkbox"
-                                  value={'Hẹn hò'}
+                                  value={2}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes('Hẹn hò') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Đọc sách
-                                <input
-                                  type="checkbox"
-                                  value={'Đọc sách'}
-                                  onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes('Đọc sách') ? true : false}
+                                  defaultChecked={purposes.includes(2) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -320,19 +308,31 @@ const SearchPage = () => {
                                 Làm việc
                                 <input
                                   type="checkbox"
-                                  value={'Làm việc'}
+                                  value={3}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes('Làm việc') ? true : false}
+                                  defaultChecked={purposes.includes(3) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Đọc sách
+                                <input
+                                  type="checkbox"
+                                  value={4}
+                                  onChange={(e) => handleChangePurposes(e)}
+                                  defaultChecked={purposes.includes(4) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
                               <label class="label">
-                                Sống ảo
+                                Chill
                                 <input
                                   type="checkbox"
-                                  value={'Sống ảo'}
+                                  value={5}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes('Sống ảo') ? true : false}
+                                  defaultChecked={purposes.includes(5) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -344,108 +344,24 @@ const SearchPage = () => {
                           <ul className="list-filter">
                             <li>
                               <label class="label">
-                                Bàn ngoài trời
+                                Wifi miễn phí
                                 <input
                                   type="checkbox"
-                                  value={'Bàn ngoài trời'}
+                                  value={1}
                                   onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Bàn ngoài trời') ? true : false}
+                                  defaultChecked={benefits.includes(1) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
-                                Bánh ngọt
+                                Giữ xe
                                 <input
                                   type="checkbox"
-                                  value={'Bánh ngọt'}
+                                  value={2}
                                   onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Bánh ngọt') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Chiếu bóng đá
-                                <input
-                                  type="checkbox"
-                                  value={'Chiếu bóng đá'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Chiếu bóng đá') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Chố chơi cho trẻ em
-                                <input
-                                  type="checkbox"
-                                  value={'Chố chơi cho trẻ em'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Chố chơi cho trẻ em') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Chố đậu ôtô
-                                <input
-                                  type="checkbox"
-                                  value={'Chố đậu ôtô'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Chố đậu ôtô') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Giao hàng
-                                <input
-                                  type="checkbox"
-                                  value={'Giao hàng'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Giao hàng') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Giữ xe máy
-                                <input
-                                  type="checkbox"
-                                  value={'Giữ xe máy'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Giữ xe máy') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Khu vực hút thuốc
-                                <input
-                                  type="checkbox"
-                                  value={'Khu vực hút thuốc'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Khu vực hút thuốc') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Mang đồ ăn ra ngoài
-                                <input
-                                  type="checkbox"
-                                  value={'Mang đồ ăn ra ngoài'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Mang đồ ăn ra ngoài') ? true : false}
+                                  defaultChecked={benefits.includes(2) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -455,21 +371,9 @@ const SearchPage = () => {
                                 Mang thú cưng
                                 <input
                                   type="checkbox"
-                                  value={'Mang thú cưng'}
+                                  value={3}
                                   onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Mang thú cưng') ? true : false}
-                                />
-                                <span class="checkmark"></span>
-                              </label>
-                            </li>
-                            <li>
-                              <label class="label">
-                                Máy lạnh và điều hòa
-                                <input
-                                  type="checkbox"
-                                  value={'Máy lạnh và điều hòa'}
-                                  onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Máy lạnh và điều hòa') ? true : false}
+                                  defaultChecked={benefits.includes(3) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -479,21 +383,105 @@ const SearchPage = () => {
                                 Thanh toán bằng thẻ
                                 <input
                                   type="checkbox"
-                                  value={'Thanh toán bằng thẻ'}
+                                  value={4}
                                   onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Thanh toán bằng thẻ') ? true : false}
+                                  defaultChecked={benefits.includes(4) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                             <li>
                               <label class="label">
-                                Wifi free
+                                Điều hòa
                                 <input
                                   type="checkbox"
-                                  value={'Wifi free'}
+                                  value={5}
                                   onChange={(e) => handleChangeBenefits(e)}
-                                  defaultChecked={benefits.includes('Wifi free') ? true : false}
+                                  defaultChecked={benefits.includes(5) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Bàn ngoài trời
+                                <input
+                                  type="checkbox"
+                                  value={6}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes(6) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Chỗ chơi trẻ em
+                                <input
+                                  type="checkbox"
+                                  value={7}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes(7) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Khu vực hút thuốc
+                                <input
+                                  type="checkbox"
+                                  value={8}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes(8) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Chiếu bóng đá
+                                <input
+                                  type="checkbox"
+                                  value={9}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes(9) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Giao hàng
+                                <input
+                                  type="checkbox"
+                                  value={10}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes(10) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Mang đồ ăn ra ngoài
+                                <input
+                                  type="checkbox"
+                                  value={11}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes(11) ? true : false}
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                            <li>
+                              <label class="label">
+                                Ăn vặt
+                                <input
+                                  type="checkbox"
+                                  value={12}
+                                  onChange={(e) => handleChangeBenefits(e)}
+                                  defaultChecked={benefits.includes(12) ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>

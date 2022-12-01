@@ -1,57 +1,58 @@
-import { Controller, Get,Put, Body, Patch, Param, Delete,Query } from "@nestjs/common";
-import { UsersService } from "../services/users.service";
-import { UpdateUserDto } from "../dto/update-user.dto";;
-import {FollowUserDto} from "../dto/follow-user.dto";
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
+import { UsersService } from '../services/users.service';
+import { UpdateUserDto } from '../dto/update-user.dto';
+import { FollowUserDto } from '../dto/follow-user.dto';
 
-
-@Controller("users")
+@Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {
-  }
+  constructor(private readonly usersService: UsersService) {}
 
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
-  @Get("search")
-  searchByUserName(@Query('key') key){
+  @Get('search')
+  searchByUserName(@Query('key') key) {
     return this.usersService.searchByUserName(key);
   }
-  @Get("searchManyFields")
-  searchManyFields(@Body() search){
+  @Post('searchManyFields')
+  searchManyFields(@Body() search) {
     return this.usersService.searchManyFields(search);
   }
 
-  @Get(":id")
-  findOne(@Param("id") id: string) {
+  @Get(':id')
+  findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
-
-  @Patch(":id")
-  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
-  @Put("follow/:id")
-  follow(@Param("id") id: string, @Body() followUserDto : FollowUserDto){
-  return this.usersService.follow(id, followUserDto);
+  @Put('follow/:id')
+  follow(@Param('id') id: string, @Body() followUserDto: FollowUserDto) {
+    return this.usersService.follow(id, followUserDto);
   }
 
-  @Delete(":id")
-  remove(@Param("id") id: string) {
+  @Delete(':id')
+  remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }
-
 
   @Delete()
   deleteAllUser() {
     return this.usersService.deleteAllUser();
   }
-
-
-
 }
-
-

@@ -45,33 +45,27 @@ const ListSearch = (props) => {
   // console.log('a');
   // console.log(data);
   // console.log('a');
+
+  const purposes1 = props.purposes.map(Number);
+  console.log('ee', purposes1);
   useEffect(() => {
     const getListReataurantByField = async () => {
       try {
-        const res = await axios.get(
-          'http://localhost:5000/users/searchManyFields',
-          {
-            key: '',
-            regions: props.region,
-            purposes: props.purposes,
-            benefits: props.benefits,
-            minPrice: props.minPrice,
-            maxPrice: props.maxPrice,
-          },
-          {
-            header: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-          },
-        );
+        const res = await axios.post('http://localhost:5000/users/searchManyFields', {
+          key: '',
+          regions: props.region,
+          purposes: props.purposes,
+          benefits: props.benefits,
+          minPrice: props.minPrice * 10000,
+          maxPrice: props.maxPrice * 10000,
+        });
         setListRestaurant(res.data.users);
       } catch (err) {
         console.log(err);
       }
     };
     getListReataurantByField();
-  }, []);
+  }, [props]);
 
   // console.log(listRestaurant);
   // console.log(listRestaurant[5]?.infoRestaurant.images[0].url);
