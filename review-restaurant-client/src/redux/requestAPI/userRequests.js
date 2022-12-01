@@ -14,16 +14,15 @@ export const getProfileUser = async (id, dispatch,navigate ) => {
 
     try{
         const res = await  getDataAPI(`users/${id}`)
-        const posts = await  getDataAPI(`posts`)
-        dispatch(getUserSuccess(res.data))
-        dispatch(getPostsSuccess(posts.data))
+
+        await dispatch(getUserSuccess(res.data))
+
 
         dispatch(notifySuccess())
         navigate(`/profile/${id}`)
     }
     catch (err){
         dispatch(getUserFail())
-        dispatch(getPostsFail())
         dispatch(notifyError())
     }
 }

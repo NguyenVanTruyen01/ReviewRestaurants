@@ -53,7 +53,7 @@ export class PostsService {
           .populate({
             path: "comments",
             populate:{
-              path: "user",
+              path: "user likes",
               select: "avatar userName"
             }
           })

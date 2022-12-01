@@ -35,9 +35,9 @@ const Header = () => {
 								</a>
 							</li>
 							<li>
-								<a href="about.html" title>
-									About Us
-								</a>
+								<Link to="/explore" title>
+									Khám phá
+								</Link>
 							</li>
 							<li>
 								<a href="#" title>
@@ -138,7 +138,7 @@ const Header = () => {
 							{user ? (
 								<>
 									<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
-									<Link to={`/profile/${user._id}`} title className="cart-ico"
+									<Link  title className="cart-ico"
 										  onClick={()=> getProfileUser(user._id,dispatch,navigate)}
 									>
 										Hi,{user.userName}
