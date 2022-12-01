@@ -1,4 +1,4 @@
-import {createPostFail,createPostSuccess,updatePost} from "../postSlice"
+import {createPostFail, createPostSuccess, getPostsFail, getPostsSuccess, updatePost} from "../postSlice"
 import {getDataAPI,postDataAPI,patchDataAPI} from "../../utils/fetchData"
 import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import { toast } from "react-toastify";
@@ -33,13 +33,29 @@ export const createPost = async (currentID,restaurantID, rating,content,images,d
 
 }
 
-export const likePost = async (post, currentUserId,dispatch) =>{
-    const newPost = {...post,likes: [...post.likes, currentUserId]}
+export const getPosts = async (dispatch) =>{
+    dispatch(notifyLoading())
+
+    try{
+        const posts = await  getDataAPI(`posts`)
+
+        dispatch(getPostsSuccess(posts.data))
+
+        dispatch(notifySuccess())
+    }
+    catch (err){
+        dispatch(getPostsFail())
+        dispatch(notifyError())
+    }
+}
+
+export const likePost = async (post, currentUser,dispatch) =>{
+    const newPost = {...post,likes: [...post.likes, currentUser]}
     dispatch(updatePost(newPost))
 
     try{
         await patchDataAPI(`posts/${post._id}/like`,
-            { currentUserId: currentUserId})
+            { currentUserId: currentUser._id})
 
     }catch (err){
         const msg = customErrMessage(err)
@@ -47,19 +63,20 @@ export const likePost = async (post, currentUserId,dispatch) =>{
     }
 }
 
-export const unLikePost = async (post, currentUserId,dispatch) =>{
-    const newPost = {...post,likes: post.likes.filter(like => like !== currentUserId)}
+export const unLikePost = async (post, currentUser,dispatch) =>{
+    const newPost = {...post,likes: post.likes.filter(like => like._id !== currentUser._id)}
     dispatch(updatePost(newPost))
 
     try{
         await patchDataAPI(`posts/${post._id}/unlike`,
-            { currentUserId: currentUserId})
+            { currentUserId: currentUser._id})
 
     }catch (err){
         const msg = customErrMessage(err)
         dispatch(notifyError(msg));
     }
 }
+
 
 
 const customErrMessage = (err) =>{
