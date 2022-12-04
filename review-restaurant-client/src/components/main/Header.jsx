@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.png';
-import iconSignIn from '../../assets/images/icons/sign-in.svg';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from '../../redux/requestAPI/authRequests';
@@ -138,8 +137,8 @@ const Header = () => {
 							{user ? (
 								<>
 									<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
-									<Link  title className="cart-ico"
-										  onClick={()=> getProfileUser(user._id,dispatch,navigate)}
+									<Link  title className="cart-ico" to={`/profile/${user._id}`}
+										  // onClick={()=> getProfileUser(user._id,dispatch,navigate)}
 									>
 										Hi,{user.userName}
 									</Link>

@@ -8,8 +8,11 @@ import {useDispatch, useSelector} from "react-redux";
 import Header from "../../components/main/Header";
 import {changeCoverPicture, changeAvatar} from "../../redux/requestAPI/userRequests"
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import LoadingPage from "../loading/LoadingPage";
+import {followUser,unfollowUser} from "../../redux/requestAPI/userRequests";
+import {likePost} from "../../redux/requestAPI/postRequests";
+import {notifyLoading, notifySuccess} from "../../redux/notifySlice";
 
 const ProfilePage = ()=>{
 
@@ -21,6 +24,7 @@ const ProfilePage = ()=>{
     const theme = useMantineTheme();
 
     const {currentUser,access_token} = useSelector(state => state.auth?.login)
+
     // const {user} = useSelector(state => state.user )
     const {listPost} = useSelector(state => state.post)
 
@@ -38,6 +42,9 @@ const ProfilePage = ()=>{
     const [onChangeCover,setOnChangeCover] = useState(false)
 
     const [onChangeAvatar,setOnChangeAvatar] = useState(false)
+
+    const [follow,setFollow] = useState(false)
+    const [loadFollow,setLoadFollow] = useState(false)
 
     const handleOnChangeImage = (e)=>{
         e.preventDefault()
@@ -101,8 +108,42 @@ const ProfilePage = ()=>{
         setImagesAvatar([])
     }
 
+    const handleActionFollow = async ()=>{
+        if(currentUser) {
+
+            if(loadFollow) return;
+            setFollow(true)
+            setLoadFollow(true)
+            await followUser(user, currentUser, dispatch, access_token);
+            setLoadFollow(false)
+
+        }
+        else return;
+    }
+
+    const handleActionUnfollow = async ()=>{
+        if(currentUser) {
+
+            if(loadFollow) return;
+            setFollow(false)
+            setLoadFollow(true)
+            await unfollowUser(user, currentUser, dispatch, access_token);
+            setLoadFollow(false)
+
+        }
+        else return;
+    }
+
+    useEffect(()=>{
+
+        if(currentUser && currentUser.following.find(follow => follow === id)){
+            setFollow(true)
+        }else return;
+
+    },[currentUser?.following, currentUser?._id])
+
     useEffect(() => {
-        const getListReataurant = async () => {
+        const getListRestaurant = async () => {
             try {
                 const res = await axios.get(`http://localhost:5000/users/${id}`);
                 setUser(res.data.user);
@@ -110,13 +151,14 @@ const ProfilePage = ()=>{
                 console.log(err);
             }
         };
-        getListReataurant();
-    }, [dispatch,onChangeAvatar,onChangeCover]);
+        getListRestaurant();
+    }, [dispatch,onChangeAvatar,onChangeCover,loadFollow,id]);
+
 
     return(
         <>
             {
-                user ?
+                user && listPost ?
                 <div className="ProfilePage">
 
                     <Header></Header>
@@ -153,7 +195,7 @@ const ProfilePage = ()=>{
                                 <figure>
 
                                     {
-                                        currentUser._id === user._id &&
+                                        currentUser && currentUser._id === user._id &&
                                         <div className="edit-pp"
                                         >
                                             <label className="fileContainer" >
@@ -172,10 +214,25 @@ const ProfilePage = ()=>{
                                          }
                                          alt=""/>
 
-                                    <ul className="profile-controls">
-                                        <li><a href="#" title="" data-toggle="tooltip" data-original-title="Follow"><i
-                                            className="fa fa-star"></i></a></li>
-                                    </ul>
+                                    {
+                                         currentUser && currentUser._id !== user._id ? follow ?
+                                            <ul className="profile-controls"
+                                                     onClick={()=>handleActionUnfollow()}
+                                            >
+                                               Đã theo dõi
+                                            </ul>
+                                            :
+                                            <ul className="profile-controls"
+                                                onClick={()=>handleActionFollow()}
+                                            >
+                                                Theo dõi
+                                            </ul>
+                                             :
+                                             ""
+
+                                    }
+
+
 
                                     <Rating className= "rating"
                                             readOnly
@@ -188,7 +245,7 @@ const ProfilePage = ()=>{
                                                  src= {user.avatar }/>
 
                                             {
-                                                currentUser._id ===  user._id ?
+                                                currentUser && currentUser._id ===  user._id ?
                                                     <div className="edit-dp"
                                                          onClick={()=>setOpenModalChangeAvatar(true)}
                                                     >
@@ -265,18 +322,20 @@ const ProfilePage = ()=>{
 
                                 <ol className="folw-detail">
                                     <li><span>Bài đăng</span>
-                                        <a>101</a>
+                                        <a>{listPost.filter(post => post.user._id === user._id).length}</a>
                                     </li>
                                     <li><span>Người theo dõi</span>
-                                        <a>1.3K</a>
+                                        <a>{user.followers.length}</a>
                                     </li>
                                     <li><span>Đang theo dõi</span>
-                                        <a>22</a>
+                                        <a>{user.following.length}</a>
                                     </li>
                                 </ol>
                             </div>
 
-                            <PostShareModal user = {user}/>
+                            {
+                                currentUser &&   <PostShareModal user = {user}/>
+                            }
 
                             {
                                 user.role === "RESTAURANT" &&
@@ -292,7 +351,6 @@ const ProfilePage = ()=>{
             }
 
         </>
-
     )
 }
 

@@ -41,10 +41,16 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
-  @Put('follow/:id')
+  @Patch(':id/follow')
   follow(@Param('id') id: string, @Body() followUserDto: FollowUserDto) {
     return this.usersService.follow(id, followUserDto);
   }
+
+  @Patch(':id/unfollow')
+  unfollow(@Param('id') id: string, @Body() followUserDto: FollowUserDto) {
+    return this.usersService.unFollow(id, followUserDto);
+  }
+
 
   @Delete(':id')
   remove(@Param('id') id: string) {

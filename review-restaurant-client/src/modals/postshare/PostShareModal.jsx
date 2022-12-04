@@ -58,8 +58,10 @@ const PostShareModal = ({user})=>{
         <div className="PostShare-Con">
             <div className="PostShare">
                 <div className="postshare-top" onClick={()=>setOpenModal(!openModal)}>
-                    <img src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"/>
-                    <div>
+                    <img src={currentUser ? currentUser?.avatar :
+                        "https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"
+                    } />
+                        <div>
                         <button >
                             {currentUser.userName}
                             {
@@ -133,7 +135,10 @@ const PostShareModal = ({user})=>{
             >
 
                 <div className="header-modal">
-                    <img src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"/>
+                    <img src= {currentUser ? currentUser?.avatar:
+                        "https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"
+                    }
+                    />
                     <span>{currentUser.userName}</span>
                 </div>
 

@@ -21,6 +21,9 @@ const authSlice = createSlice({
             state.login.currentUser = null;
             state.login.access_token = null;
         },
+        updateCurrentUser: (state,action) =>{
+            state.login.currentUser = action.payload
+        }
     }
 })
 
@@ -28,6 +31,7 @@ export  const {
     loginSuccess,
     loginFail,
     logoutSuccess,
+    updateCurrentUser
 
 } = authSlice.actions
 

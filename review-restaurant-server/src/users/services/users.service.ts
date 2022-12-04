@@ -37,7 +37,8 @@ export class UsersService {
 
   async findOne(id: string) {
     try {
-      const user = await this.userModel.findById({ _id: id });
+      const user = await this.userModel.findById({ _id: id })
+          .populate("followers following", "avatar userName ");
       if (user) {
         return {
           success: true,
@@ -197,9 +198,9 @@ export class UsersService {
     }
   }
 
-  // follow and unfollow
+  // follow
   async follow(id: string, followUserDto: FollowUserDto) {
-    const _id = followUserDto._id;
+    const _id = followUserDto.currentUserId;
 
     if (id === _id) {
       throw new HttpException(
@@ -214,7 +215,7 @@ export class UsersService {
         const currentUser = await this.userModel.findById(_id);
         const followUser = await this.userModel.findById(id);
 
-        if (!currentUser.following.includes(id)) {
+        if (!currentUser.following.includes(id)) { //chưa follow
           await currentUser.updateOne(
             { $push: { following: id } },
             { new: true },
@@ -229,19 +230,14 @@ export class UsersService {
             message: 'Followed user',
           };
         } else {
-          await currentUser.updateOne(
-            { $pull: { following: id } },
-            { new: true },
-          );
-          await followUser.updateOne(
-            { $pull: { followers: _id } },
-            { new: true },
-          );
 
-          return {
-            success: true,
-            message: 'Unfollowed user',
-          };
+          throw new HttpException(
+              {
+                success: false,
+                message: 'You followed this user',
+              },
+              HttpStatus.BAD_REQUEST,
+          );
         }
       } catch (err) {
         throw new HttpException(
@@ -250,6 +246,58 @@ export class UsersService {
             message: err.message,
           },
           HttpStatus.SERVICE_UNAVAILABLE,
+        );
+      }
+    }
+  }
+
+  //  unfollow
+  async unFollow(id: string, followUserDto: FollowUserDto) {
+    const _id = followUserDto.currentUserId;
+
+    if (id === _id) {
+      throw new HttpException(
+          {
+            success: false,
+            message: 'Action forbidden',
+          },
+          HttpStatus.FORBIDDEN,
+      );
+    } else {
+      try {
+        const currentUser = await this.userModel.findById(_id);
+        const followUser = await this.userModel.findById(id);
+
+        if (currentUser.following.includes(id)) {
+          await currentUser.updateOne(
+              { $pull: { following: id } },
+              { new: true },
+          );
+          await followUser.updateOne(
+              { $pull: { followers: _id } },
+              { new: true },
+          );
+
+          return {
+            success: true,
+            message: 'Unfollowed user',
+          };
+        } else {
+          throw new HttpException(
+              {
+                success: false,
+                message: `You can't unfollow this user`,
+              },
+              HttpStatus.BAD_REQUEST,
+          );
+        }
+      } catch (err) {
+        throw new HttpException(
+            {
+              success: false,
+              message: err.message,
+            },
+            HttpStatus.SERVICE_UNAVAILABLE,
         );
       }
     }

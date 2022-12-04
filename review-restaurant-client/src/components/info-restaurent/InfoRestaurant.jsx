@@ -157,9 +157,10 @@ const InfoRestaurant = ({user,posts})=>{
                             <div className="item">
                                 <i className="fas fa-flag"></i>
                             </div>
-                            <span>{posts.filter((post) => post.idRestaurant._id === user._id).length} đánh giá</span>
 
-                        </div>
+                                <span>{posts.filter((post) => post.idRestaurant._id === user._id).length} đánh giá</span>
+
+                            </div>
 
                         <div className="title">Phù hợp</div>
                         <div className="character">

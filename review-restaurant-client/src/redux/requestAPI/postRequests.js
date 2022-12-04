@@ -78,7 +78,6 @@ export const unLikePost = async (post, currentUser,dispatch) =>{
 }
 
 
-
 const customErrMessage = (err) =>{
     const msg = Array.isArray(err.response.data.message) ? err.response.data.message[0] : err.response.data.message;
     return msg
