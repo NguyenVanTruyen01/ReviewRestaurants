@@ -1,8 +1,9 @@
 import {getDataAPI,patchDataAPI}from "../../utils/fetchData"
 import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import {getUserSuccess,getUserFail,updateUser} from "../userSlice"
-import {getPostsSuccess,getPostsFail} from "../postSlice"
+import {updateCurrentUser} from "../authSlice";
 import {imageUpload} from "../../utils/imageUpload";
+import {updatePost} from "../postSlice";
 
 export const search = async (key) =>{
     const res = await getDataAPI(`users/search?key=${key}`);
@@ -14,16 +15,15 @@ export const getProfileUser = async (id, dispatch,navigate ) => {
 
     try{
         const res = await  getDataAPI(`users/${id}`)
-        const posts = await  getDataAPI(`posts`)
-        dispatch(getUserSuccess(res.data))
-        dispatch(getPostsSuccess(posts.data))
+
+        await dispatch(getUserSuccess(res.data))
+
 
         dispatch(notifySuccess())
         navigate(`/profile/${id}`)
     }
     catch (err){
         dispatch(getUserFail())
-        dispatch(getPostsFail())
         dispatch(notifyError())
     }
 }
@@ -70,3 +70,37 @@ export const changeAvatar = async (currentUser, user, imagesAvatar, dispatch, ac
     }
 }
 
+
+export const followUser = async (user,currentUser,dispatch,access_token) =>{
+
+    try{
+        const newUser = {...currentUser,following: [...currentUser.following, user._id]}
+
+        const res = await patchDataAPI(`users/${user._id}/follow`,
+            { currentUserId: currentUser._id})
+
+        dispatch(updateCurrentUser(newUser))
+        dispatch(notifySuccess(res.data.message))
+
+    }catch (err){
+        dispatch(notifyError(err.response.data.message));
+    }
+}
+
+
+export const unfollowUser = async (user,currentUser,dispatch,access_token) =>{
+
+    try{
+        const newUser = {...currentUser,following: currentUser.following.filter(follow => follow !== user._id)}
+
+        const res = await patchDataAPI(`users/${user._id}/unfollow`,
+                { currentUserId: currentUser._id})
+
+        dispatch(updateCurrentUser(newUser))
+
+        dispatch(notifySuccess(res.data.message))
+
+    }catch (err){
+        dispatch(notifyError(err.response.data.message));
+    }
+}
