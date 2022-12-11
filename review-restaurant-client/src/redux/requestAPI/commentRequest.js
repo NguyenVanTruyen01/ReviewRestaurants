@@ -84,7 +84,7 @@ export const unlikeComment = async ({comment,post,currentUser,dispatch})=>{
 
 export const deleteComment = async ({post, auth, comment,dispatch}) =>{
 
-     const deleteArr = [...post.comments.filter((cm) => cm.reply === comment._id), comment]
+    const deleteArr = [...post.comments.filter((cm) => cm.reply === comment._id), comment]
     const newPost = {
          ...post,
         comments: post.comments.filter(cm => !deleteArr.find(da => cm._id === da._id))

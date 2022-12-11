@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {deleteComment} from "../../../redux/requestAPI/commentRequest"
 
-const CommentMenu = ({post,comment,auth,setOnEdit}) =>{
+const CommentMenu = ({post,comment,auth,onEdit,setOnEdit}) =>{
 
     const dispatch = useDispatch()
 
@@ -15,11 +15,11 @@ const CommentMenu = ({post,comment,auth,setOnEdit}) =>{
     const MenuItem = () => {
         return(
             <>
-                <div className="dropdown-item" onClick={() => setOnEdit(true)}>
-                    <i className="fal fa-edit"></i> Edit
+                <div className="dropdown-item" onClick={() => setOnEdit(!onEdit)}>
+                    <i className="fal fa-edit"></i>
                 </div>
                 <div className="dropdown-item" onClick={handleRemove}>
-                    <i className="fas fa-trash-alt"></i> Remove
+                    <i className="fas fa-trash-alt"></i>
                 </div>
             </>
         )
@@ -30,7 +30,6 @@ const CommentMenu = ({post,comment,auth,setOnEdit}) =>{
             {
                 (post.user._id === auth._id || comment.user._id === auth._id) &&
                 <div className="nav-item dropdown">
-                    <i className="fas fa-ellipsis-h"></i>
                     {
                         MenuItem()
                     }

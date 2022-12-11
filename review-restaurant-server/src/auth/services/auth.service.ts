@@ -52,7 +52,8 @@ export class AuthService {
   async login(loginAuthDto: LoginAuthDto,@Res({passthrough :true}) res: Response) {
     const { email, password } = loginAuthDto;
     try {
-      const user = await this.userModel.findOne({ email: email });
+      const user = await this.userModel.findOne({ email: email })
+          .populate("followers following", "avatar userName address infoRestaurant.images");
 
       if (user) {
         const isMatch = await bcrypt.compare(password, user.password);

@@ -1,11 +1,12 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import { NavLink,Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from '../../redux/requestAPI/authRequests';
 import {getProfileUser} from '../../redux/requestAPI/userRequests'
+import PostReviews from "../../modals/post_reviews/PostReviews";
 
 const Header = () => {
 	const user = useSelector((state) => state.auth.login.currentUser);
@@ -13,144 +14,107 @@ const Header = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	const [openModal,setOpenModal] =  useState(false);
+
 	const handleLogout = async () => {
 		await logout(token, user._id, dispatch, navigate);
 	};
 
 	return (
-		<header>
-			<div className="container-fluid">
+		<header style={{width: "100%", height: "66px"}}>
+			<div className="container-fluid" style={{position:"fixed",
+				zIndex: 10,
+				background:"#ffffff",
+				borderBottom: "2px solid #d8ab37"}}>
 				<div className="header-content d-flex flex-wrap align-items-center">
 					<div className="logo">
 						<Link to="/" title>
 							<img src={logo} alt="" />
 						</Link>
 					</div>
-					<nav>
-						<ul>
-							<li>
-								<a className="active" href="index.html" title>
-									Home
-								</a>
-							</li>
-							<li>
-								<Link to="/explore" title>
-									Khám phá
-								</Link>
-							</li>
-							<li>
-								<a href="#" title>
-									Pages
-								</a>
-								<ul>
+
+					<div className="nav"
+						 style={{display: "flex",
+							 justifyContent: "space-between",
+							 flex: 1
+						 }}>
+						<nav>
+							<ul>
+								<li>
+									<NavLink to="/home" title>
+										Home
+									</NavLink>
+								</li>
+								<li>
+									<NavLink to="/explore" title>
+										Khám phá
+									</NavLink>
+								</li>
+								{
+									user &&
 									<li>
-										<a href="restaurants.html" title>
-											Restaurants
-										</a>
+										<NavLink to="/timeline" title>
+											Timeline
+										</NavLink>
 									</li>
+								}
+							</ul>
+						</nav>
+						{/*navigation end*/}
+						<div className="menu-btn">
+							<span className="bar1" />
+							<span className="bar2" />
+							<span className="bar3" />
+						</div>
+
+						{/*menu-bar end*/}
+						<nav>
+							<ul className="oth-lnks ml-auto">
+
+								<li style={{color:"black", cursor: "pointer"}}
+									onClick={()=>{
+										if(user)
+											setOpenModal(true)
+										else navigate('/login');
+									}
+									}
+								>
+									Viết Review
+									<PostReviews openModal={openModal} setOpenModal={setOpenModal}/>
+								</li>
+
+								{ user ? (
 									<li>
-										<a href="restaurant-details.html" title>
-											Restaurant detail
-										</a>
+										<>
+												<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
+												<a  title className="cart-ico" href={`/profile/${user._id}`}
+												>
+													Hi,{user.userName}
+												</a>
+												<i className="fal fa-sign-out-alt"
+												   style={{fontSize: "20px", cursor: "pointer"}}
+												   onClick={handleLogout} ></i>
+											</>
 									</li>
-									<li>
-										<a href="cart.html" title>
-											Cart
-										</a>
-									</li>
-									<li>
-										<a href="checkout.html" title>
-											Checkout
-										</a>
-									</li>
-									<li>
-										<a href="profile.html" title>
-											My profile
-										</a>
-									</li>
-									<li>
-										<a href="faqs.html" title>
-											FAQs
-										</a>
-									</li>
-									<li>
-										<a href="testimonials.html" title>
-											Testimonials
-										</a>
-									</li>
-									<li>
-										<a href="404.html" title>
-											404
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#" title>
-									Blog
-								</a>
-								<ul>
-									<li>
-										<a href="blog1.html" title>
-											Blog 1
-										</a>
-									</li>
-									<li>
-										<a href="blog2.html" title>
-											Blog 2
-										</a>
-									</li>
-									<li>
-										<a href="blog-single.html" title>
-											Blog Single
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="contact.html" title>
-									Contact Us
-								</a>
-							</li>
-						</ul>
-					</nav>
-					{/*navigation end*/}
-					<div className="menu-btn">
-						<span className="bar1" />
-						<span className="bar2" />
-						<span className="bar3" />
+
+									) : (
+										<>
+											<li>
+												<NavLink to="/register">Register</NavLink>
+											</li>
+											<li>
+												<NavLink to="/login">Login</NavLink>
+											</li>
+
+										</>
+
+									)}
+							</ul>
+
+						</nav>
+
 					</div>
-					{/*menu-bar end*/}
-					<ul className="oth-lnks ml-auto">
-						{/* <li>
-							<a href="#" title className="search-icon">
-								<img src={iconSearch} alt="" />
-							</a>
-						</li>
-						<li>
-							<a href="#" title className="cart-ico">
-								<img src={iconCart} alt="" />
-							</a>
-							<span className="cart-item-num">0</span>
-						</li> */}
-						<li>
-							{user ? (
-								<>
-									<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
-									<Link  title className="cart-ico" to={`/profile/${user._id}`}
-										  // onClick={()=> getProfileUser(user._id,dispatch,navigate)}
-									>
-										Hi,{user.userName}
-									</Link>
-									<i className="fal fa-sign-out-alt"
-									   style={{fontSize: "20px", cursor: "pointer"}}
-									   onClick={handleLogout} ></i>
-								</>
-							) : (
-								<Link to="/login">Login</Link>
-							)}
-						</li>
-					</ul>
+
 				</div>
 				<div className="search-bar">
 					<div className="container">

@@ -3,11 +3,12 @@ import imgPayment from "../../assets/images/imgs.png";
 import btn1 from "../../assets/images/btn1.png";
 import btn2 from "../../assets/images/btn2.png";
 import logo from "../../assets/images/logo.png";
+import "./Footer.scss"
 
 const Footer = () => {
 	return (
 		<div>
-			<footer>
+			<footer className="footer">
 				<div class="top-footer">
 					<div class="fixed-bg bg3"></div>
 					<div class="phone-div">
@@ -37,75 +38,43 @@ const Footer = () => {
 							<div class="col-lg-3 col-md-6">
 								<div class="widget widget-about">
 									<img src={logo} alt="" />
-									<h4>Working schedule</h4>
-									<p>
-										Mon - Sat: 9:00 am - 10:00 pm <br /> Sun: 10:00 am - 8:00 pm
-									</p>
+
+									<div className="cooperate">
+										<i className="fas fa-hands-helping"></i>
+										<span>Hợp tác với chúng tôi</span>
+									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6">
-								<div class="widget widget-contact text-center">
+								<div class=" about-us widget widget-contact text-center">
 									<h2>
-										<span>Call us</span> to make an order!
+										<span>Về chúng tôi</span>
 									</h2>
-									<p>Don’t be shy, we don’t bite :)</p>
-									<strong>+1 654 847 52 25</strong>
+									<p>Giới thiệu</p>
+									<p>Liên hệ - góp ý</p>
+									<p>Điều khoản sử dụng</p>
 								</div>
 							</div>
 							<div class="col-lg-3 col-md-6">
-								<div class="widget widget-payment">
-									<div class="wid-payment">
-										<h4>Payment Options</h4>
-										<img src={imgPayment} alt="" />
+								<div className=" contact widget widget-contact text-center">
+									<h2>
+										<span>Theo dõi</span>
+									</h2>
+									<div>
+										<i className="fab fa-facebook-f"></i>
+										<p>Facebook</p>
 									</div>
-									<div class="wid-payment">
-										<h4>Download the app</h4>
-										<ul>
-											<li>
-												<a href="#" title="">
-													<img src={btn1} alt="" />
-												</a>
-											</li>
-											<li>
-												<a href="#" title="">
-													<img src={btn2} alt="" />
-												</a>
-											</li>
-										</ul>
+
+									<div>
+										<i className="fab fa-instagram"></i>
+										<p>Instagram</p>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="bottom-footer">
-					<div class="container">
-						<div class="row align-items-center">
-							<div class="col-lg-6">
-								<div class="copyright">
-									<p>© All Rights Reserved. DeliTaste 2020</p>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="find-us text-right">
-									<h5>Find us:</h5>
-									<ul class="social-links-text">
-										<li>
-											<a href="#" title="">
-												Facebook
-											</a>
-										</li>
-										<li>
-											<a href="#" title="">
-												Twitter
-											</a>
-										</li>
-										<li>
-											<a href="#" title="">
-												Instagram
-											</a>
-										</li>
-									</ul>
+
+									<div>
+										<i className="fab fa-twitter"></i>
+										<p>Twitter</p>
+									</div>
+
 								</div>
 							</div>
 						</div>

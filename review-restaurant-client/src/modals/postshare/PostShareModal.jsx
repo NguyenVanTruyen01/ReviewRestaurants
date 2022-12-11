@@ -5,14 +5,16 @@ import "./PostShareModal.scss"
 import {createPost} from "../../redux/requestAPI/postRequests"
 import { Rating } from '@mantine/core';
 
-const PostShareModal = ({user})=>{
+const PostShareModal = ({user, listPost})=>{
     const theme = useMantineTheme();
 
     const dispatch = useDispatch();
 
     const {currentUser, access_token} = useSelector(state => state.auth?.login);
 
+
     const [openModal,setOpenModal] =  useState(false);
+
 
     const [rating,setRating] = useState(0);
 
@@ -50,7 +52,7 @@ const PostShareModal = ({user})=>{
     }
 
     const handleSharePost = async ()=>{
-       const media =  await createPost( currentUser._id,user._id, rating, content,images,dispatch, access_token);
+       const media =  await createPost(listPost, currentUser._id,user._id, rating, content,images,dispatch, access_token);
        setOpenModal(!openModal)
     }
 

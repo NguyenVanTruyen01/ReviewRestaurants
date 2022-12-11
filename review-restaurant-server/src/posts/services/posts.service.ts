@@ -5,12 +5,14 @@ import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {PostsModel} from "../models/posts.model";
 import {UserModel} from "../../users/models/user.model";
+import {CommentModel} from "../../comments/models/comment.model";
 const mongoose = require('mongoose');
 
 @Injectable()
 export class PostsService {
   
   constructor(
+      @InjectModel("Comments") private readonly commentModel: Model<CommentModel>,
       @InjectModel("Posts") private readonly postModel: Model<PostsModel>,
       @InjectModel("User") private readonly userModel: Model<UserModel>
   ) {
@@ -26,7 +28,8 @@ export class PostsService {
         $push: {rating: createPostDto.ratingRes}
       });
 
-      const posts = await newPost.save();
+      const posts = await newPost.save().then(t => t.populate("user idRestaurant likes", "avatar userName "))
+
 
       if(!posts){
         throw new HttpException({
@@ -48,7 +51,7 @@ export class PostsService {
   async findAll() {
     try{
       const posts = await this.postModel.find()
-          .sort('-createAt')
+          .sort({createdAt :  -1})
           .populate("user idRestaurant likes", "avatar userName ")
           .populate({
             path: "comments",
@@ -70,7 +73,7 @@ export class PostsService {
   async getTimeLinePosts(currentUser){
     try {
         const timeline = await this.postModel.find({user: [...currentUser.following, currentUser._id]})
-            .sort('-createAt')
+            .sort('-createdAt')
             .populate("user idRestaurant likes", "avatar userName ")
             .populate({
               path: "comments",
@@ -169,6 +172,11 @@ export class PostsService {
 
         try{
           await post.remove();
+
+          const comments = await this.commentModel.deleteMany({
+            postId : id
+          })
+
           return {
             success: true,
             message: "Remove post successfully!"

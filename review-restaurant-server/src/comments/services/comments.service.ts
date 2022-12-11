@@ -155,7 +155,7 @@ export class CommentsService {
             const comments = await this.commentModel.findByIdAndUpdate(id,{
                 $push :{likes: currentUserId}
             }, {new:true})
-                .sort('-createAt')
+                .sort('-createdAt')
                 .populate("user likes", "avatar userName ")
 
             return {

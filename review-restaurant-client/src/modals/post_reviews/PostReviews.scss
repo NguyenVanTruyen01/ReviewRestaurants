@@ -1,0 +1,60 @@
+.list-restaurant{
+
+  .users{
+    background: #ffffff;
+    max-height: 270px;
+    overflow: scroll;
+    .restaurant-card{
+      display: flex;
+      gap: 1rem;
+      cursor: pointer;
+      align-items: center;
+      padding: 6px;
+
+      &:hover{
+        border-right: 3px solid #ee8743;
+        transform: scale(1.01);
+        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+      }
+
+      >img{
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+      }
+      .name-restaurant{
+        font-weight: 500;
+        &:hover {
+          color:  #ee8743;
+        }
+      }
+      .address-restaurant{
+        font-size: 14px;
+      }
+
+    }
+  }
+
+}
+
+.show-restaurant{
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid #fa6342;
+  border-radius: 8px;
+  >img{
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+  }
+  .name-restaurant{
+    font-weight: 500;
+  }
+  .address-restaurant{
+    font-size: 14px;
+  }
+
+}

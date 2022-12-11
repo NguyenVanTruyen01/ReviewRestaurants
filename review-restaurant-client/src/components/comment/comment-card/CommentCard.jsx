@@ -90,7 +90,8 @@ const CommentCard = ({children,comment,post,commentId})=>{
             <Link className= "comment-header">
                 <div>
                     <Avatar
-                        src={"https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"}
+                        src={ comment.user.avatar ? comment.user.avatar :
+                        "https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"}
                         radius="xl"
                         size={40}
                     />
@@ -102,6 +103,7 @@ const CommentCard = ({children,comment,post,commentId})=>{
                     <CommentMenu post = {post}
                                  comment = {comment}
                                  auth = {currentUser}
+                                 onEdit = {onEdit}
                                  setOnEdit = {setOnEdit}
                     />
                 }
