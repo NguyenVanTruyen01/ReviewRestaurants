@@ -17,6 +17,8 @@ import q7 from "../../assets/images/home/near/7.jpg"
 import q8 from "../../assets/images/home/near/8.jpg"
 import q9 from "../../assets/images/home/near/9.jpg"
 import q10 from "../../assets/images/home/near/10.jpg"
+import thuDuc from "../../assets/images/home/near/thu-duc.jpg"
+import binhThanh from "../../assets/images/home/near/binh-thanh.jpg"
 import './near.css';
 
 
@@ -178,6 +180,34 @@ const Near = () => {
                                 <h2 className="text-capitalize">
                                     <a href="restaurant-details.html" title>
                                         Quận 10
+                                    </a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div className="near-item">
+                        <div className="near-item">
+                            <img src={binhThanh} alt="" className="w-100" />
+                            <div className="feat-optz">
+                                <h2 className="text-capitalize">
+                                    <a href="restaurant-details.html" title>
+                                        Quận Bình Thạnh
+                                    </a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div className="near-item">
+                        <div className="near-item">
+                            <img src={thuDuc} alt="" className="w-100" />
+                            <div className="feat-optz">
+                                <h2 className="text-capitalize">
+                                    <a href="restaurant-details.html" title>
+                                        TP Thủ Đức
                                     </a>
                                 </h2>
                             </div>

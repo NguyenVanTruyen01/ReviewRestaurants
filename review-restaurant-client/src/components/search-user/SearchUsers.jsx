@@ -37,7 +37,7 @@ const SearchUsers = () => {
           onChange={(e) => setKey(e.target.value)}
         />
         <button type="submit" className="btn-default" onClick={handleSearch}>
-          Search Food
+          Tìm kiếm
           <span />
         </button>
       </form>

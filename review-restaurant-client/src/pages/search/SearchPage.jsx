@@ -24,6 +24,8 @@ const SearchPage = () => {
     console.log(region);
     console.log(purposes);
     console.log(benefits);
+    const q = params.get('q');
+    console.log(q);
   }, [region, purposes, benefits]);
 
   function numberWithCommas(x) {
@@ -66,9 +68,6 @@ const SearchPage = () => {
     setMaxPrice(value[1]);
     console.log(value);
   };
-
-  const q = params.get('q');
-  console.log(q);
 
   return (
     <div>

@@ -65,7 +65,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="sec-block pb-0 mt-5">
+        <section className="sec-block pb-0 mt-5 margin-footer">
           <div className="container">
             <div className="section-title text-center">
               {/* <span>Nổi Bật </span> */}
@@ -73,52 +73,6 @@ const Home = () => {
             </div>
             <Near />
 
-          </div>
-        </section>
-
-        <section className="sec-block">
-          <div className="container">
-            <div className="section-title text-center">
-              <span>The reason why </span>
-              <h2 className="text-capitalize">why people choose us</h2>
-              <p className="mx-auto">We have many advantages but we will highlight only some of them, look below.</p>
-            </div>
-            {/*sec-title end*/}
-            <div className="our-proptz text-center">
-              <div className="row">
-                <div className="col-md-4 col-sm-6">
-                  <div className="proptz">
-                    <div className="propt-icon">
-                      <img src="assets/images/icons/discount.svg" alt="" />
-                    </div>
-                    <h3 className="semi-bold text-capitalize">discount system</h3>
-                    <p>We have a favorable discount system for our regular customers.</p>
-                  </div>
-                  {/*proptz end*/}
-                </div>
-                <div className="col-md-4 col-sm-6">
-                  <div className="proptz">
-                    <div className="propt-icon">
-                      <img src="assets/images/icons/delivery.svg" alt="" />
-                    </div>
-                    <h3 className="semi-bold text-capitalize">Express Delivery</h3>
-                    <p>The hottest food &amp; fastest delivery to any location of your city.</p>
-                  </div>
-                  {/*proptz end*/}
-                </div>
-                <div className="col-md-4 col-sm-6">
-                  <div className="proptz">
-                    <div className="propt-icon">
-                      <img src="assets/images/icons/food.svg" alt="" />
-                    </div>
-                    <h3 className="semi-bold text-capitalize">50+ restaurants</h3>
-                    <p>Large selection of restaurants and cafes throughout the country.</p>
-                  </div>
-                  {/*proptz end*/}
-                </div>
-              </div>
-            </div>
-            {/*our-proptz end*/}
           </div>
         </section>
 

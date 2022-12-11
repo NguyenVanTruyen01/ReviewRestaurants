@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import chillImage from "../../assets/images/home/category/chill.jpg"
 import readBook from "../../assets/images/home/category/read-book.jpg"
@@ -7,6 +7,8 @@ import beautiful from "../../assets/images/home/category/beautiful.jpg"
 import dating from "../../assets/images/home/category/dating.jpg"
 
 import './category.css';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 // import '../../assets/css/style.css';
 
 const Category = () => {
@@ -30,6 +32,24 @@ const Category = () => {
     prevArrow: <PrevArrow />,
   };
 
+  const navigate = useNavigate();
+
+  const searchParams = new URLSearchParams();
+  const [cat, setCat] = useState(0)
+
+  const handleViewByCategory = (e, idCat) => {
+    e.preventDefault();
+    searchParams.set('purposes', idCat + "");
+    navigate('/search?' + searchParams);
+  };
+
+  // useEffect(() => {
+  //   searchParams.set('purposes', idCat + "");
+  //   navigate('/search?' + searchParams);
+  //   console.log(searchParams.toString());
+  // }, [])
+
+
   return (
     <div>
       <Slider {...settings}>
@@ -38,8 +58,8 @@ const Category = () => {
             <div className="category-item">
               <img src={beautiful} alt="" className="w-100" />
               <div className="feat-optz">
-                <h2 className="text-capitalize">
-                  <a href="restaurant-details.html" title>
+                <h2 className="text-capitalize" >
+                  <a href='' title onClick={(e) => handleViewByCategory(e, 1)}>
                     Sống ảo
                   </a>
                 </h2>
@@ -53,7 +73,7 @@ const Category = () => {
               <img src={dating} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="restaurant-details.html" title>
+                  <a href="" title onClick={(e) => handleViewByCategory(e, 2)}>
                     Hẹn hò
                   </a>
                 </h2>
@@ -67,7 +87,7 @@ const Category = () => {
               <img src={work} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="restaurant-details.html" title>
+                  <a href="" title onClick={(e) => handleViewByCategory(e, 3)}>
                     Làm việc
                   </a>
                 </h2>
@@ -81,7 +101,7 @@ const Category = () => {
               <img src={readBook} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="restaurant-details.html" title>
+                  <a href="" title onClick={(e) => handleViewByCategory(e, 4)}>
                     Đọc sách
                   </a>
                 </h2>
@@ -95,7 +115,7 @@ const Category = () => {
               <img src={chillImage} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="restaurant-details.html" title>
+                  <a href="" title onClick={(e) => handleViewByCategory(e, 5)}>
                     Chill
                   </a>
                 </h2>
