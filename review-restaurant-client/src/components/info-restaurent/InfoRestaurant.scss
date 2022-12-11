@@ -1,4 +1,30 @@
 //----------------info-component---------
+
+.update-in4Res{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  i{
+    cursor: pointer;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    &:hover{
+      color: #f18345;
+    }
+    &:hover::before {
+      content: "Edit";
+      font-size: 16px;
+      color: #2b2b2b;
+      position: absolute;
+      right: 0;
+      top:-16px;
+      background: transparent;
+    }
+  }
+}
+
 .title{
   font-weight: bold;
   font-size: 20px;

@@ -14,7 +14,7 @@ export class PostsController {
     return this.postsService.findAll();
   }
 
-  @Get("timeline")
+  @Post("timeline")
   getTimeLinePosts(@Body() currentUser){
     return this.postsService.getTimeLinePosts(currentUser);
   }

@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Post from "../post/Post";
+import {useSelector} from "react-redux";
 
 const ListPost = ({posts, user})=>{
-
     return (
         <>
             {
@@ -12,14 +12,10 @@ const ListPost = ({posts, user})=>{
                         flexDirection: "column",
                         gap: "10px"
                     }}>
-
                         {
                             posts.filter((post => {
                                 return post.user._id === user._id || post.idRestaurant._id === user._id
                             })).map(post =>  <Post post={ post} />)
-                            // posts.map((post)=>{
-                            //     return <Post post={ post} />
-                            // })
                         }
 
                     </div>

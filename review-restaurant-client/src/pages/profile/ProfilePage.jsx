@@ -11,14 +11,11 @@ import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import LoadingPage from "../loading/LoadingPage";
 import {followUser,unfollowUser} from "../../redux/requestAPI/userRequests";
-import {likePost} from "../../redux/requestAPI/postRequests";
-import {notifyLoading, notifySuccess} from "../../redux/notifySlice";
 
 const ProfilePage = ()=>{
 
     const {id} = useParams()
     const [user, setUser] = useState(undefined);
-
     //------------------------------------------------
 
     const theme = useMantineTheme();
@@ -136,23 +133,26 @@ const ProfilePage = ()=>{
 
     useEffect(()=>{
 
-        if(currentUser && currentUser.following.find(follow => follow === id)){
+        if(currentUser && currentUser.following.find(follow => follow._id === id)){
             setFollow(true)
         }else return;
 
     },[currentUser?.following, currentUser?._id])
 
+    const [rating,setRating] = useState(0)
+
     useEffect(() => {
-        const getListRestaurant = async () => {
+        const getRestaurant = async () => {
             try {
                 const res = await axios.get(`http://localhost:5000/users/${id}`);
                 setUser(res.data.user);
+                setRating(Math.round(res.data.user.rating.reduce((a, b) => a + b, 0) / res.data.user.rating.length ))
             } catch (err) {
                 console.log(err);
             }
         };
-        getListRestaurant();
-    }, [dispatch,onChangeAvatar,onChangeCover,loadFollow,id]);
+        getRestaurant();
+    }, [dispatch,onChangeAvatar,onChangeCover,loadFollow,id,currentUser]);
 
 
     return(
@@ -232,11 +232,9 @@ const ProfilePage = ()=>{
 
                                     }
 
-
-
                                     <Rating className= "rating"
                                             readOnly
-                                            defaultValue={user.rating.reduce((a, b) => a + b, 0) / user.rating.length} />
+                                            defaultValue={ rating} />
 
                                     <div className="profile-author">
                                         <div className="profile-author-thumb">
@@ -334,7 +332,10 @@ const ProfilePage = ()=>{
                             </div>
 
                             {
-                                currentUser &&   <PostShareModal user = {user}/>
+                                currentUser &&
+                                <PostShareModal
+                                    user = {user}
+                                    listPost = {listPost}/>
                             }
 
                             {

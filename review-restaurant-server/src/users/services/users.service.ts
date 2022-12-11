@@ -10,6 +10,7 @@ import { UserModel } from '../models/user.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { FollowUserDto } from '../dto/follow-user.dto';
+import {find} from "rxjs";
 
 @Injectable()
 export class UsersService {
@@ -18,8 +19,9 @@ export class UsersService {
   ) {}
 
   async findAll() {
+    //Tim theo role RESTAURANT
     try {
-      const users = await this.userModel.find();
+      const users = await this.userModel.find({role: "RESTAURANT"});
       return {
         success: true,
         users: users,
@@ -132,11 +134,16 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    if (id === updateUserDto._id) {
+
+    if (id === updateUserDto.currentUserId) {
       try {
-        const user = await this.userModel.findByIdAndUpdate(id, updateUserDto, {
+        const user = await this.userModel.findByIdAndUpdate(id,
+            updateUserDto
+         , {
           new: true,
         });
+
+
         if (!user) {
           throw new HttpException(
             {

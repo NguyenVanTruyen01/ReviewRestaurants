@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.png';
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from '../../redux/requestAPI/authRequests';
 import {getProfileUser} from '../../redux/requestAPI/userRequests'
+import PostReviews from "../../modals/post_reviews/PostReviews";
 
 const Header = () => {
 	const user = useSelector((state) => state.auth.login.currentUser);
@@ -13,13 +14,18 @@ const Header = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	const [openModal,setOpenModal] =  useState(false);
+
 	const handleLogout = async () => {
 		await logout(token, user._id, dispatch, navigate);
 	};
 
 	return (
-		<header>
-			<div className="container-fluid">
+		<header style={{width: "100%", height: "66px"}}>
+			<div className="container-fluid" style={{position:"fixed",
+				zIndex: 10,
+				background:"#ffffff",
+				borderBottom: "2px solid #fa6342"}}>
 				<div className="header-content d-flex flex-wrap align-items-center">
 					<div className="logo">
 						<Link to="/" title>
@@ -29,7 +35,7 @@ const Header = () => {
 					<nav>
 						<ul>
 							<li>
-								<a className="active" href="index.html" title>
+								<a className="active" href="/home" title>
 									Home
 								</a>
 							</li>
@@ -38,80 +44,14 @@ const Header = () => {
 									Khám phá
 								</Link>
 							</li>
-							<li>
-								<a href="#" title>
-									Pages
-								</a>
-								<ul>
+							{
+								user &&
 									<li>
-										<a href="restaurants.html" title>
-											Restaurants
-										</a>
+										<Link to="/timeline" title>
+											Timeline
+										</Link>
 									</li>
-									<li>
-										<a href="restaurant-details.html" title>
-											Restaurant detail
-										</a>
-									</li>
-									<li>
-										<a href="cart.html" title>
-											Cart
-										</a>
-									</li>
-									<li>
-										<a href="checkout.html" title>
-											Checkout
-										</a>
-									</li>
-									<li>
-										<a href="profile.html" title>
-											My profile
-										</a>
-									</li>
-									<li>
-										<a href="faqs.html" title>
-											FAQs
-										</a>
-									</li>
-									<li>
-										<a href="testimonials.html" title>
-											Testimonials
-										</a>
-									</li>
-									<li>
-										<a href="404.html" title>
-											404
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#" title>
-									Blog
-								</a>
-								<ul>
-									<li>
-										<a href="blog1.html" title>
-											Blog 1
-										</a>
-									</li>
-									<li>
-										<a href="blog2.html" title>
-											Blog 2
-										</a>
-									</li>
-									<li>
-										<a href="blog-single.html" title>
-											Blog Single
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="contact.html" title>
-									Contact Us
-								</a>
-							</li>
+							}
 						</ul>
 					</nav>
 					{/*navigation end*/}
@@ -122,32 +62,37 @@ const Header = () => {
 					</div>
 					{/*menu-bar end*/}
 					<ul className="oth-lnks ml-auto">
-						{/* <li>
-							<a href="#" title className="search-icon">
-								<img src={iconSearch} alt="" />
-							</a>
+
+						<li style={{color:"black"}}
+							onClick={()=>{
+								if(user)
+									setOpenModal(true)
+								else navigate('/login');
+							}
+						}
+						>
+							Viet Review
+							<PostReviews openModal={openModal} setOpenModal={setOpenModal}/>
 						</li>
-						<li>
-							<a href="#" title className="cart-ico">
-								<img src={iconCart} alt="" />
-							</a>
-							<span className="cart-item-num">0</span>
-						</li> */}
+
 						<li>
 							{user ? (
 								<>
 									<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
-									<Link  title className="cart-ico" to={`/profile/${user._id}`}
-										  // onClick={()=> getProfileUser(user._id,dispatch,navigate)}
+									<a  title className="cart-ico" href={`/profile/${user._id}`}
 									>
 										Hi,{user.userName}
-									</Link>
+									</a>
 									<i className="fal fa-sign-out-alt"
 									   style={{fontSize: "20px", cursor: "pointer"}}
 									   onClick={handleLogout} ></i>
 								</>
 							) : (
-								<Link to="/login">Login</Link>
+								<>
+									<Link to="/register">Register</Link>
+									<Link to="/login">Login</Link>
+								</>
+
 							)}
 						</li>
 					</ul>

@@ -1,11 +1,16 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./InfoRestaurant.scss"
 import image from "../../assets/images/resources/profile-image.jpg"
 import { AspectRatio } from '@mantine/core';
 import { Rating } from '@mantine/core';
 import {useSelector} from "react-redux";
+import UpdateRestaurantModal from "../../modals/update_restaurant/UpdateRestaurantModal";
 
 const InfoRestaurant = ({user,posts})=>{
+
+    const {currentUser,access_token} = useSelector(state => state.auth?.login)
+
+    const [openModal,setOpenModal] =  useState(false);
 
     useEffect(()=>{
         const root = document.querySelector(".slider");
@@ -26,7 +31,26 @@ const InfoRestaurant = ({user,posts})=>{
 
                 <div className="introduction">
                     <div className="introduction-content">
-                        <div className="title"> Giới thiệu</div>
+                        <div className="update-in4Res">
+                            <div className="title"> Giới thiệu</div>
+                            {
+                                currentUser && currentUser._id === user._id &&
+                                <i className="fas fa-ellipsis-h"
+                                   onClick={()=>setOpenModal(!openModal)}
+                                ></i>
+
+                            }
+                        </div>
+
+                        {
+                            currentUser &&
+                            <UpdateRestaurantModal
+                                openModal = {openModal}
+                                setOpenModal = {setOpenModal}
+                                currentUser = {currentUser}
+                            />
+                        }
+
                         <span className="introduction-text">
                             {user.infoRestaurant?.introduce}
                         </span>
@@ -36,19 +60,17 @@ const InfoRestaurant = ({user,posts})=>{
                         {
                             user.infoRestaurant.images.slice(0, 5).map((image,index) =>{
                                 if(index === 0){
-                                    return  <img className="image-grid-col-2 image-grid-row-2" src={user.infoRestaurant.images[0].url}
+                                    return  <img className="image-grid-col-2 image-grid-row-2"
+                                                 key={index}
+                                                 src={user.infoRestaurant.images[0].url}
                                                  alt="architecture"/>
                                 }
-                                return   <img src={user.infoRestaurant.images[index].url} alt="architecture"/>
+                                return   <img src={user.infoRestaurant.images[index].url}
+                                              key={index}
+                                              alt="architecture"/>
                             })
                         }
 
-                        {/*<img className="image-grid-col-2 image-grid-row-2" src={image}*/}
-                        {/*     alt="architecture"/>*/}
-                        {/*<img src={image} alt="architecture"/>*/}
-                        {/*<img src={image} alt="architecture"/>*/}
-                        {/*<img src={image} alt="architecture"/>*/}
-                        {/*<img src={image} alt="architecture"/>*/}
                     </div>
 
                 </div>
@@ -152,7 +174,9 @@ const InfoRestaurant = ({user,posts})=>{
 
                     <div className="rating-detail i4-cart">
                         <div className="title">Đánh giá</div>
-                        <Rating size="xl" className= "rating"  readOnly defaultValue={+user.rating} />
+                        <Rating size="xl" className= "rating"
+                                readOnly
+                                defaultValue={user.rating.reduce((a, b) => a + b, 0) / user.rating.length} />
                         <div className="count-report">
                             <div className="item">
                                 <i className="fas fa-flag"></i>
@@ -237,8 +261,9 @@ const InfoRestaurant = ({user,posts})=>{
                     <div className="address-detail i4-cart">
                         <div className="title">Địa chỉ cụ thể</div>
                         <AspectRatio ratio={16 / 9}>
+
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.3063874233135!2d-74.04668908358428!3d40.68924937933441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25090129c363d%3A0x40c6a5770d25022b!2sStatue%20of%20Liberty%20National%20Monument!5e0!3m2!1sen!2sru!4v1644262070010!5m2!1sen!2sru"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5271385827245!2d106.690822614317!3d10.770879462242485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3c316fda3b%3A0xa20bae2de1f1b39f!2zMTMgxJAuIE5ndXnhu4VuIFRyw6NpLCBQaMaw4budbmcgUGjhuqFtIE5nxakgTMOjbywgUXXhuq1uIDEsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1670491133607!5m2!1svi!2s"
                                 title="Google map"
                                 frameBorder="0"
                             />
