@@ -12,8 +12,7 @@ const postSlice = createSlice({
             state.post = null;
         },
         createPostSuccess: (state,action) => {
-            state.post= action.payload.posts;
-            state.listPost = [...state.listPost, action.payload.posts]
+            state.listPost = [ action.payload,...state.listPost]
         },
         getPostsSuccess: (state,action) => {
             state.listPost= action.payload.posts;
@@ -23,6 +22,9 @@ const postSlice = createSlice({
         },
         updatePost: (state,action)=>{
             state.listPost = EditData(state.listPost,action.payload._id,action.payload)
+        },
+        updateListPost: (state,action)=>{
+            state.listPost = action.payload;
         }
 
     }
@@ -33,7 +35,8 @@ export  const {
     createPostSuccess,
     getPostsSuccess,
     getPostsFail,
-    updatePost
+    updatePost,
+    updateListPost
 
 } = postSlice.actions
 

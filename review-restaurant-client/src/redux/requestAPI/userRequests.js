@@ -70,11 +70,10 @@ export const changeAvatar = async (currentUser, user, imagesAvatar, dispatch, ac
     }
 }
 
-
 export const followUser = async (user,currentUser,dispatch,access_token) =>{
 
     try{
-        const newUser = {...currentUser,following: [...currentUser.following, user._id]}
+        const newUser = {...currentUser,following: [...currentUser.following, user]}
 
         const res = await patchDataAPI(`users/${user._id}/follow`,
             { currentUserId: currentUser._id})
@@ -91,7 +90,7 @@ export const followUser = async (user,currentUser,dispatch,access_token) =>{
 export const unfollowUser = async (user,currentUser,dispatch,access_token) =>{
 
     try{
-        const newUser = {...currentUser,following: currentUser.following.filter(follow => follow !== user._id)}
+        const newUser = {...currentUser,following: currentUser.following.filter(follow => follow._id !== user._id)}
 
         const res = await patchDataAPI(`users/${user._id}/unfollow`,
                 { currentUserId: currentUser._id})

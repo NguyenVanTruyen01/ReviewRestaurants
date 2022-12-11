@@ -1,5 +1,5 @@
-import {postDataAPI} from "../../utils/fetchData"
-import {loginSuccess,loginFail,logoutSuccess} from "../authSlice"
+import {patchDataAPI, postDataAPI} from "../../utils/fetchData"
+import {loginSuccess, loginFail, logoutSuccess, updateCurrentUser} from "../authSlice"
 import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import { toast } from "react-toastify";
 import {imageUpload} from "../../utils/imageUpload";
@@ -58,6 +58,43 @@ export const logout = async (token,id,dispatch,navigate) =>{
         dispatch(notifySuccess(res.data.message));
         toast.success(res.data.message);
         navigate('/login');
+
+    }catch (err){
+        const msg = customErrMessage(err)
+        dispatch(notifyError(msg));
+        toast.error(msg);
+    }
+}
+
+export const updateInfoRestaurant = async (data,currentUser,images,dispatch) => {
+    dispatch(notifyLoading())
+
+    try{
+
+        //save images on cloudinary
+        let media = []
+        if(images.length > 0){
+            media = await imageUpload(images);
+        }
+
+        let userUpdate = {};
+
+        if(images.length > 0){
+            userUpdate = {...data,
+                currentUserId: currentUser._id,
+                infoRestaurant :{ ...data.infoRestaurant, images: media}}
+        }else{
+            userUpdate = {...data,
+                currentUserId: currentUser._id,
+                infoRestaurant :{ ...data.infoRestaurant, images: currentUser.infoRestaurant.images}}
+        }
+
+        console.log(userUpdate)
+        const res = await patchDataAPI(`users/${currentUser._id}`, userUpdate
+        );
+        dispatch(updateCurrentUser(res.data.user))
+        dispatch(notifySuccess(res.data.message))
+        toast.success(res.data.message)
 
     }catch (err){
         const msg = customErrMessage(err)

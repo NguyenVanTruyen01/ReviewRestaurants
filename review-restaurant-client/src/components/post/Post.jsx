@@ -4,23 +4,26 @@ import './Post.scss'
 import { Rating } from '@mantine/core';
 import moment from "moment";
 import {useSelector,useDispatch} from "react-redux";
-import {likePost, unLikePost} from "../../redux/requestAPI/postRequests"
+import {likePost, removePost, unLikePost} from "../../redux/requestAPI/postRequests"
 
 import Comments from "../comment/Comments";
 import InputComment from "../comment/comment-input/InputComment";
+import {Link} from "react-router-dom";
 
 const PRIMARY_COL_HEIGHT = 300;
 const Post = ({post})=>{
+
+    const {currentUser} = useSelector(state => state.auth?.login)
+    const listPost = useSelector(state => state.post?.listPost)
+
+    const dispatch = useDispatch()
 
     const theme = useMantineTheme();
     const SECONDARY_COL_HEIGHT = PRIMARY_COL_HEIGHT / 2 - theme.spacing.md / 2;
 
     const [isLike,setIsLike] = useState(false)
-    const [loadLike,setLoadLike] = useState(false)
-
-    const {currentUser} = useSelector(state => state.auth?.login)
-
-    const dispatch = useDispatch();
+    const [loadLike,setLoadLike] = useState(false);
+    const [showComment,setShowComment] = useState(false)
 
     useEffect(()=>{
 
@@ -28,7 +31,7 @@ const Post = ({post})=>{
             setIsLike(true)
         }else return;
 
-    },[ post.likes, currentUser?._id])
+    },[post.likes, currentUser?._id])
 
     const handleLike = async ()=>{
         if(currentUser) {
@@ -57,6 +60,12 @@ const Post = ({post})=>{
         else return;
     }
 
+    const handleRemovePost = async ()=>{
+        if(currentUser)
+            await removePost(post,currentUser,listPost,dispatch)
+        else return
+    }
+
     return(
         <>
             <div className="Post">
@@ -66,23 +75,23 @@ const Post = ({post})=>{
                 <div className="HeaderPost">
                     <Group>
                         <Avatar
-                            src={"https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg"}
+                            src={post.user.avatar}
                             radius="xl"
                             size={50}
                         />
 
                         <div style={{ flex: 1 }}>
                             <div style={{ display: "flex", alignItems:"center"}}>
-                                <Text size="md" weight={500}>
+                                <Link to={`/profile/${post.user._id}`} size="md" weight={600}>
                                     {post.user.userName}
-                                </Text>
+                                </Link>
                                 {
                                     post.user._id !== post.idRestaurant._id ?
                                         <>
                                             <i className="fas fa-caret-right" style={{marginLeft: "8px", marginRight : "8px"}}></i>
-                                            <Text size="md" weight={500}>
+                                            <Link to={`/profile/${post.idRestaurant._id}`}  size="md" weight={500}>
                                                 {post.idRestaurant.userName}
-                                            </Text>
+                                            </Link>
                                         </> : ""
                                 }
                             </div>
@@ -93,6 +102,18 @@ const Post = ({post})=>{
                                 }
                             </Text>
                         </div>
+                        {
+                           currentUser && currentUser._id === post.user._id &&
+                            <div>
+                                {/*<div className="dropdown-item" >*/}
+                                {/*    <i className="fal fa-edit"></i> Edit*/}
+                                {/*</div>*/}
+                                <div className="dropdown-item" onClick={()=>handleRemovePost()}>
+                                    <i className="fas fa-trash-alt" style={{cursor:"pointer"}}></i>
+                                </div>
+                            </div>
+                        }
+
 
                         <Rating defaultValue={+post.ratingRes} readOnly/>
 
@@ -170,8 +191,11 @@ const Post = ({post})=>{
 
                             <div className= "action-comment">
                                 <span>{post.comments.length} bình luận</span>
-                                <i className="fal fa-comment" style={{color: "blue"}}></i>
+                                <i className="fal fa-comment"
+                                   onClick={()=>setShowComment(!showComment)}
+                                   style={{color: "blue"}}></i>
                             </div>
+
                         </div>
 
                         <div className= "user-liked">
@@ -187,11 +211,15 @@ const Post = ({post})=>{
 
                     </div>
 
-                    <Comments post = {post}></Comments>
-
                     {
-                        currentUser &&
-                        <InputComment post={post}></InputComment>
+                        showComment &&
+                           <>
+                               <Comments post = {post}></Comments>
+                               {
+                                   currentUser &&
+                                   <InputComment post={post}></InputComment>
+                               }
+                           </>
                     }
 
                 </div>

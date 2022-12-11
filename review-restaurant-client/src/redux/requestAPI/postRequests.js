@@ -1,10 +1,17 @@
-import {createPostFail, createPostSuccess, getPostsFail, getPostsSuccess, updatePost} from "../postSlice"
-import {getDataAPI,postDataAPI,patchDataAPI} from "../../utils/fetchData"
+import {
+    createPostFail,
+    createPostSuccess,
+    getPostsFail,
+    getPostsSuccess,
+    updateListPost,
+    updatePost
+} from "../postSlice"
+import {getDataAPI, postDataAPI, patchDataAPI, deleteDataAPI} from "../../utils/fetchData"
 import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import { toast } from "react-toastify";
 import {imageUpload} from "../../utils/imageUpload"
 
-export const createPost = async (currentID,restaurantID, rating,content,images,dispatch, token)=>{
+export const createPost = async (listPost,currentID,restaurantID, rating,content,images,dispatch, token)=>{
 
     try {
         dispatch(notifyLoading())
@@ -12,6 +19,7 @@ export const createPost = async (currentID,restaurantID, rating,content,images,d
         if(images.length > 0){
             media = await imageUpload(images);
         }
+
         const res = await postDataAPI("posts", {
             user : currentID,
             idRestaurant: restaurantID,
@@ -20,7 +28,10 @@ export const createPost = async (currentID,restaurantID, rating,content,images,d
             images: media
         }, token);
 
-        dispatch(createPostSuccess(res.data))
+        // const newListPost = [...listPost,res.data.posts]
+        // console.log(listPost,newListPost)
+
+        dispatch(createPostSuccess(res.data.posts))
 
         dispatch(notifySuccess(res.data.message))
 
@@ -77,6 +88,19 @@ export const unLikePost = async (post, currentUser,dispatch) =>{
     }
 }
 
+export const removePost = async (post, currentUser,listPost,dispatch) =>{
+
+    const newListPost = [...listPost.filter(p => p._id !== post._id)]
+    console.log({listPost,newListPost})
+    try {
+        await deleteDataAPI(`posts/${post._id}`,{currentUserId: currentUser._id}, null)
+        dispatch(updateListPost(newListPost))
+
+    }catch (err){
+        const msg = customErrMessage(err)
+        dispatch(notifyError(msg));
+    }
+}
 
 const customErrMessage = (err) =>{
     const msg = Array.isArray(err.response.data.message) ? err.response.data.message[0] : err.response.data.message;
