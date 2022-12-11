@@ -24,10 +24,10 @@ const PostReviews = ({openModal,setOpenModal})=>{
     function fetchDropdownOptions(key) {
         if (key) {
             getDataAPI(`users/search?key=${key}`)
-                .then((res) => setSearchUsers(res.data.users))
+                .then((res) => setSearchUsers(res.data.users.filter((res => res.role === "RESTAURANT" ))))
                 .catch((err) => setSearchUsers([]));
         } else {
-            setSearchUsers([]);
+            setSearchUsers([])
         }
     }
 
@@ -174,8 +174,8 @@ const PostReviews = ({openModal,setOpenModal})=>{
                                                  setRestaurant(user)
                                              }}
                                         >
-                                            <img src= {user.role === "RESTAURANT" ?
-                                                user.infoRestaurant.images[0].url : user.avatar
+                                            <img src= { user.role === "RESTAURANT" &&
+                                                user.infoRestaurant.images.length > 0 ? user.infoRestaurant.images[0].url  : user.avatar
                                             }
                                                  alt=""/>
 

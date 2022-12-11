@@ -103,6 +103,7 @@ const CommentCard = ({children,comment,post,commentId})=>{
                     <CommentMenu post = {post}
                                  comment = {comment}
                                  auth = {currentUser}
+                                 onEdit = {onEdit}
                                  setOnEdit = {setOnEdit}
                     />
                 }

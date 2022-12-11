@@ -15,6 +15,9 @@ import {MultiSelect, PasswordInput, NumberInput, TextInput, Button, Radio, Texta
 
 
 const RegisterPage = () => {
+
+	const [openFormRes,setOpenFormRes] = useState(false);
+
 	//---------------VALIDATE FORM INPUT-----------------------
 	const form = useForm({
 		initialValues: {
@@ -114,17 +117,6 @@ const RegisterPage = () => {
 		setData({ ...data, [e.target.name]: e.target.value.trim() });
 	};
 
-	// const handleSummit = async (e) => {
-	// 	e.preventDefault();
-	// 	const isEmpty = validateInput(data);
-	//
-	// 	if(isEmpty){
-	// 		toast.warn("Please complete registration information !")
-	// 	}else{
-	// 		await register(data,dispatch,navigate);
-	// 	}
-	// };
-
 	const  validateInput = (data) =>{
 		const isEmpty = Object.values(data).some(x => x === null || x === '');
 		return isEmpty
@@ -195,8 +187,10 @@ const RegisterPage = () => {
 									withAsterisk
 									{...form.getInputProps('role')}
 								>
-									<Radio value="REVIEWER" label="REVIEWER" />
-									<Radio value="RESTAURANT" label="RESTAURANT" />
+									<Radio value="REVIEWER" label="REVIEWER"
+										   onClick={()=> setOpenFormRes(false)}/>
+									<Radio value="RESTAURANT" label="RESTAURANT"
+									onClick={()=> setOpenFormRes(true)}/>
 								</Radio.Group>
 							</div>
 
@@ -207,154 +201,160 @@ const RegisterPage = () => {
 
 					</div>
 
-					<div className= "form-in4">
-						<span className="title title-re">Restaurant information</span>
-						<form onSubmit={form.onSubmit(console.log)}>
+					{
+						openFormRes &&
+						<div className= "form-in4">
+							<span className="title title-re">Restaurant information</span>
+							<form onSubmit={form.onSubmit(console.log)}>
 
-							<MultiSelect
-								data={[
-									{ value: 1, label: 'Sống ảo' },
-									{ value: 2, label: 'Hẹn hò' },
-									{ value: 3, label: 'Làm việc' },
-									{ value: 4, label: 'Đọc sách' },
-									{ value: 5, label: 'Chill' },
-								]}
-								label="Characteristics"
-								name="characteristics"
-								clearable
-								placeholder="Pick all characteristics of your restaurant"
-								{...form.getInputProps('infoRestaurant.characteristics')}
-							/>
-
-							<div className="row-form">
-								<NumberInput
-									label="Min Price"
-									name="minPrice"
-									defaultValue={0}
-									parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
-									formatter={(value) =>
-										!Number.isNaN(parseFloat(value))
-											? `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-											: ''
-									}
-									{...form.getInputProps('infoRestaurant.minPrice')}
+								<MultiSelect
+									data={[
+										{ value: 1, label: 'Sống ảo' },
+										{ value: 2, label: 'Hẹn hò' },
+										{ value: 3, label: 'Làm việc' },
+										{ value: 4, label: 'Đọc sách' },
+										{ value: 5, label: 'Chill' },
+									]}
+									label="Characteristics"
+									name="characteristics"
+									clearable
+									placeholder="Pick all characteristics of your restaurant"
+									{...form.getInputProps('infoRestaurant.characteristics')}
 								/>
 
-								<NumberInput
-									label="Max Price"
-									name='maxPrice'
-									defaultValue={1000}
-									parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
-									formatter={(value) =>
-										!Number.isNaN(parseFloat(value))
-											? `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-											: ''
-									}
-									{...form.getInputProps('infoRestaurant.maxPrice')}
-								/>
-
-							</div>
-
-							<div className="row-form">
-
-								<TextInput name="openTime" type={"time"}
-										   withAsterisk  label="Open"
-										   {...form.getInputProps('infoRestaurant.openTime')} />
-
-								<TextInput name="closeTime" type={"time"}
-										   withAsterisk  label="Close"
-										   {...form.getInputProps('infoRestaurant.closeTime')} />
-							</div>
-
-							<MultiSelect
-								data={[
-									{ value: 1, label: 'Wifi miễn phí' },
-									{ value: 2, label: 'Giứ xe' },
-									{ value: 3, label: 'Mang thú cưng' },
-									{ value: 4, label: 'Thanh toán bằng thẻ' },
-									{ value: 5, label: 'Điều hòa' },
-									{ value: 6, label: 'Bàn ngoài trời' },
-									{ value: 7, label: 'Chỗ chơi trẻ em' },
-									{ value: 8, label: 'Khu vực hút thuốc' },
-									{ value: 9, label: 'Chiếu bóng đá' },
-									{ value: 10, label: 'Giao hàng' },
-									{ value: 11, label: 'Mang đồ ăn ngoài' },
-									{ value: 12, label: 'Ăn vặt' },
-								]}
-								label="Utilities"
-								name="utilities"
-								clearable
-								placeholder="Pick all utilities of your restaurant"
-								{...form.getInputProps('infoRestaurant.utilities')}
-							/>
-
-
-
-							<Textarea
-								placeholder="Introduce your restaurant"
-								withAsterisk
-								label="Introduce"
-								{...form.getInputProps('infoRestaurant.introduce')}
-							/>
-
-							<div className="row-form">
-								<TextInput name="facebook"
-										   label="Facebook"
-										   placeholder="Restaurant's facebook link"
-										   {...form.getInputProps('infoRestaurant.facebook')} />
-
-								<TextInput name="instagram"
-										   label="instagram"
-										   placeholder="Restaurant's instagram link  "
-										   {...form.getInputProps('infoRestaurant.instagram')} />
-							</div>
-
-							<div  className="row-form">
-								<div className="row-img">
-									<div className="input_image">
-										<label>
-											<i className="fa fa-camera"></i>
-											<input type="file" name = "file" id={"file"}
-												   multiple accept="image/*"
-												   onChange={handleOnChangeImage}
-											/>
-										</label>
-									</div>
-									<SimpleGrid
-										cols={4}
-										breakpoints={[
-											{ maxWidth: 980, cols: 3, spacing: 'md' },
-											{ maxWidth: 755, cols: 2, spacing: 'sm' },
-											{ maxWidth: 600, cols: 1, spacing: 'sm' },
-										]}
-										className="show-img"
-									>
-										{
-											images.map((img,index) => {
-												return (
-													<div key={index}
-														 className="grid-img"
-														 id="file_img"
-														 style={{width: "128px", height: "128px" ,gap:0}} >
-
-														<img src={URL.createObjectURL(img)}
-															 alt={"images"}
-															 style={{objectFit: "cover",width: "128px", height: "128px"}}
-														/>
-														<span
-															className="delete-img"
-															onClick={()=>deleteImages(index)}
-														><i className="fas fa-times"></i></span>
-													</div>
-												)
-
-											})
+								<div className="row-form">
+									<NumberInput
+										label="Min Price"
+										name="minPrice"
+										defaultValue={0}
+										parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
+										formatter={(value) =>
+											!Number.isNaN(parseFloat(value))
+												? `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+												: ''
 										}
-									</SimpleGrid>
+										{...form.getInputProps('infoRestaurant.minPrice')}
+									/>
+
+									<NumberInput
+										label="Max Price"
+										name='maxPrice'
+										defaultValue={1000}
+										parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
+										formatter={(value) =>
+											!Number.isNaN(parseFloat(value))
+												? `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+												: ''
+										}
+										{...form.getInputProps('infoRestaurant.maxPrice')}
+									/>
+
 								</div>
-							</div>
-						</form>
-					</div>
+
+								<div className="row-form">
+
+									<TextInput name="openTime" type={"time"}
+											   withAsterisk  label="Open"
+											   {...form.getInputProps('infoRestaurant.openTime')} />
+
+									<TextInput name="closeTime" type={"time"}
+											   withAsterisk  label="Close"
+											   {...form.getInputProps('infoRestaurant.closeTime')} />
+								</div>
+
+								<MultiSelect
+									data={[
+										{ value: 1, label: 'Wifi miễn phí' },
+										{ value: 2, label: 'Giứ xe' },
+										{ value: 3, label: 'Mang thú cưng' },
+										{ value: 4, label: 'Thanh toán bằng thẻ' },
+										{ value: 5, label: 'Điều hòa' },
+										{ value: 6, label: 'Bàn ngoài trời' },
+										{ value: 7, label: 'Chỗ chơi trẻ em' },
+										{ value: 8, label: 'Khu vực hút thuốc' },
+										{ value: 9, label: 'Chiếu bóng đá' },
+										{ value: 10, label: 'Giao hàng' },
+										{ value: 11, label: 'Mang đồ ăn ngoài' },
+										{ value: 12, label: 'Ăn vặt' },
+									]}
+									label="Utilities"
+									name="utilities"
+									clearable
+									placeholder="Pick all utilities of your restaurant"
+									{...form.getInputProps('infoRestaurant.utilities')}
+								/>
+
+
+
+								<Textarea
+									placeholder="Introduce your restaurant"
+									withAsterisk
+									label="Introduce"
+									{...form.getInputProps('infoRestaurant.introduce')}
+								/>
+
+								<div className="row-form">
+									<TextInput name="facebook"
+											   label="Facebook"
+											   placeholder="Restaurant's facebook link"
+											   {...form.getInputProps('infoRestaurant.facebook')} />
+
+									<TextInput name="instagram"
+											   label="instagram"
+											   placeholder="Restaurant's instagram link  "
+											   {...form.getInputProps('infoRestaurant.instagram')} />
+								</div>
+
+								<div  className="row-form">
+									<div className="row-img">
+										<div className="input_image">
+											<label>
+												<i className="fa fa-camera"></i>
+												<input type="file" name = "file" id={"file"}
+													   multiple accept="image/*"
+													   onChange={handleOnChangeImage}
+												/>
+											</label>
+										</div>
+										<SimpleGrid
+											cols={4}
+											breakpoints={[
+												{ maxWidth: 980, cols: 3, spacing: 'md' },
+												{ maxWidth: 755, cols: 2, spacing: 'sm' },
+												{ maxWidth: 600, cols: 1, spacing: 'sm' },
+											]}
+											className="show-img"
+										>
+											{
+												images.map((img,index) => {
+													return (
+														<div key={index}
+															 className="grid-img"
+															 id="file_img"
+															 style={{width: "128px", height: "128px" ,gap:0}} >
+
+															<img src={URL.createObjectURL(img)}
+																 alt={"images"}
+																 style={{objectFit: "cover",width: "128px", height: "128px"}}
+															/>
+															<span
+																className="delete-img"
+																onClick={()=>deleteImages(index)}
+															><i className="fas fa-times"></i></span>
+														</div>
+													)
+
+												})
+											}
+										</SimpleGrid>
+									</div>
+								</div>
+							</form>
+						</div>
+					}
+
+
+
 				</div>
 
 
