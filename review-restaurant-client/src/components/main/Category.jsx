@@ -1,5 +1,10 @@
 import React from 'react';
 import Slider from 'react-slick';
+import chillImage from "../../assets/images/home/category/chill.jpg"
+import readBook from "../../assets/images/home/category/read-book.jpg"
+import work from "../../assets/images/home/category/work.jpg"
+import beautiful from "../../assets/images/home/category/beautiful.jpg"
+import dating from "../../assets/images/home/category/dating.jpg"
 
 import './category.css';
 // import '../../assets/css/style.css';
@@ -7,12 +12,12 @@ import './category.css';
 const Category = () => {
   function NextArrow(props) {
     const { className, style, onClick } = props;
-    return <div className={className} style={{ ...style, display: 'block', background: 'red' }} onClick={onClick} />;
+    return <div className={className} style={{ ...style, display: 'block', }} onClick={onClick}></div>;
   }
 
   function PrevArrow(props) {
     const { className, style, onClick } = props;
-    return <div className={className} style={{ ...style, display: 'block', background: 'green' }} onClick={onClick} />;
+    return <div className={className} style={{ ...style, display: 'block', }} onClick={onClick} />;
   }
   const settings = {
     dots: false,
@@ -31,11 +36,11 @@ const Category = () => {
         <div>
           <div className="category-item">
             <div className="category-item">
-              <img src="https://via.placeholder.com/360x400" alt="" className="w-100" />
+              <img src={beautiful} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
                   <a href="restaurant-details.html" title>
-                    Beer Power
+                    Sống ảo
                   </a>
                 </h2>
               </div>
@@ -45,11 +50,11 @@ const Category = () => {
         <div>
           <div className="category-item">
             <div className="category-item">
-              <img src="https://via.placeholder.com/360x400" alt="" className="w-100" />
+              <img src={dating} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
                   <a href="restaurant-details.html" title>
-                    Beer Power
+                    Hẹn hò
                   </a>
                 </h2>
               </div>
@@ -59,11 +64,11 @@ const Category = () => {
         <div>
           <div className="category-item">
             <div className="category-item">
-              <img src="https://via.placeholder.com/360x400" alt="" className="w-100" />
+              <img src={work} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
                   <a href="restaurant-details.html" title>
-                    Beer Power
+                    Làm việc
                   </a>
                 </h2>
               </div>
@@ -73,11 +78,11 @@ const Category = () => {
         <div>
           <div className="category-item">
             <div className="category-item">
-              <img src="https://via.placeholder.com/360x400" alt="" className="w-100" />
+              <img src={readBook} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
                   <a href="restaurant-details.html" title>
-                    Beer Power
+                    Đọc sách
                   </a>
                 </h2>
               </div>
@@ -87,11 +92,11 @@ const Category = () => {
         <div>
           <div className="category-item">
             <div className="category-item">
-              <img src="https://via.placeholder.com/360x400" alt="" className="w-100" />
+              <img src={chillImage} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
                   <a href="restaurant-details.html" title>
-                    Beer Power
+                    Chill
                   </a>
                 </h2>
               </div>
