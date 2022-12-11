@@ -15,6 +15,7 @@ import SearchUsers from '../../components/search-user/SearchUsers';
 
 import { TypeAnimation } from 'react-type-animation';
 import Category from '../../components/main/Category';
+import Near from '../../components/main/Near';
 import Footer from "../../components/main/Footer";
 
 const Home = () => {
@@ -33,7 +34,7 @@ const Home = () => {
       <div className="wrapper">
 
         <Header />
-        
+
         <MobileMenu />
         <section className="main-banner">
           <div className="container">
@@ -60,6 +61,17 @@ const Home = () => {
               <h2 className="text-capitalize">Mục đích bạn là gì ?</h2>
             </div>
             <Category />
+
+          </div>
+        </section>
+
+        <section className="sec-block pb-0 mt-5">
+          <div className="container">
+            <div className="section-title text-center">
+              {/* <span>Nổi Bật </span> */}
+              <h2 className="text-capitalize">Địa điểm gần đây ?</h2>
+            </div>
+            <Near />
 
           </div>
         </section>
@@ -110,10 +122,9 @@ const Home = () => {
           </div>
         </section>
 
-        <Footer/>
+        <Footer />
 
       </div>
-      {/*wrapper end*/}
     </div>
   );
 };
