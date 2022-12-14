@@ -12,6 +12,7 @@ import {Link, useParams} from "react-router-dom";
 import LoadingPage from "../loading/LoadingPage";
 import {followUser,unfollowUser} from "../../redux/requestAPI/userRequests";
 
+
 const ProfilePage = ()=>{
 
     const {id} = useParams()
@@ -238,6 +239,7 @@ const ProfilePage = ()=>{
 
                                     <div className="profile-author">
                                         <div className="profile-author-thumb">
+
                                             <img className="avatar" alt="author"
                                                  style={{background: "#ffffff"}}
                                                  src= {user.avatar }/>

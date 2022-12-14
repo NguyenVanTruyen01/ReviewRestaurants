@@ -5,7 +5,7 @@ import { AspectRatio } from '@mantine/core';
 import { Rating } from '@mantine/core';
 import {useSelector} from "react-redux";
 import UpdateRestaurantModal from "../../modals/update_restaurant/UpdateRestaurantModal";
-
+import { Image } from 'antd';
 const InfoRestaurant = ({user,posts})=>{
 
     const {currentUser,access_token} = useSelector(state => state.auth?.login)
@@ -35,10 +35,9 @@ const InfoRestaurant = ({user,posts})=>{
                             <div className="title"> Giới thiệu</div>
                             {
                                 currentUser && currentUser._id === user._id &&
-                                <i className="fas fa-ellipsis-h"
+                                <i className="fal fa-edit"
                                    onClick={()=>setOpenModal(!openModal)}
                                 ></i>
-
                             }
                         </div>
 
@@ -57,19 +56,28 @@ const InfoRestaurant = ({user,posts})=>{
                     </div>
 
                     <div className="image-grid">
+                        <Image.PreviewGroup>
                         {
+
                             user.infoRestaurant.images.slice(0, 5).map((image,index) =>{
                                 if(index === 0){
-                                    return  <img className="image-grid-col-2 image-grid-row-2"
-                                                 key={index}
-                                                 src={user.infoRestaurant.images[0].url}
-                                                 alt="architecture"/>
+                                    return (
+                                            <div className="image-grid-col-2 image-grid-row-2">
+                                                <Image
+                                                       key={index}
+                                                       src={user.infoRestaurant.images[0].url}
+                                                       alt="architecture"/>
+                                            </div>
+                                        )
+
+
                                 }
-                                return   <img src={user.infoRestaurant.images[index].url}
+                                return   <Image src={user.infoRestaurant.images[index].url}
                                               key={index}
                                               alt="architecture"/>
                             })
                         }
+                        </Image.PreviewGroup>
 
                     </div>
 
