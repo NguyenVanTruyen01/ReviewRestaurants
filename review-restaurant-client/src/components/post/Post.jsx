@@ -9,9 +9,12 @@ import {likePost, removePost, unLikePost} from "../../redux/requestAPI/postReque
 import Comments from "../comment/Comments";
 import InputComment from "../comment/comment-input/InputComment";
 import {Link} from "react-router-dom";
+import SliderImages from "../slider-images/SliderImages";
 
 const PRIMARY_COL_HEIGHT = 300;
 const Post = ({post})=>{
+
+    const [visible, setVisible] = useState(false);
 
     const {currentUser} = useSelector(state => state.auth?.login)
     const listPost = useSelector(state => state.post?.listPost)
@@ -126,42 +129,54 @@ const Post = ({post})=>{
                     {/*    ------------------Content----------------*/}
                     <span size="md" >
                     {post.content}
-                  </span>
+                    </span>
 
                     {/*    ------------------Image----------------*/}
+                    <SliderImages
+                        images={post.images}
+                        visible = {visible}
+                        setVisible = {setVisible}
+                    />
                     {
                         post.images.length > 0 ?
                             <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-
                                 <Image
+                                    style={{cursor: "pointer"}}
                                     height ={PRIMARY_COL_HEIGHT}
                                     radius="md"
                                     src= {post?.images[0].url}
                                     alt="Random unsplash image"
+                                    onClick= {()=>setVisible(true)}
                                 />
                                 <Grid gutter="md">
                                     <Grid.Col>
                                         <Image
+                                            style={{cursor: "pointer"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
                                             src= {post?.images[1].url}
                                             alt="Random unsplash image"
+                                            onClick= {()=>setVisible(true)}
                                         />
                                     </Grid.Col>
                                     <Grid.Col span={6}>
                                         <Image
+                                            style={{cursor: "pointer"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
                                             src= {post?.images[2].url}
                                             alt="Random unsplash image"
+                                            onClick= {()=>setVisible(true)}
                                         />
                                     </Grid.Col>
                                     <Grid.Col span={6}>
                                         <Image
+                                            style={{cursor: "pointer"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
                                             src={post?.images[3].url}
                                             alt="Random unsplash image"
+                                            onClick= {()=>setVisible(true)}
                                         />
                                     </Grid.Col>
                                 </Grid>
