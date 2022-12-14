@@ -27,7 +27,6 @@ const Category = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: false,
-    // centerPadding: '0px',
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
@@ -42,13 +41,6 @@ const Category = () => {
     searchParams.set('purposes', idCat + "");
     navigate('/search?' + searchParams);
   };
-
-  // useEffect(() => {
-  //   searchParams.set('purposes', idCat + "");
-  //   navigate('/search?' + searchParams);
-  //   console.log(searchParams.toString());
-  // }, [])
-
 
   return (
     <div>

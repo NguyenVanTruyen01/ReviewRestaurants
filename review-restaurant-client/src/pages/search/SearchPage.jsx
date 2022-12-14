@@ -6,27 +6,49 @@ import Header from '../../components/main/Header';
 import MobileMenu from '../../components/main/MobileMenu';
 import ListSearch from '../../components/restaurant/ListSearch';
 import HeaderFilter from './HeaderFilter';
+import Footer from "../../components/main/Footer";
+
+
 import './styleSearch.css';
 
 const SearchPage = () => {
-  let params = new URLSearchParams(document.location.search);
   const { Panel } = Collapse;
 
   const [expandIconPosition, setExpandIconPosition] = useState('end');
 
+
+  let params = new URLSearchParams(document.location.search);
+  const q = params.get('q');
+  const paramPurposes = params.get('purposes') === null ? [] : [params.get('purposes')];
+  const paramRegion = params.get('region');
+
+  // if (paramPurposes !== null) {
+  //   setPurposes([...purposes, paramPurposes]);
+  // }
+
+
   const [region, setRegion] = useState([]);
-  const [purposes, setPurposes] = useState([]);
+  const [purposes, setPurposes] = useState(paramPurposes);
   const [benefits, setBenefits] = useState([]);
+  const [query, setQuery] = useState('')
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(30);
 
-  useEffect(() => {
-    console.log(region);
-    console.log(purposes);
-    console.log(benefits);
-    const q = params.get('q');
-    console.log(q);
-  }, [region, purposes, benefits]);
+
+  console.log(purposes)
+  // if (q === null) {
+  //   setQuery('')
+  // }
+  // else {
+  //   setQuery(q)
+  // }
+
+  // if (paramRegion === null) {
+  //   setRegion([])
+  // }
+  // else {
+  //   setRegion([...region, paramRegion]);
+  // }
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
@@ -591,6 +613,8 @@ const SearchPage = () => {
             </div>
           </div>
         </section>
+
+        <Footer />
       </div>
     </div>
   );
