@@ -53,7 +53,6 @@ const ListSearch = (props) => {
     };
     getListRestaurantByField();
   }, [props]);
-
   return (
     <div>
       {loading ? (<div className='loading-container'><div class="loadingio-spinner-reload-0otlv348doe"><div class="ldio-84ztw36yse6">
@@ -70,8 +69,8 @@ const ListSearch = (props) => {
                   </div>
                   <div class="product-info">
                     <h3>
-                      <a href="restaurant-details.html" title="">
-                        Vegetarian Fresh life
+                      <a href="/" title="">
+                        {listRestaurant[idx]?.userName}
                       </a>
                     </h3>
                     <ul class="rating">
@@ -92,8 +91,7 @@ const ListSearch = (props) => {
                       </li>
                     </ul>
                     <p>
-                      Salads, soups, sneaks, burgers, drinks, seafood, grill, fish, vegetarian menu, wine, hot meals,
-                      steaks...
+                      {listRestaurant[idx]?.address}
                     </p>
                     <ul class="btm">
                       <li>

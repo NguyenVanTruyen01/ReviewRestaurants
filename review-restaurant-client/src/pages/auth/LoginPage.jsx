@@ -13,9 +13,9 @@ import Header from "../../components/main/Header";
 import MobileMenu from "../../components/main/MobileMenu";
 import Footer from "../../components/main/Footer";
 
-import {Link,useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {login} from "../../redux/requestAPI/authRequests"
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/requestAPI/authRequests"
 
 const LoginPage = () => {
 	const [data, setData] = useState({
@@ -32,39 +32,22 @@ const LoginPage = () => {
 
 	const handleSummit = async (e) => {
 		e.preventDefault();
-		await login(data,dispatch,navigate)
+		await login(data, dispatch, navigate)
 	};
 
 	return (
 		<div>
 			<Header />
 			<MobileMenu />
-			<section className="pager-section text-center">
-				<div className="fixed-bg bg4"></div>
-				<div className="container">
-					<div className="pager-head">
-						<h2>Sign In</h2>
-						<ul>
-							<li>
-								<a href="#" title="">
-									Home
-								</a>
-							</li>
-							<li>
-								<span>Sign in</span>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</section>
+
 			<section className="sec-block">
 				<div className="container">
 					<div className="row justify-content-center">
 						<div className="col-lg-5">
 							<div className="delitaste-form text-center">
 								<div className="lg-text">
-									<h3>Log In With</h3>
-									<ul className="social">
+									<h3>Log In</h3>
+									{/* <ul className="social">
 										<li>
 											<a className="facebook" href="#" title="">
 												<i className="fab fa-facebook-f"></i>
@@ -85,10 +68,7 @@ const LoginPage = () => {
 												<i className="fab fa-google"></i>
 											</a>
 										</li>
-									</ul>
-								</div>
-								<div className="or">
-									<span>or</span>
+									</ul> */}
 								</div>
 								<form onSubmit={handleSummit}>
 									<div className="form-group">
@@ -132,7 +112,6 @@ const LoginPage = () => {
 					</div>
 				</div>
 			</section>
-			<Footer />
 		</div>
 	);
 };
