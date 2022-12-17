@@ -128,6 +128,7 @@ const PostReviews = ({openModal,setOpenModal})=>{
                                               setKey("");
                                               setVisible(false)
                                               setSearchUsers([])
+                                              setRestaurant(null)
                                           }}
                                           position="top-end" withArrow>
                                      <div>

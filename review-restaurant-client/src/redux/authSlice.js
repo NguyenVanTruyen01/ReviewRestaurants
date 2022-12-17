@@ -23,6 +23,12 @@ const authSlice = createSlice({
         },
         updateCurrentUser: (state,action) =>{
             state.login.currentUser = action.payload
+        },
+        updateAvatar:(state,action) =>{
+            state.login.currentUser = {...state.login.currentUser, avatar: action.payload}
+        },
+        updateCoverPicture:(state,action) =>{
+            state.login.currentUser = {...state.login.currentUser, coverPicture: action.payload}
         }
     }
 })
@@ -31,7 +37,9 @@ export  const {
     loginSuccess,
     loginFail,
     logoutSuccess,
-    updateCurrentUser
+    updateCurrentUser,
+    updateAvatar,
+    updateCoverPicture
 
 } = authSlice.actions
 
