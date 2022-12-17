@@ -86,7 +86,6 @@ export const followUser = async (user,currentUser,dispatch,access_token) =>{
     }
 }
 
-
 export const unfollowUser = async (user,currentUser,dispatch,access_token) =>{
 
     try{
