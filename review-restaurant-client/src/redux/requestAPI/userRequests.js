@@ -1,7 +1,7 @@
 import {getDataAPI,patchDataAPI}from "../../utils/fetchData"
 import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import {getUserSuccess,getUserFail,updateUser} from "../userSlice"
-import {updateCurrentUser} from "../authSlice";
+import {updateAvatar, updateCoverPicture, updateCurrentUser} from "../authSlice";
 import {imageUpload} from "../../utils/imageUpload";
 import {updatePost} from "../postSlice";
 
@@ -38,10 +38,13 @@ export const changeCoverPicture = async (currentUser, user, images, dispatch, ac
 
         const newUser = {...user, coverPicture: media[0].url}
         const res = await patchDataAPI(`users/${currentUser._id}`,{
-            "_id": currentUser._id,
+            "currentUserId": currentUser._id,
             "coverPicture": newUser.coverPicture
         })
-        dispatch(updateUser(newUser))
+        // console.log(newUser)
+
+        dispatch(updateCoverPicture(res.data.user.coverPicture))
+        // dispatch(updateUser(newUser))
         dispatch(notifySuccess())
 
     }catch (err){
@@ -59,10 +62,12 @@ export const changeAvatar = async (currentUser, user, imagesAvatar, dispatch, ac
 
         const newUser = {...user, avatar: media[0].url}
         const res = await patchDataAPI(`users/${currentUser._id}`,{
-            "_id": currentUser._id,
+            "currentUserId": currentUser._id,
             "avatar": newUser.avatar
         })
-        dispatch(updateUser(newUser))
+
+        dispatch(updateAvatar(res.data.user.avatar))
+        // dispatch(updateUser(newUser))
         dispatch(notifySuccess())
 
     }catch (err){

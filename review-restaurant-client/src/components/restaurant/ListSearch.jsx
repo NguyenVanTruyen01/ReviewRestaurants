@@ -112,7 +112,7 @@ const ListSearch = (props) => {
                       </li>
                     </ul>
                     <a href="restaurant-details.html" title="" class="view-menu">
-                      View Menu <i class="fa fa-long-arrow-alt-right"></i>
+                      Xem chi tiết <i class="fa fa-long-arrow-alt-right"></i>
                     </a>
                     <div class="clearfix"></div>
                   </div>
