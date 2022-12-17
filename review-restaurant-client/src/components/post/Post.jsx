@@ -215,14 +215,35 @@ const Post = ({post})=>{
 
                         <div className= "user-liked">
                             <Avatar.Group spacing="md">
-                                <Avatar size="md"  src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg" radius="xl" />
-                                <Avatar size="md"  src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg" radius="xl" />
-                                <Avatar size="md"  src="https://res.cloudinary.com/dehtpa6ba/image/upload/v1668596070/review_restaurants/album1_spet5e.jpg" radius="xl" />
-                                <Avatar size="md" radius="xl">+5</Avatar>
-                            </Avatar.Group>
-                            <span>Bạn và 5 người khác đã thích</span>
-                        </div>
+                                {
+                                    post.likes && post.likes.length > 3 ?
+                                        post.likes.slice(0, 3).map((like,index) => {
+                                            return(  <Avatar size="md"  src={like.avatar} radius="xl" />)
+                                        })
+                                        :
+                                        post.likes.map((like,index) => {
+                                            return(  <Avatar size="md"  src={like.avatar} radius="xl" />)
+                                        })
+                                }
 
+                                {
+                                    post.likes.length > 3 &&
+                                    <Avatar size="md" radius="xl" >+{post.likes.length - 3} </Avatar>
+                                }
+
+                            </Avatar.Group>
+                            {
+                                post.likes.length > 0 ?
+                                    post.likes.find(like => like._id === currentUser._id) ?
+                                        post.likes.length > 1 ?
+                                            <span>Bạn và {post.likes.length - 1} người khác đã thích</span>
+                                            :
+                                            <span>Bạn đã thích</span>
+                                        :
+                                        <span>{post.likes.length} người đã thích</span>
+                                    : ""
+                            }
+                        </div>
 
                     </div>
 
