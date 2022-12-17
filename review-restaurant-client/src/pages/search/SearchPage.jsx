@@ -34,7 +34,6 @@ const SearchPage = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(30);
 
-
   console.log(purposes)
   // if (q === null) {
   //   setQuery('')

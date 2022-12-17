@@ -23,8 +23,12 @@ const ListSearch = (props) => {
     setPurposesApi(props.purposes.map(Number))
     setBenefitsApi(props.benefits.map(Number))
   }, [props.region, props.purposes, props.benefits]);
-
-
+  // setRegionApi(props.region)
+  console.log(props.purposes)
+  // setRegionApi(props.region)
+  // setPurposesApi(props.purposes.map(Number))
+  // setBenefitsApi(props.benefits.map(Number))
+  console.log('aaaba ' + purposesApi)
   const onChangePage = (page) => {
     window.scrollTo({
       top: 0,
@@ -37,10 +41,11 @@ const ListSearch = (props) => {
     const getListRestaurantByField = async () => {
       try {
         setLoading(true)
+        console.log("test1 " + purposesApi)
         const res = await axios.post('http://localhost:5000/users/searchManyFields', {
           key: '',
           regions: regionApi,
-          purposes: purposesApi,
+          purposes: props.purposes.map(Number),
           benefits: benefitsApi,
           minPrice: props.minPrice * 10000,
           maxPrice: props.maxPrice * 10000,
@@ -53,6 +58,7 @@ const ListSearch = (props) => {
     };
     getListRestaurantByField();
   }, [props]);
+  console.log(listRestaurant)
   return (
     <div>
       {loading ? (<div className='loading-container'><div class="loadingio-spinner-reload-0otlv348doe"><div class="ldio-84ztw36yse6">
