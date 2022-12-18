@@ -20,14 +20,15 @@ const SearchPage = () => {
   let params = new URLSearchParams(document.location.search);
   const q = params.get('q');
   const paramPurposes = params.get('purposes') === null ? [] : [params.get('purposes')];
-  const paramRegion = params.get('region');
+  const paramRegion = params.get('region') === null ? [] : [params.get('region')];
+  // const paramRegion = params.get('region');
 
   // if (paramPurposes !== null) {
   //   setPurposes([...purposes, paramPurposes]);
   // }
 
 
-  const [region, setRegion] = useState([]);
+  const [region, setRegion] = useState(paramRegion);
   const [purposes, setPurposes] = useState(paramPurposes);
   const [benefits, setBenefits] = useState([]);
   const [query, setQuery] = useState('')

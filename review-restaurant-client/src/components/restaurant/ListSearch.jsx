@@ -23,12 +23,7 @@ const ListSearch = (props) => {
     setPurposesApi(props.purposes.map(Number))
     setBenefitsApi(props.benefits.map(Number))
   }, [props.region, props.purposes, props.benefits]);
-  // setRegionApi(props.region)
-  console.log(props.purposes)
-  // setRegionApi(props.region)
-  // setPurposesApi(props.purposes.map(Number))
-  // setBenefitsApi(props.benefits.map(Number))
-  console.log('aaaba ' + purposesApi)
+
   const onChangePage = (page) => {
     window.scrollTo({
       top: 0,
@@ -44,7 +39,7 @@ const ListSearch = (props) => {
         console.log("test1 " + purposesApi)
         const res = await axios.post('http://localhost:5000/users/searchManyFields', {
           key: '',
-          regions: regionApi,
+          regions: props.region,
           purposes: props.purposes.map(Number),
           benefits: benefitsApi,
           minPrice: props.minPrice * 10000,
