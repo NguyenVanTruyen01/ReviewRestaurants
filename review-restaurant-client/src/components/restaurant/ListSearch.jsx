@@ -2,6 +2,8 @@ import { useState } from 'react';
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import useAxios from 'axios-hooks';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 import { Pagination } from 'antd';
 import './listSearchPage.css';
@@ -13,6 +15,9 @@ const ListSearch = (props) => {
   const [purposesApi, setPurposesApi] = useState([])
   const [benefitsApi, setBenefitsApi] = useState([])
   const [loading, setLoading] = useState(true)
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     window.scrollTo({
@@ -70,9 +75,9 @@ const ListSearch = (props) => {
                   </div>
                   <div class="product-info">
                     <h3>
-                      <a href="/" title="">
+                      <Link to={"/profile/" + listRestaurant[idx]?._id} title="">
                         {listRestaurant[idx]?.userName}
-                      </a>
+                      </Link>
                     </h3>
                     <ul class="rating">
                       <li>
