@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Image, Grid, SimpleGrid, Group,Avatar,Text, useMantineTheme } from '@mantine/core';
+import {Image, Grid, SimpleGrid, Group,Avatar,Text,Col, useMantineTheme } from '@mantine/core';
 import './Post.scss'
 import { Rating } from '@mantine/core';
 import moment from "moment";
@@ -138,7 +138,7 @@ const Post = ({post})=>{
                         setVisible = {setVisible}
                     />
                     {
-                        post.images.length > 0 ?
+                        post.images.length > 4 ?
                             <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
                                 <Image
                                     style={{cursor: "pointer"}}
@@ -154,7 +154,7 @@ const Post = ({post})=>{
                                             style={{cursor: "pointer"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
-                                            src= {post?.images[1].url}
+                                            src= {post?.images[1]?.url}
                                             alt="Random unsplash image"
                                             onClick= {()=>setVisible(true)}
                                         />
@@ -164,7 +164,7 @@ const Post = ({post})=>{
                                             style={{cursor: "pointer"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
-                                            src= {post?.images[2].url}
+                                            src= {post?.images[2]?.url}
                                             alt="Random unsplash image"
                                             onClick= {()=>setVisible(true)}
                                         />
@@ -174,14 +174,42 @@ const Post = ({post})=>{
                                             style={{cursor: "pointer"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
-                                            src={post?.images[3].url}
+                                            src={post?.images[3]?.url}
                                             alt="Random unsplash image"
                                             onClick= {()=>setVisible(true)}
                                         />
                                     </Grid.Col>
                                 </Grid>
                             </SimpleGrid>
-                            : ""
+                            :
+                            <Grid>
+                                {
+                                    post.images.map((image)=>{
+                                        return (
+                                            <Col span={4}>
+                                                <Image
+                                                    style={{cursor: "pointer"}}
+                                                    height = "300px"
+                                                    radius="md"
+                                                    src= {image?.url}
+                                                    alt="Random unsplash image"
+                                                    onClick= {()=>setVisible(true)}
+                                                />
+                                            </Col>
+                                        )
+                                    })
+                                }
+                            </Grid>
+                            // post.images.map(image => {
+                            //     return <Image
+                            //         style={{cursor: "pointer"}}
+                            //         height ={PRIMARY_COL_HEIGHT}
+                            //         radius="md"
+                            //         src= {image.url}
+                            //         alt="Random unsplash image"
+                            //         onClick= {()=>setVisible(true)}
+                            //     />
+                            // })
                     }
 
 
