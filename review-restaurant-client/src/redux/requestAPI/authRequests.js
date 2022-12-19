@@ -66,8 +66,11 @@ export const logout = async (token,id,dispatch,navigate) =>{
     }
 }
 
-export const updateInfoRestaurant = async (data,currentUser,images,dispatch) => {
+export const updateInfoRestaurant = async (data,currentUser,images,menu,dispatch) => {
     dispatch(notifyLoading())
+    let userUpdate = {...data,
+        currentUserId: currentUser._id
+    };
 
     try{
 
@@ -77,19 +80,39 @@ export const updateInfoRestaurant = async (data,currentUser,images,dispatch) => 
             media = await imageUpload(images);
         }
 
-        let userUpdate = {};
-
-        if(images.length > 0){
-            userUpdate = {...data,
-                currentUserId: currentUser._id,
-                infoRestaurant :{ ...data.infoRestaurant, images: media}}
-        }else{
-            userUpdate = {...data,
-                currentUserId: currentUser._id,
-                infoRestaurant :{ ...data.infoRestaurant, images: currentUser.infoRestaurant.images}}
+        //save images on cloudinary
+        let newMenu = []
+        if(menu.length > 0){
+            newMenu = await imageUpload(menu);
         }
 
-        console.log(userUpdate)
+        if(menu.length > 0){
+            userUpdate = {...userUpdate,
+                infoRestaurant :{ ...userUpdate.infoRestaurant, menu: newMenu}}
+        }else{
+            userUpdate = {...userUpdate,
+                infoRestaurant :{ ...userUpdate.infoRestaurant, menu: currentUser.infoRestaurant.menu}}
+        }
+
+        if(images.length > 0){
+            userUpdate = {...userUpdate,
+                infoRestaurant :{ ...userUpdate.infoRestaurant, images: media}}
+        }else{
+            userUpdate = {...userUpdate,
+                infoRestaurant :{ ...userUpdate.infoRestaurant, images: currentUser.infoRestaurant.images}}
+        }
+
+        // if(images.length > 0){
+        //     userUpdate = {...data,
+        //         currentUserId: currentUser._id,
+        //         infoRestaurant :{ ...data.infoRestaurant, images: media}}
+        // }else{
+        //     userUpdate = {...data,
+        //         currentUserId: currentUser._id,
+        //         infoRestaurant :{ ...data.infoRestaurant, images: currentUser.infoRestaurant.images}}
+        // }
+
+        console.log({userUpdate})
         const res = await patchDataAPI(`users/${currentUser._id}`, userUpdate
         );
         dispatch(updateCurrentUser(res.data.user))

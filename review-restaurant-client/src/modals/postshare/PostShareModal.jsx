@@ -52,7 +52,7 @@ const PostShareModal = ({user, listPost})=>{
     }
 
     const handleSharePost = async ()=>{
-       const media =  await createPost(listPost, currentUser._id,user._id, rating, content,images,dispatch, access_token);
+       const media =  await createPost(currentUser._id,user._id, rating, content,images,dispatch, access_token);
        setOpenModal(!openModal)
     }
 

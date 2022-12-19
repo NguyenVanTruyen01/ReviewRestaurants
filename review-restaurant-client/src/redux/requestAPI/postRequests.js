@@ -11,8 +11,7 @@ import {notifyLoading,notifySuccess,notifyError} from "../notifySlice"
 import { toast } from "react-toastify";
 import {imageUpload} from "../../utils/imageUpload"
 
-export const createPost = async (listPost,currentID,restaurantID, rating,content,images,dispatch, token)=>{
-
+export const createPost = async (currentID,restaurantID, rating,content,images,dispatch, token)=>{
     try {
         dispatch(notifyLoading())
         let media = []
