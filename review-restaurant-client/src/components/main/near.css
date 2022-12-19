@@ -8,6 +8,7 @@
   height: 400px;
   /* position: relative; */
   max-width: 260px;
+  cursor: pointer;
 }
 
 .slick-slide {

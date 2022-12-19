@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import useAxios from 'axios-hooks';
 import { Link, useNavigate } from 'react-router-dom';
-
+import {Rating} from '@mantine/core';
 
 import { Pagination } from 'antd';
 import './listSearchPage.css';
@@ -73,28 +73,38 @@ const ListSearch = (props) => {
                     <img src={listRestaurant[idx]?.infoRestaurant?.images[0]?.url} alt="" />
                   </div>
                   <div class="product-info">
-                    <h3>
-                      <Link to={"/profile/" + listRestaurant[idx]?._id} title="">
+                    <h3  style={{
+                      display:"flex",
+                      justifyContent:"space-between",
+                      alignItems: "center"
+                    }}>
+                      <Link target={"_blank"} to={"/profile/" + listRestaurant[idx]?._id} title="">
                         {listRestaurant[idx]?.userName}
                       </Link>
+                      <Rating className= "rating"
+                                style={{display:"flex"}}
+                                readOnly
+                                defaultValue={ Math.round(listRestaurant[idx]?.rating.reduce((a, b) => a + b, 0) / listRestaurant[idx]?.rating.length )} />
+
                     </h3>
-                    <ul class="rating">
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                    </ul>
+
+                    {/*<ul class="rating">*/}
+                    {/*  <li>*/}
+                    {/*    <i class="fa fa-star"></i>*/}
+                    {/*  </li>*/}
+                    {/*  <li>*/}
+                    {/*    <i class="fa fa-star"></i>*/}
+                    {/*  </li>*/}
+                    {/*  <li>*/}
+                    {/*    <i class="fa fa-star"></i>*/}
+                    {/*  </li>*/}
+                    {/*  <li>*/}
+                    {/*    <i class="fa fa-star"></i>*/}
+                    {/*  </li>*/}
+                    {/*  <li>*/}
+                    {/*    <i class="fa fa-star"></i>*/}
+                    {/*  </li>*/}
+                    {/*</ul>*/}
                     <p>
                       {listRestaurant[idx]?.address}
                     </p>
@@ -110,9 +120,9 @@ const ListSearch = (props) => {
                         </span>
                       </li>
                     </ul>
-                    <a href="restaurant-details.html" title="" class="view-menu">
+                    <Link target={"_blank"} to={"/profile/" + listRestaurant[idx]?._id} title="" class="view-menu">
                       Xem chi tiết <i class="fa fa-long-arrow-alt-right"></i>
-                    </a>
+                    </Link>
                     <div class="clearfix"></div>
                   </div>
                 </div>

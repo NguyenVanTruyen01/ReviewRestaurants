@@ -176,7 +176,7 @@ const SearchPage = () => {
                                 Quận 5
                                 <input
                                   type="checkbox"
-                                  value={'Quận 4'}
+                                  value={'Quận 5'}
                                   onChange={(e) => handleChangeRegion(e)}
                                   defaultChecked={region.includes('Quận 5') ? true : false}
                                 />

@@ -6,6 +6,7 @@ import Header from "../../components/main/Header";
 import '../explore/ExplorePage.scss'
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import empty from '../../assets/images/empty.gif'
 
 const TimelinePage = () =>{
 
@@ -107,7 +108,20 @@ const TimelinePage = () =>{
                         </div>
                     </div>
                     :
-                    <div>Không có bài đăng</div>
+                    <div className="empty-data"
+                    style={{width:"100%",
+                        background: "#ffffff",
+                        display:"flex",
+                        flexDirection: "column",
+                        justifyContent:"center",
+                        alignItems:"center",
+                        padding: "2rem"
+                    }}>
+                        <span className="title">Chưa có bài đăng nào !</span>
+                        <img
+                            style={{width:"30%", margin: "auto"}}
+                            src={empty} alt=""/>
+                    </div>
             }
 
 
