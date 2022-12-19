@@ -21,21 +21,20 @@ export const UserSchema = new mongoose.Schema({
 
     followers: [{ type: ObjectId, ref: "User" }],
     following: [{ type: ObjectId, ref: "User" }],
+        rating: [],
 
     infoRestaurant: {
-        nameRestaurant: { type: String },
-
+        regions: String,
         characteristics: { type: Array, default: [] },
         menu: { type: Array, default: [] },
         minPrice: { type: Number, default: null },
         maxPrice: { type: Number, default: null },
-        openTime: Date,
-        closeTime: Date,
+        openTime: String,
+        closeTime: String,
         utilities: { type: Array, default: [] }, //tiện ích
-        facebook: { type: String, default: null },
-        instagram: { type: String, default: null },
+        facebook: { type: String, default: "Chưa cập nhật" },
+        instagram: { type: String, default: "Chưa cập nhật" },
         introduce: String,
-        rating: { type: Number, default: 0 },
         images: { type: Array, default: [] }
     }
 

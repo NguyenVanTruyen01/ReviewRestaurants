@@ -1,0 +1,75 @@
+.ExplorePage{
+
+  align-items: center;
+
+  .PageContent{
+    width: 90%;
+    display: flex;
+    margin: auto;
+    gap: 1rem;
+    padding: 1rem;
+
+    .ExploreReview{
+      width: 66.66% ;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .ExploreRestaurant{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      background: #ffffff;
+      border-radius: 8px;
+      align-items: center;
+      padding: 1rem;
+
+      .list-restaurants{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .restaurant-card{
+          display: flex;
+          gap: 1rem;
+          cursor: pointer;
+          align-items: center;
+          padding: 6px;
+
+          &:hover{
+            border-right: 2px solid #d8ab37;
+            transform: scale(1.01);
+            box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+          }
+          .image{
+            width: 70px !important;
+            height: 70px;
+            >img{
+              width: 70px !important;
+              height: 70px;
+              border-radius: 8px;
+              object-fit: cover;
+            }
+          }
+
+          .name-restaurant{
+            font-weight: 500;
+            &:hover {
+              color:  #ee8743;
+            }
+          }
+          .address-restaurant{
+            font-size: 14px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

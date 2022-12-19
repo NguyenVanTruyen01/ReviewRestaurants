@@ -2,6 +2,7 @@ import {Controller, Get, Post, Body, Patch, Param, Delete, Render} from "@nestjs
 import { PostsService } from "../services/posts.service";
 import { CreatePostDto } from "../dto/create-post.dto";
 import { UpdatePostDto } from "../dto/update-post.dto";
+import mongoose from "mongoose";
 
 @Controller("posts")
 export class PostsController {
@@ -9,10 +10,13 @@ export class PostsController {
   }
 
   @Get()
-  @Render("post")
   findAll() {
-    // return this.postsService.findAll();
-    return { message : "ok"}
+    return this.postsService.findAll();
+  }
+
+  @Post("timeline")
+  getTimeLinePosts(@Body() currentUser){
+    return this.postsService.getTimeLinePosts(currentUser);
   }
 
   @Post()
@@ -23,16 +27,31 @@ export class PostsController {
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.postsService.findOne(+id);
+    return this.postsService.findOne(id);
   }
 
   @Patch(":id")
   update(@Param("id") id: string, @Body() updatePostDto: UpdatePostDto) {
-    return this.postsService.update(+id, updatePostDto);
+    return this.postsService.update(id, updatePostDto);
   }
 
   @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.postsService.remove(+id);
+  remove(@Param("id") id: string, @Body("currentUserId") currentUserId: string) {
+    return this.postsService.remove(id,currentUserId);
+  }
+
+  @Patch(":id/like")
+  likePost(@Param("id") id: string, @Body("currentUserId") currentUserId: string){
+    return this.postsService.likePost(id,currentUserId)
+  }
+
+  @Patch(":id/unlike")
+  unLikePost(@Param("id") id: string,  @Body("currentUserId") currentUserId: string){
+    return this.postsService.unLikePost(id,currentUserId)
+  }
+
+  @Delete()
+  deleteAllPost() {
+    return this.postsService.deleteAllPost();
   }
 }

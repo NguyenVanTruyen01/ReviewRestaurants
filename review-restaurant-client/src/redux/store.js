@@ -16,6 +16,8 @@ import storage from 'redux-persist/lib/storage'
 
 import authReducers from './authSlice'
 import notifyReducers from "./notifySlice"
+import postReducers from "./postSlice"
+import userReducers from "./userSlice";
 
 const persistConfig = {
     key: 'root',
@@ -23,10 +25,29 @@ const persistConfig = {
     storage,
 }
 
-const rootReducer = combineReducers({
+// const rootReducer = combineReducers({
+//     auth: authReducers,
+//     notify: notifyReducers,
+//     post: postReducers,
+//     user: userReducers,
+// })
+
+const combinedReducer = combineReducers({
     auth: authReducers,
-    notify: notifyReducers
-})
+    notify: notifyReducers,
+    post: postReducers,
+    user: userReducers,
+});
+
+const rootReducer = (state, action) => {
+    if (action.type === 'AUTH/logoutSuccess') {
+        state.auth = undefined;
+        state.user = undefined;
+        state.notify = undefined;
+    }
+    return  combinedReducer(state, action);
+};
+
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

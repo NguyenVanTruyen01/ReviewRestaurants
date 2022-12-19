@@ -44,7 +44,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
+npm run start:dev --watch
 ## Test
 
 ```bash
