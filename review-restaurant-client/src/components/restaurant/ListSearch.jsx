@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import useAxios from 'axios-hooks';
 import { Link, useNavigate } from 'react-router-dom';
-import {Rating} from '@mantine/core';
+import { Rating } from '@mantine/core';
 
 import { Pagination } from 'antd';
 import './listSearchPage.css';
@@ -46,7 +46,7 @@ const ListSearch = (props) => {
           key: props.q,
           regions: props.region,
           purposes: props.purposes.map(Number),
-          benefits: props.benefits,
+          benefits: props.benefits.map(Number),
           minPrice: props.minPrice * 10000,
           maxPrice: props.maxPrice * 10000,
         });
@@ -73,18 +73,18 @@ const ListSearch = (props) => {
                     <img src={listRestaurant[idx]?.infoRestaurant?.images[0]?.url} alt="" />
                   </div>
                   <div class="product-info">
-                    <h3  style={{
-                      display:"flex",
-                      justifyContent:"space-between",
+                    <h3 style={{
+                      display: "flex",
+                      justifyContent: "space-between",
                       alignItems: "center"
                     }}>
                       <Link target={"_blank"} to={"/profile/" + listRestaurant[idx]?._id} title="">
                         {listRestaurant[idx]?.userName}
                       </Link>
-                      <Rating className= "rating"
-                                style={{display:"flex"}}
-                                readOnly
-                                defaultValue={ Math.round(listRestaurant[idx]?.rating.reduce((a, b) => a + b, 0) / listRestaurant[idx]?.rating.length )} />
+                      <Rating className="rating"
+                        style={{ display: "flex" }}
+                        readOnly
+                        defaultValue={Math.round(listRestaurant[idx]?.rating.reduce((a, b) => a + b, 0) / listRestaurant[idx]?.rating.length)} />
 
                     </h3>
 

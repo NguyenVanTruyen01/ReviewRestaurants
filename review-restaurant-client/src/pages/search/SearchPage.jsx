@@ -83,7 +83,6 @@ const SearchPage = () => {
   const handleSearch = (e) => {
     e.preventDefault()
     setQuery(inputQuery.current.value)
-    console.log('abcd' + inputQuery.current.value)
   }
   return (
     <div>
