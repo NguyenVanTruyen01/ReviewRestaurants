@@ -119,12 +119,12 @@ const Header = () => {
 					</div>
 
 				</div>
-				<div className="search-bar">
+				{/* <div className="search-bar">
 					<div className="container">
 						<form></form>
 						<input type="text" name="search" placeholder="Search" />
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</header>
 	);

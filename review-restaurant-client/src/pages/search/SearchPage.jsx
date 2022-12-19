@@ -10,6 +10,7 @@ import Footer from "../../components/main/Footer";
 
 
 import './styleSearch.css';
+import { useRef } from 'react';
 
 const SearchPage = () => {
   const { Panel } = Collapse;
@@ -31,9 +32,12 @@ const SearchPage = () => {
   const [region, setRegion] = useState(paramRegion);
   const [purposes, setPurposes] = useState(paramPurposes);
   const [benefits, setBenefits] = useState([]);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(q === null ? '' : q)
+  const [textQuery, setTextQuery] = useState('')
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(30);
+
+  const inputQuery = useRef('')
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
@@ -75,6 +79,12 @@ const SearchPage = () => {
     setMaxPrice(value[1]);
   };
 
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    setQuery(inputQuery.current.value)
+    console.log('abcd' + inputQuery.current.value)
+  }
   return (
     <div>
       <div className="wrapper">
@@ -528,17 +538,17 @@ const SearchPage = () => {
               </div>
               <div class="col-lg-9">
                 <div class="search-prod">
-                  <form>
+                  <form action='' onSubmit={handleSearch}>
                     <div class="form-group">
-                      <input type="text" name="search" placeholder="Search" class="form-control half-radius" />
-                      <button type="submit" class="btn-default half-radius">
+                      <input type="text" ref={inputQuery} placeholder="Search" class="form-control half-radius" />
+                      <button class="btn-default half-radius">
                         Search Restaurant
                       </button>
                     </div>
                   </form>
                 </div>
                 <ListSearch
-                  q={q}
+                  q={query}
                   region={region}
                   purposes={purposes}
                   benefits={benefits}
