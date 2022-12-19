@@ -43,10 +43,10 @@ const ListSearch = (props) => {
         setLoading(true)
         console.log("test1 " + purposesApi)
         const res = await axios.post('http://localhost:5000/users/searchManyFields', {
-          key: '',
+          key: props.q,
           regions: props.region,
           purposes: props.purposes.map(Number),
-          benefits: benefitsApi,
+          benefits: props.benefits,
           minPrice: props.minPrice * 10000,
           maxPrice: props.maxPrice * 10000,
         });
@@ -58,7 +58,6 @@ const ListSearch = (props) => {
     };
     getListRestaurantByField();
   }, [props]);
-  console.log(listRestaurant)
   return (
     <div>
       {loading ? (<div className='loading-container'><div class="loadingio-spinner-reload-0otlv348doe"><div class="ldio-84ztw36yse6">

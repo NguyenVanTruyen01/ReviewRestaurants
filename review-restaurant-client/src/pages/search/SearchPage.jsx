@@ -35,21 +35,6 @@ const SearchPage = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(30);
 
-  console.log(purposes)
-  // if (q === null) {
-  //   setQuery('')
-  // }
-  // else {
-  //   setQuery(q)
-  // }
-
-  // if (paramRegion === null) {
-  //   setRegion([])
-  // }
-  // else {
-  //   setRegion([...region, paramRegion]);
-  // }
-
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
   }
@@ -88,7 +73,6 @@ const SearchPage = () => {
   const onChangePrice = (value) => {
     setMinPrice(value[0]);
     setMaxPrice(value[1]);
-    console.log(value);
   };
 
   return (
@@ -527,56 +511,7 @@ const SearchPage = () => {
                         </Panel>
                       </Collapse>
                     </div>
-                    <div class="widget widget-tags">
-                      <h3 class="widget-title">Tags</h3>
-                      <ul>
-                        <li>
-                          <a href="#" title="">
-                            Fish
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Grill
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Beer
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Chicken
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Beef
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Hot
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Vegetables
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Chilly
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Fruits
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+
                     {/* <div class="widget widget-price-filter">
                       <h3 class="widget-title">Rating</h3>
                       <div id="slider-range"></div>
@@ -603,6 +538,7 @@ const SearchPage = () => {
                   </form>
                 </div>
                 <ListSearch
+                  q={q}
                   region={region}
                   purposes={purposes}
                   benefits={benefits}
