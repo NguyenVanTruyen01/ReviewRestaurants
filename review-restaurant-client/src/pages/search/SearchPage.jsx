@@ -291,7 +291,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={1}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(1) ? true : false}
+                                  defaultChecked={purposes.includes('1') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -303,7 +303,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={2}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(2) ? true : false}
+                                  defaultChecked={purposes.includes('2') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -315,7 +315,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={3}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(3) ? true : false}
+                                  defaultChecked={purposes.includes('3') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -327,7 +327,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={4}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(4) ? true : false}
+                                  defaultChecked={purposes.includes('4') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -337,7 +337,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={5}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(5) ? true : false}
+                                  defaultChecked={purposes.includes('5') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
