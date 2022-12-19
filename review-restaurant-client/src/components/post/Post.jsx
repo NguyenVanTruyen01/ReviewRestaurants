@@ -262,6 +262,7 @@ const Post = ({post})=>{
                             </Avatar.Group>
                             {
                                 post.likes.length > 0 ?
+                                    currentUser &&
                                     post.likes.find(like => like._id === currentUser._id) ?
                                         post.likes.length > 1 ?
                                             <span>Bạn và {post.likes.length - 1} người khác đã thích</span>
