@@ -52,6 +52,7 @@ const ListSearch = (props) => {
         });
         setListRestaurant(res.data.users.filter(item => item.role === "RESTAURANT"));
         setLoading(false)
+        console.log(listRestaurant)
       } catch (err) {
         console.log(err);
       }
@@ -84,7 +85,8 @@ const ListSearch = (props) => {
                       <Rating className="rating"
                         style={{ display: "flex" }}
                         readOnly
-                        defaultValue={Math.round(listRestaurant[idx]?.rating.reduce((a, b) => a + b, 0) / listRestaurant[idx]?.rating.length)} />
+                        defaultValue= {Number(listRestaurant[idx]?.rateAvg)}
+                      />
 
                     </h3>
 

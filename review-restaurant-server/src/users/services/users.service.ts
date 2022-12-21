@@ -78,7 +78,6 @@ export class UsersService {
   }
 
   async searchManyFields(@Body() search) {
-    console.log('bbbb', search);
     try {
       const { key, regions, benefits, minPrice, maxPrice, purposes } = search;
 
@@ -116,7 +115,14 @@ export class UsersService {
         query['infoRestaurant.maxPrice'] = { $lte: maxPrice };
       }
 
-      const users = await this.userModel.find(query);
+      console.log(query)
+
+      const users = await this.userModel.aggregate([
+          {$match: query},
+          { "$addFields": { "rateAvg": { "$avg": "$rating" } }}, { "$sort": { "rateAvg": -1 } } ]
+      );
+
+      // const users = await this.userModel.find(query);
 
       return {
         amount: users.length,

@@ -141,7 +141,7 @@ const Post = ({post})=>{
                         post.images.length > 4 ?
                             <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
                                 <Image
-                                    style={{cursor: "pointer"}}
+                                    style={{cursor: "default"}}
                                     height ={PRIMARY_COL_HEIGHT}
                                     radius="md"
                                     src= {post?.images[0].url}
@@ -151,7 +151,7 @@ const Post = ({post})=>{
                                 <Grid gutter="md">
                                     <Grid.Col>
                                         <Image
-                                            style={{cursor: "pointer"}}
+                                            style={{cursor: "default"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
                                             src= {post?.images[1]?.url}
@@ -161,7 +161,7 @@ const Post = ({post})=>{
                                     </Grid.Col>
                                     <Grid.Col span={6}>
                                         <Image
-                                            style={{cursor: "pointer"}}
+                                            style={{cursor: "default"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
                                             src= {post?.images[2]?.url}
@@ -171,7 +171,7 @@ const Post = ({post})=>{
                                     </Grid.Col>
                                     <Grid.Col span={6}>
                                         <Image
-                                            style={{cursor: "pointer"}}
+                                            style={{cursor: "default"}}
                                             height ={SECONDARY_COL_HEIGHT}
                                             radius="md"
                                             src={post?.images[3]?.url}
@@ -188,7 +188,7 @@ const Post = ({post})=>{
                                         return (
                                             <Col span={4}>
                                                 <Image
-                                                    style={{cursor: "pointer"}}
+                                                    style={{cursor: "default"}}
                                                     height = "300px"
                                                     radius="md"
                                                     src= {image?.url}
