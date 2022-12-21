@@ -109,7 +109,11 @@ const ListSearch = (props) => {
                     {/*</ul>*/}
                     <p>
                       {listRestaurant[idx]?.address}
+                      <div>
+                      $ {listRestaurant[idx]?.infoRestaurant.minPrice.toLocaleString('de-DE')}đ - {listRestaurant[idx]?.infoRestaurant.maxPrice.toLocaleString('de-DE')}đ
+                    </div>
                     </p>
+
                     <ul class="btm">
                       <li>
                         <a href="#" title="">
