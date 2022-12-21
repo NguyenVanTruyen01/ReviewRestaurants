@@ -75,6 +75,7 @@ const ListSearch = (props) => {
                   </div>
                   <div class="product-info">
                     <h3 style={{
+                      flex: 1,
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center"
