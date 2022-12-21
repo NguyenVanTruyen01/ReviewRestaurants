@@ -73,9 +73,8 @@ const ListSearch = (props) => {
                   <div class="product-thumb">
                     <img src={listRestaurant[idx]?.infoRestaurant?.images[0]?.url} alt="" />
                   </div>
-                  <div class="product-info">
+                  <div class="product-info" style={{flex:1}}>
                     <h3 style={{
-                      flex: 1,
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center"
