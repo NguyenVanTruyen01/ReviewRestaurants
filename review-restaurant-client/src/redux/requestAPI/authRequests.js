@@ -35,7 +35,7 @@ export const login = async (data,dispatch,navigate)=>{
     try {
 
         const res = await postDataAPI('auth/login', data);
-        console.log(res.data)
+        console.log(res.data);
         dispatch(loginSuccess(res.data));
         dispatch(notifySuccess(res.data.message));
         toast.success(res.data.message);
