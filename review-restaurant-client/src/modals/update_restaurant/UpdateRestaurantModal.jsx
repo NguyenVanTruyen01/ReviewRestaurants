@@ -57,11 +57,39 @@ const UpdateRestaurantModal = ({openModal, setOpenModal,currentUser}) => {
     //------------------XỬ LÝ FORM I4 RESTAURANT---------------------
 
     const [images,setImages] = useState([]);
+    const [menu,setMenu] = useState([]);
 
     const deleteImages = (index) =>{
         const newArr = [...images]
         newArr.splice(index,1);
         setImages(newArr)
+    }
+
+    const deleteMenu = (index) =>{
+        const newMenu = [...menu]
+        newMenu.splice(index,1);
+        setMenu(newMenu)
+    }
+
+    const handleOnChangeMenu = (e)=>{
+        const files = [...e.target.files]
+
+        let err = "";
+        let newMenu = [];
+
+        files.forEach((file)=>{
+            if(!file) return err = "File does not exist"
+            if(file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/jpg")
+                return err = "Image format is incorrect"
+            return newMenu.push(file)
+        })
+
+        if(err){
+            console.log(err)
+        }
+        else
+            setMenu([...menu, ...newMenu]);
+
     }
 
     const handleOnChangeImage = (e)=>{
@@ -91,8 +119,8 @@ const UpdateRestaurantModal = ({openModal, setOpenModal,currentUser}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSummit = async (data,images) => {
-        await updateInfoRestaurant(data,currentUser,images,dispatch);
+    const handleSummit = async (data,images,menu) => {
+        await updateInfoRestaurant(data,currentUser,images,menu,dispatch);
         setOpenModal(false);
     };
 
@@ -113,7 +141,7 @@ const UpdateRestaurantModal = ({openModal, setOpenModal,currentUser}) => {
 
                         <form
                             style={{display: "flex", flexDirection: "column", gap: "1rem"}}
-                            onSubmit={form.onSubmit((values) => handleSummit(values,images) )}>
+                            onSubmit={form.onSubmit((values) => handleSummit(values,images,menu) )}>
 
                             <span className="title title-re" >Cập nhật thông tin</span>
 
@@ -237,6 +265,71 @@ const UpdateRestaurantModal = ({openModal, setOpenModal,currentUser}) => {
 
                             <div  className="row-form">
                                 <div className="row-img">
+                                    <span
+                                        style={{
+                                            display: "inline-block",
+                                            fontSize: "14px",
+                                            fontWeight: 500,
+                                            color: "#212529",
+                                            wordBreak: "break-word",
+                                            cursor: "default"
+                                        }}
+                                    >Menu</span>
+                                    <div className="input_image">
+                                        <label>
+                                            <i className="fa fa-camera"></i>
+                                            <input type="file" name = "file" id={"menu"}
+                                                   multiple accept="image/*"
+                                                   onChange={handleOnChangeMenu}
+                                            />
+                                        </label>
+                                    </div>
+                                    <SimpleGrid
+                                        cols={4}
+                                        breakpoints={[
+                                            { maxWidth: 980, cols: 3, spacing: 'md' },
+                                            { maxWidth: 755, cols: 2, spacing: 'sm' },
+                                            { maxWidth: 600, cols: 1, spacing: 'sm' },
+                                        ]}
+                                        className="show-img"
+                                    >
+                                        {
+                                            menu.map((img,index) => {
+                                                return (
+                                                    <div key={index}
+                                                         className="grid-img"
+                                                         id="file_img"
+                                                         style={{width: "128px", height: "128px" ,gap:0}} >
+
+                                                        <img src={URL.createObjectURL(img)}
+                                                             alt={"images"}
+                                                             style={{objectFit: "cover",width: "128px", height: "128px"}}
+                                                        />
+                                                        <span
+                                                            className="delete-img"
+                                                            onClick={()=>deleteMenu(index)}
+                                                        ><i className="fas fa-times"></i></span>
+                                                    </div>
+                                                )
+
+                                            })
+                                        }
+                                    </SimpleGrid>
+                                </div>
+                            </div>
+
+                            <div  className="row-form">
+                                <div className="row-img">
+                                    <span
+                                        style={{
+                                            display: "inline-block",
+                                            fontSize: "14px",
+                                            fontWeight: 500,
+                                            color: "#212529",
+                                            wordBreak: "break-word",
+                                            cursor: "default"
+                                        }}
+                                    >Ảnh giới thiệu</span>
                                     <div className="input_image">
                                         <label>
                                             <i className="fa fa-camera"></i>

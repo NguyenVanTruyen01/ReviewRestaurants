@@ -112,8 +112,18 @@
       }
     }
     .price{
-      div{
+      .item{
         background: yellow;
+      }
+      .menu{
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        >a{
+          color: #e19d3c;
+          font-weight: 600;
+          cursor: pointer;
+        }
       }
     }
     .time{

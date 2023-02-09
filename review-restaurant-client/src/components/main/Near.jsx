@@ -59,12 +59,12 @@ const Near = () => {
         <div>
             <Slider {...settings}>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 1')}>
                         <div className="near-item">
                             <img src={q1} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 1')}>
+                                    <a href="" title>
                                         Quận 1
                                     </a>
                                 </h2>
@@ -73,12 +73,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 2')}>
                         <div className="near-item">
                             <img src={q2} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="restaurant-details.html" title onClick={(e) => handleViewByCategory(e, 'Quận 2')}>
+                                    <a href="" title >
                                         Quận 2
                                     </a>
                                 </h2>
@@ -87,12 +87,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 3')}>
                         <div className="near-item">
                             <img src={q3} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 3')}>
+                                    <a href="" title >
                                         Quận 3
                                     </a>
                                 </h2>
@@ -101,12 +101,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 4')}>
                         <div className="near-item">
                             <img src={q4} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 4')}>
+                                    <a href="" title >
                                         Quận 4
                                     </a>
                                 </h2>
@@ -115,12 +115,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 5')}>
                         <div className="near-item">
                             <img src={q5} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 5')}>
+                                    <a href="" title >
                                         Quận 5
                                     </a>
                                 </h2>
@@ -129,12 +129,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 6')}>
                         <div className="near-item">
                             <img src={q6} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 6')}>
+                                    <a href="" title >
                                         Quận 6
                                     </a>
                                 </h2>
@@ -143,12 +143,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 7')}>
                         <div className="near-item">
                             <img src={q7} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 7')}>
+                                    <a href="" title >
                                         Quận 7
                                     </a>
                                 </h2>
@@ -157,12 +157,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 8')}>
                         <div className="near-item">
                             <img src={q8} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 8')}>
+                                    <a href="" title >
                                         Quận 8
                                     </a>
                                 </h2>
@@ -171,12 +171,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 9')}>
                         <div className="near-item">
                             <img src={q9} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 9')}>
+                                    <a href="" title >
                                         Quận 9
                                     </a>
                                 </h2>
@@ -185,12 +185,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'Quận 10')}>
                         <div className="near-item">
                             <img src={q10} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'Quận 10')}>
+                                    <a href="" title >
                                         Quận 10
                                     </a>
                                 </h2>
@@ -199,12 +199,12 @@ const Near = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="near-item">
+                    <div className="near-item" onClick={(e) => handleViewByCategory(e, 'TP Thủ Đức')}>
                         <div className="near-item">
                             <img src={thuDuc} alt="" className="w-100" />
                             <div className="feat-optz">
                                 <h2 className="text-capitalize">
-                                    <a href="" title onClick={(e) => handleViewByCategory(e, 'TP Thủ Đức')}>
+                                    <a href="" title >
                                         TP Thủ Đức
                                     </a>
                                 </h2>

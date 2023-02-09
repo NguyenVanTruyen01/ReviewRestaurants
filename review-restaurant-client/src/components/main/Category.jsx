@@ -46,12 +46,12 @@ const Category = () => {
     <div>
       <Slider {...settings}>
         <div>
-          <div className="category-item">
+          <div className="category-item" onClick={(e) => handleViewByCategory(e, 1)}>
             <div className="category-item">
               <img src={beautiful} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize" >
-                  <a href='' title onClick={(e) => handleViewByCategory(e, 1)}>
+                  <a href='' title >
                     Sống ảo
                   </a>
                 </h2>
@@ -60,12 +60,12 @@ const Category = () => {
           </div>
         </div>
         <div>
-          <div className="category-item">
+          <div className="category-item" onClick={(e) => handleViewByCategory(e, 2)}>
             <div className="category-item">
               <img src={dating} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="" title onClick={(e) => handleViewByCategory(e, 2)}>
+                  <a href="" title >
                     Hẹn hò
                   </a>
                 </h2>
@@ -74,12 +74,12 @@ const Category = () => {
           </div>
         </div>
         <div>
-          <div className="category-item">
+          <div className="category-item" onClick={(e) => handleViewByCategory(e, 3)}>
             <div className="category-item">
               <img src={work} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="" title onClick={(e) => handleViewByCategory(e, 3)}>
+                  <a href="" title >
                     Làm việc
                   </a>
                 </h2>
@@ -88,12 +88,12 @@ const Category = () => {
           </div>
         </div>
         <div>
-          <div className="category-item">
+          <div className="category-item" onClick={(e) => handleViewByCategory(e, 4)}>
             <div className="category-item">
               <img src={readBook} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="" title onClick={(e) => handleViewByCategory(e, 4)}>
+                  <a href="" title >
                     Đọc sách
                   </a>
                 </h2>
@@ -102,12 +102,12 @@ const Category = () => {
           </div>
         </div>
         <div>
-          <div className="category-item">
+          <div className="category-item" onClick={(e) => handleViewByCategory(e, 5)}>
             <div className="category-item">
               <img src={chillImage} alt="" className="w-100" />
               <div className="feat-optz">
                 <h2 className="text-capitalize">
-                  <a href="" title onClick={(e) => handleViewByCategory(e, 5)}>
+                  <a href="" title >
                     Chill
                   </a>
                 </h2>

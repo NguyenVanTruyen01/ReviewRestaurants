@@ -10,6 +10,7 @@ import Footer from "../../components/main/Footer";
 
 
 import './styleSearch.css';
+import { useRef } from 'react';
 
 const SearchPage = () => {
   const { Panel } = Collapse;
@@ -31,24 +32,12 @@ const SearchPage = () => {
   const [region, setRegion] = useState(paramRegion);
   const [purposes, setPurposes] = useState(paramPurposes);
   const [benefits, setBenefits] = useState([]);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(q === null ? '' : q)
+  const [textQuery, setTextQuery] = useState('')
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(30);
 
-  console.log(purposes)
-  // if (q === null) {
-  //   setQuery('')
-  // }
-  // else {
-  //   setQuery(q)
-  // }
-
-  // if (paramRegion === null) {
-  //   setRegion([])
-  // }
-  // else {
-  //   setRegion([...region, paramRegion]);
-  // }
+  const inputQuery = useRef('')
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
@@ -88,9 +77,13 @@ const SearchPage = () => {
   const onChangePrice = (value) => {
     setMinPrice(value[0]);
     setMaxPrice(value[1]);
-    console.log(value);
   };
 
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    setQuery(inputQuery.current.value)
+  }
   return (
     <div>
       <div className="wrapper">
@@ -192,7 +185,7 @@ const SearchPage = () => {
                                 Quận 5
                                 <input
                                   type="checkbox"
-                                  value={'Quận 4'}
+                                  value={'Quận 5'}
                                   onChange={(e) => handleChangeRegion(e)}
                                   defaultChecked={region.includes('Quận 5') ? true : false}
                                 />
@@ -307,7 +300,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={1}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(1) ? true : false}
+                                  defaultChecked={purposes.includes('1') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -319,7 +312,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={2}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(2) ? true : false}
+                                  defaultChecked={purposes.includes('2') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -331,7 +324,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={3}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(3) ? true : false}
+                                  defaultChecked={purposes.includes('3') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -343,7 +336,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={4}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(4) ? true : false}
+                                  defaultChecked={purposes.includes('4') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -353,7 +346,7 @@ const SearchPage = () => {
                                   type="checkbox"
                                   value={5}
                                   onChange={(e) => handleChangePurposes(e)}
-                                  defaultChecked={purposes.includes(5) ? true : false}
+                                  defaultChecked={purposes.includes('5') ? true : false}
                                 />
                                 <span class="checkmark"></span>
                               </label>
@@ -527,56 +520,7 @@ const SearchPage = () => {
                         </Panel>
                       </Collapse>
                     </div>
-                    <div class="widget widget-tags">
-                      <h3 class="widget-title">Tags</h3>
-                      <ul>
-                        <li>
-                          <a href="#" title="">
-                            Fish
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Grill
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Beer
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Chicken
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Beef
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Hot
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Vegetables
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Chilly
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="">
-                            Fruits
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+
                     {/* <div class="widget widget-price-filter">
                       <h3 class="widget-title">Rating</h3>
                       <div id="slider-range"></div>
@@ -593,16 +537,17 @@ const SearchPage = () => {
               </div>
               <div class="col-lg-9">
                 <div class="search-prod">
-                  <form>
+                  <form action='' onSubmit={handleSearch}>
                     <div class="form-group">
-                      <input type="text" name="search" placeholder="Search" class="form-control half-radius" />
-                      <button type="submit" class="btn-default half-radius">
+                      <input type="text" ref={inputQuery} placeholder="Search" class="form-control half-radius" />
+                      <button class="btn-default half-radius">
                         Search Restaurant
                       </button>
                     </div>
                   </form>
                 </div>
                 <ListSearch
+                  q={query}
                   region={region}
                   purposes={purposes}
                   benefits={benefits}

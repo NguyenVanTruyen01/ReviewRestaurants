@@ -6,7 +6,11 @@ import { Rating } from '@mantine/core';
 import {useSelector} from "react-redux";
 import UpdateRestaurantModal from "../../modals/update_restaurant/UpdateRestaurantModal";
 import { Image } from 'antd';
+import SliderImages from "../slider-images/SliderImages";
+
 const InfoRestaurant = ({user,posts})=>{
+
+    const [visible, setVisible] = useState(false);
 
     const {currentUser,access_token} = useSelector(state => state.auth?.login)
 
@@ -72,9 +76,10 @@ const InfoRestaurant = ({user,posts})=>{
 
 
                                 }
-                                return   <Image src={user.infoRestaurant.images[index].url}
-                                              key={index}
-                                              alt="architecture"/>
+                                return   <Image
+                                            src={user.infoRestaurant.images[index].url}
+                                            key={index}
+                                            alt="architecture"/>
                             })
                         }
                         </Image.PreviewGroup>
@@ -227,7 +232,15 @@ const InfoRestaurant = ({user,posts})=>{
                             <div className="item">
                                 <i className="fas fa-dollar-sign"></i>
                             </div>
-                            <span>{user.infoRestaurant.minPrice.toLocaleString('de-DE')}đ - {user.infoRestaurant.maxPrice.toLocaleString('de-DE')}đ</span>
+                            <div className="menu">
+                                <span>{user.infoRestaurant.minPrice.toLocaleString('de-DE')}đ - {user.infoRestaurant.maxPrice.toLocaleString('de-DE')}đ </span>
+                                <a  onClick= {()=>setVisible(true)}>Xem menu</a>
+                                <SliderImages
+                                    images={user.infoRestaurant?.menu}
+                                    visible = {visible}
+                                    setVisible = {setVisible}
+                                />
+                            </div>
                         </div>
                         <div className="time">
                             <div className="item">

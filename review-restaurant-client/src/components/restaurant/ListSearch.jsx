@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import useAxios from 'axios-hooks';
 import { Link, useNavigate } from 'react-router-dom';
-import {Rating} from '@mantine/core';
+import { Rating } from '@mantine/core';
 
 import { Pagination } from 'antd';
 import './listSearchPage.css';
@@ -43,22 +43,22 @@ const ListSearch = (props) => {
         setLoading(true)
         console.log("test1 " + purposesApi)
         const res = await axios.post('http://localhost:5000/users/searchManyFields', {
-          key: '',
+          key: props.q,
           regions: props.region,
           purposes: props.purposes.map(Number),
-          benefits: benefitsApi,
+          benefits: props.benefits.map(Number),
           minPrice: props.minPrice * 10000,
           maxPrice: props.maxPrice * 10000,
         });
         setListRestaurant(res.data.users.filter(item => item.role === "RESTAURANT"));
         setLoading(false)
+        console.log(listRestaurant)
       } catch (err) {
         console.log(err);
       }
     };
     getListRestaurantByField();
   }, [props]);
-  console.log(listRestaurant)
   return (
     <div>
       {loading ? (<div className='loading-container'><div class="loadingio-spinner-reload-0otlv348doe"><div class="ldio-84ztw36yse6">
@@ -73,19 +73,20 @@ const ListSearch = (props) => {
                   <div class="product-thumb">
                     <img src={listRestaurant[idx]?.infoRestaurant?.images[0]?.url} alt="" />
                   </div>
-                  <div class="product-info">
-                    <h3  style={{
-                      display:"flex",
-                      justifyContent:"space-between",
+                  <div class="product-info" style={{flex:1}}>
+                    <h3 style={{
+                      display: "flex",
+                      justifyContent: "space-between",
                       alignItems: "center"
                     }}>
                       <Link target={"_blank"} to={"/profile/" + listRestaurant[idx]?._id} title="">
                         {listRestaurant[idx]?.userName}
                       </Link>
-                      <Rating className= "rating"
-                                style={{display:"flex"}}
-                                readOnly
-                                defaultValue={ Math.round(listRestaurant[idx]?.rating.reduce((a, b) => a + b, 0) / listRestaurant[idx]?.rating.length )} />
+                      <Rating className="rating"
+                        style={{ display: "flex" }}
+                        readOnly
+                        defaultValue= {Number(listRestaurant[idx]?.rateAvg)}
+                      />
 
                     </h3>
 
@@ -108,7 +109,11 @@ const ListSearch = (props) => {
                     {/*</ul>*/}
                     <p>
                       {listRestaurant[idx]?.address}
+                      <div>
+                      $ {listRestaurant[idx]?.infoRestaurant.minPrice.toLocaleString('de-DE')}đ - {listRestaurant[idx]?.infoRestaurant.maxPrice.toLocaleString('de-DE')}đ
+                    </div>
                     </p>
+
                     <ul class="btm">
                       <li>
                         <a href="#" title="">

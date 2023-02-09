@@ -11,6 +11,7 @@ import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import LoadingPage from "../loading/LoadingPage";
 import {followUser,unfollowUser} from "../../redux/requestAPI/userRequests";
+import Footer from "../../components/main/Footer";
 
 
 const ProfilePage = ()=>{
@@ -352,6 +353,8 @@ const ProfilePage = ()=>{
 
                 </div> : <LoadingPage/>
             }
+
+            <Footer/>
 
         </>
     )

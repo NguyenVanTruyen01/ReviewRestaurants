@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getPosts} from "./redux/requestAPI/postRequests";
 import TimelinePage from "./pages/timeline/Timeline";
+import NotFoundPage from "./pages/not-found/NotFoundPage";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/register" element={<RegisterPage />} />
           <Route exact path="/explore" element={<ExplorePage />} />
           <Route exact path="/profile/:id" element={<ProfilePage />} />
+          <Route path="*" element={<NotFoundPage/>} />
       </Routes>
     </Router>
   );

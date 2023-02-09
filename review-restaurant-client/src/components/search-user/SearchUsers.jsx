@@ -23,7 +23,6 @@ const SearchUsers = () => {
   const handleSearch = (e) => {
     searchParams.set('q', key);
     navigate('/search?' + searchParams);
-    console.log(searchParams.toString());
   };
 
   return (
