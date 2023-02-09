@@ -2,7 +2,7 @@
   "name": "review-restaurant-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "https://be-review-restaurant.onrender.com",
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@emotion/react": "^11.10.5",
