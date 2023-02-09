@@ -24,7 +24,7 @@ const ExplorePage = () =>{
 
         const getListRestaurant = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/users`);
+                const res = await axios.get(`https://be-review-restaurant.onrender.com/users`);
                 const restaurants  = getMultipleRandom(res.data.users,5)
                 console.log(restaurants)
                 setRestaurant(restaurants);
