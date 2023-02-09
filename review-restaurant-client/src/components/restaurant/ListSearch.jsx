@@ -42,7 +42,7 @@ const ListSearch = (props) => {
       try {
         setLoading(true)
         console.log("test1 " + purposesApi)
-        const res = await axios.post('http://localhost:5000/users/searchManyFields', {
+        const res = await axios.post('https://be-review-restaurant.onrender.com/users/searchManyFields', {
           key: props.q,
           regions: props.region,
           purposes: props.purposes.map(Number),
