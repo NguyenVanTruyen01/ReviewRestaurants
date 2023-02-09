@@ -1,7 +1,11 @@
 {
   "version": 2,
   "env": {
-    "MONGO_URI": "@review_api_mongo_uri"
+    "MONGO_URI": "@review_api_mongo_uri",
+    "JWT_SECRET": "@JWT_SECRET",
+    "JWT_REFRESH_SECRET": "@JWT_REFRESH_SECRET",
+    "JWT_TIME" : "@JWT_TIME",
+    "JWT_REFRESH_TIME" : "@JWT_REFRESH_TIME"
   },
   "builds": [
     {
