@@ -17,7 +17,7 @@ async function bootstrap() {
 
   app.enableCors(
   {
-    "origin": "http://localhost:3000",
+    "origin": "https://review-restaurants.vercel.app",
       "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
       "preflightContinue": false,
       "optionsSuccessStatus": 204
