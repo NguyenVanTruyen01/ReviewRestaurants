@@ -146,7 +146,7 @@ const ProfilePage = ()=>{
     useEffect(() => {
         const getRestaurant = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/users/${id}`);
+                const res = await axios.get(`https://be-review-restaurant.onrender.com/users/${id}`);
                 setUser(res.data.user);
                 setRating(Math.round(res.data.user.rating.reduce((a, b) => a + b, 0) / res.data.user.rating.length ))
             } catch (err) {
