@@ -44,14 +44,14 @@ export const createPost = async (currentID,restaurantID, rating,content,images,d
 }
 
 export const getPosts = async (dispatch) =>{
-    dispatch(notifyLoading())
+//     dispatch(notifyLoading())
 
     try{
         const posts = await  getDataAPI(`posts`)
 
         dispatch(getPostsSuccess(posts.data))
 
-        dispatch(notifySuccess())
+//         dispatch(notifySuccess())
     }
     catch (err){
         dispatch(getPostsFail())
