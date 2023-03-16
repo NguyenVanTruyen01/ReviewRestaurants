@@ -2,7 +2,7 @@
   "name": "review-restaurant-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://be-review-restaurant.onrender.com",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@emotion/react": "^11.10.5",
@@ -19,6 +19,7 @@
     "axios": "^1.2.0",
     "axios-hooks": "^4.0.0",
     "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
     "embla-carousel-autoplay": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
     "jquery": "^3.6.1",

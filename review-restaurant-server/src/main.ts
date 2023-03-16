@@ -16,12 +16,12 @@ async function bootstrap() {
 
 
   app.enableCors(
-  {
-    "origin": "https://review-restaurants.vercel.app",
+    {
+      "origin": process.env.ORIGIN,
       "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
       "preflightContinue": false,
       "optionsSuccessStatus": 204
-  }
+    }
   );
 
 

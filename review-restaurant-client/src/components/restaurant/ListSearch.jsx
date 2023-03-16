@@ -41,8 +41,7 @@ const ListSearch = (props) => {
     const getListRestaurantByField = async () => {
       try {
         setLoading(true)
-        console.log("test1 " + purposesApi)
-        const res = await axios.post('https://be-review-restaurant.onrender.com/users/searchManyFields', {
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/searchManyFields`, {
           key: props.q,
           regions: props.region,
           purposes: props.purposes.map(Number),
@@ -73,7 +72,7 @@ const ListSearch = (props) => {
                   <div class="product-thumb">
                     <img src={listRestaurant[idx]?.infoRestaurant?.images[0]?.url} alt="" />
                   </div>
-                  <div class="product-info" style={{flex:1}}>
+                  <div class="product-info" style={{ flex: 1 }}>
                     <h3 style={{
                       display: "flex",
                       justifyContent: "space-between",
@@ -85,7 +84,7 @@ const ListSearch = (props) => {
                       <Rating className="rating"
                         style={{ display: "flex" }}
                         readOnly
-                        defaultValue= {Number(listRestaurant[idx]?.rateAvg)}
+                        defaultValue={Number(listRestaurant[idx]?.rateAvg)}
                       />
 
                     </h3>
@@ -110,8 +109,8 @@ const ListSearch = (props) => {
                     <p>
                       {listRestaurant[idx]?.address}
                       <div>
-                      $ {listRestaurant[idx]?.infoRestaurant.minPrice.toLocaleString('de-DE')}đ - {listRestaurant[idx]?.infoRestaurant.maxPrice.toLocaleString('de-DE')}đ
-                    </div>
+                        $ {listRestaurant[idx]?.infoRestaurant.minPrice.toLocaleString('de-DE')}đ - {listRestaurant[idx]?.infoRestaurant.maxPrice.toLocaleString('de-DE')}đ
+                      </div>
                     </p>
 
                     <ul class="btm">

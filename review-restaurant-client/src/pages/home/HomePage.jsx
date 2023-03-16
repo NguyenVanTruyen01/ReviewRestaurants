@@ -19,6 +19,7 @@ import Near from '../../components/main/Near';
 import Footer from "../../components/main/Footer";
 
 const Home = () => {
+
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return <div className={className} style={{ ...style, display: 'block', background: 'red' }} onClick={onClick} />;
