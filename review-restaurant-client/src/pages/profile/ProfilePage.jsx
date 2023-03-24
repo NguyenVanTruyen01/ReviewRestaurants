@@ -1,31 +1,31 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import PostShareModal from "../../modals/postshare/PostShareModal";
 import ListPost from "../../components/listpost/ListPost";
 import "./ProfilePage.scss"
-import {Modal,useMantineTheme, Rating, SimpleGrid, Textarea} from '@mantine/core';
+import { Modal, useMantineTheme, Rating, SimpleGrid, Textarea } from '@mantine/core';
 import InfoRestaurant from "../../components/info-restaurent/InfoRestaurant";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/main/Header";
-import {changeCoverPicture, changeAvatar} from "../../redux/requestAPI/userRequests"
+import { changeCoverPicture, changeAvatar } from "../../redux/requestAPI/userRequests"
 import axios from "axios";
-import {Link, useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LoadingPage from "../loading/LoadingPage";
-import {followUser,unfollowUser} from "../../redux/requestAPI/userRequests";
+import { followUser, unfollowUser } from "../../redux/requestAPI/userRequests";
 import Footer from "../../components/main/Footer";
 
 
-const ProfilePage = ()=>{
+const ProfilePage = () => {
 
-    const {id} = useParams()
+    const { id } = useParams()
     const [user, setUser] = useState(undefined);
     //------------------------------------------------
 
     const theme = useMantineTheme();
 
-    const {currentUser,access_token} = useSelector(state => state.auth?.login)
+    const { currentUser, access_token } = useSelector(state => state.auth?.login)
 
     // const {user} = useSelector(state => state.user )
-    const {listPost} = useSelector(state => state.post)
+    const { listPost } = useSelector(state => state.post)
 
     const dispatch = useDispatch();
 
@@ -33,33 +33,33 @@ const ProfilePage = ()=>{
     const [openModalChangeAvatar, setOpenModalChangeAvatar] = useState(false)
 
     //Lưu ảnh bìa khi thay đổi
-    const [images,setImages] = useState([]);
+    const [images, setImages] = useState([]);
 
     //Lưu avatar khi thay đổi
-    const [imagesAvatar,setImagesAvatar] = useState([]);
+    const [imagesAvatar, setImagesAvatar] = useState([]);
 
-    const [onChangeCover,setOnChangeCover] = useState(false)
+    const [onChangeCover, setOnChangeCover] = useState(false)
 
-    const [onChangeAvatar,setOnChangeAvatar] = useState(false)
+    const [onChangeAvatar, setOnChangeAvatar] = useState(false)
 
-    const [follow,setFollow] = useState(false)
-    const [loadFollow,setLoadFollow] = useState(false)
+    const [follow, setFollow] = useState(false)
+    const [loadFollow, setLoadFollow] = useState(false)
 
-    const handleOnChangeImage = (e)=>{
+    const handleOnChangeImage = (e) => {
         e.preventDefault()
         const files = [...e.target.files]
         console.log(...e.target.files)
 
         let err = "";
 
-        if(!files[0]) return err = "File does not exist"
-        if(files[0].type !== "image/jpeg" && files[0].type !== "image/png" && files[0].type !== "image/jpg")
+        if (!files[0]) return err = "File does not exist"
+        if (files[0].type !== "image/jpeg" && files[0].type !== "image/png" && files[0].type !== "image/jpg")
             return err = "Image format is incorrect"
 
-        if(err){
+        if (err) {
             console.log(err)
         }
-        else{
+        else {
             setImages(files);
             //Hiển thị modal submit ảnh bìa
             setOnChangeCover(true)
@@ -68,7 +68,7 @@ const ProfilePage = ()=>{
 
     }
 
-    const handleSummitCoverPicture = async ()=>{
+    const handleSummitCoverPicture = async () => {
 
         await changeCoverPicture(currentUser, user, images, dispatch, access_token)
 
@@ -77,20 +77,20 @@ const ProfilePage = ()=>{
         setImages([])
     }
 
-    const handleOnChangeAvatar = (e)=>{
+    const handleOnChangeAvatar = (e) => {
         e.preventDefault()
         const files = [...e.target.files]
 
         let err = "";
 
-        if(!files[0]) return err = "File does not exist"
-        if(files[0].type !== "image/jpeg" && files[0].type !== "image/png" && files[0].type !== "image/jpg")
+        if (!files[0]) return err = "File does not exist"
+        if (files[0].type !== "image/jpeg" && files[0].type !== "image/png" && files[0].type !== "image/jpg")
             return err = "Image format is incorrect"
 
-        if(err){
+        if (err) {
             console.log(err)
         }
-        else{
+        else {
             setImagesAvatar(files);
             setOnChangeAvatar(true)
         }
@@ -98,7 +98,7 @@ const ProfilePage = ()=>{
 
     }
 
-    const handleSummitAvatar= async ()=>{
+    const handleSummitAvatar = async () => {
 
         await changeAvatar(currentUser, user, imagesAvatar, dispatch, access_token)
 
@@ -107,10 +107,10 @@ const ProfilePage = ()=>{
         setImagesAvatar([])
     }
 
-    const handleActionFollow = async ()=>{
-        if(currentUser) {
+    const handleActionFollow = async () => {
+        if (currentUser) {
 
-            if(loadFollow) return;
+            if (loadFollow) return;
             setFollow(true)
             setLoadFollow(true)
             await followUser(user, currentUser, dispatch, access_token);
@@ -120,10 +120,10 @@ const ProfilePage = ()=>{
         else return;
     }
 
-    const handleActionUnfollow = async ()=>{
-        if(currentUser) {
+    const handleActionUnfollow = async () => {
+        if (currentUser) {
 
-            if(loadFollow) return;
+            if (loadFollow) return;
             setFollow(false)
             setLoadFollow(true)
             await unfollowUser(user, currentUser, dispatch, access_token);
@@ -133,228 +133,228 @@ const ProfilePage = ()=>{
         else return;
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        if(currentUser && currentUser.following.find(follow => follow._id === id)){
+        if (currentUser && currentUser.following.find(follow => follow._id === id)) {
             setFollow(true)
-        }else return;
+        } else return;
 
-    },[currentUser?.following, currentUser?._id])
+    }, [currentUser?.following, currentUser?._id])
 
-    const [rating,setRating] = useState(0)
+    const [rating, setRating] = useState(0)
 
     useEffect(() => {
         const getRestaurant = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/users/${id}`);
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/users/${id}`);
                 setUser(res.data.user);
-                setRating(Math.round(res.data.user.rating.reduce((a, b) => a + b, 0) / res.data.user.rating.length ))
+                setRating(Math.round(res.data.user.rating.reduce((a, b) => a + b, 0) / res.data.user.rating.length))
             } catch (err) {
                 console.log(err);
             }
         };
         getRestaurant();
-    }, [dispatch,onChangeAvatar,onChangeCover,loadFollow,id,currentUser]);
+    }, [dispatch, onChangeAvatar, onChangeCover, loadFollow, id, currentUser]);
 
 
-    return(
+    return (
         <>
             {
                 user && listPost ?
-                <div className="ProfilePage">
+                    <div className="ProfilePage">
 
-                    <Header></Header>
+                        <Header></Header>
 
-                    <div className="profile-container">
+                        <div className="profile-container">
 
-                        {
-                            onChangeCover &&
-                            <div className= "change-coverPicture-modal">
-                                <div className="content">
-                                    Thay đổi ảnh bìa của bạn
-                                </div>
+                            {
+                                onChangeCover &&
+                                <div className="change-coverPicture-modal">
+                                    <div className="content">
+                                        Thay đổi ảnh bìa của bạn
+                                    </div>
 
-                                <div className="group-btn">
-                                    <button type="button"
+                                    <div className="group-btn">
+                                        <button type="button"
                                             className="cancel"
-                                            onClick={()=> {
+                                            onClick={() => {
                                                 setOnChangeCover(false);
                                                 setImages([])
                                             }}
-                                    >Hủy</button>
-                                    <button type="button"
+                                        >Hủy</button>
+                                        <button type="button"
                                             className="save"
-                                            onClick={()=>handleSummitCoverPicture()}
-                                    >Lưu thay đổi</button>
+                                            onClick={() => handleSummitCoverPicture()}
+                                        >Lưu thay đổi</button>
+                                    </div>
                                 </div>
-                            </div>
-                        }
+                            }
 
-                        <div className="container" >
+                            <div className="container" >
 
-                            <div className="user-profile">
+                                <div className="user-profile">
 
-                                <figure>
+                                    <figure>
 
-                                    {
-                                        currentUser && currentUser._id === user._id &&
-                                        <div className="edit-pp"
-                                        >
-                                            <label className="fileContainer" >
-                                                <i className="fa fa-camera"></i>
-                                                <input type="file"
-                                                       onChange={handleOnChangeImage} />
-                                            </label>
-                                        </div>
-                                    }
-
-
-                                    <img className="cover-img"
-                                         src={ onChangeCover ? URL.createObjectURL(images[0]) :
-                                             user.coverPicture
-                                             // || "https://res.cloudinary.com/dehtpa6ba/image/upload/v1668594732/review_restaurants/profile-image_u5v1gv.jpg"
-                                         }
-                                         alt=""/>
-
-                                    {
-                                         currentUser && currentUser._id !== user._id ? follow ?
-                                            <ul className="profile-controls"
-                                                     onClick={()=>handleActionUnfollow()}
+                                        {
+                                            currentUser && currentUser._id === user._id &&
+                                            <div className="edit-pp"
                                             >
-                                               Đã theo dõi
-                                            </ul>
-                                            :
-                                            <ul className="profile-controls"
-                                                onClick={()=>handleActionFollow()}
-                                            >
-                                                Theo dõi
-                                            </ul>
-                                             :
-                                             ""
+                                                <label className="fileContainer" >
+                                                    <i className="fa fa-camera"></i>
+                                                    <input type="file"
+                                                        onChange={handleOnChangeImage} />
+                                                </label>
+                                            </div>
+                                        }
 
-                                    }
 
-                                    <Rating className= "rating"
-                                            readOnly
-                                            defaultValue={ rating} />
-
-                                    <div className="profile-author">
-                                        <div className="profile-author-thumb">
-
-                                            <img className="avatar" alt="author"
-                                                 style={{background: "#ffffff"}}
-                                                 src= {user.avatar }/>
-
-                                            {
-                                                currentUser && currentUser._id ===  user._id ?
-                                                    <div className="edit-dp"
-                                                         onClick={()=>setOpenModalChangeAvatar(true)}
-                                                    >
-                                                        <label className="fileContainer">
-                                                            <i className="fa fa-camera"></i>
-                                                        </label>
-                                                    </div> : ""
+                                        <img className="cover-img"
+                                            src={onChangeCover ? URL.createObjectURL(images[0]) :
+                                                user.coverPicture
+                                                // || "https://res.cloudinary.com/dehtpa6ba/image/upload/v1668594732/review_restaurants/profile-image_u5v1gv.jpg"
                                             }
+                                            alt="" />
 
-                                            <Modal
-                                                overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
-                                                overlayOpacity={0.55}
-                                                overlayBlur={3}
-                                                size="lg"
-                                                closeOnClickOutside={true}
-                                                opened={openModalChangeAvatar}
-                                                onClose={() => setOpenModalChangeAvatar(!openModalChangeAvatar)}
-                                            >
-                                                <div className="modal-changeAvatar">
-                                                    <div className="title">
-                                                        Thay đổi ảnh đại diện
-                                                    </div>
+                                        {
+                                            currentUser && currentUser._id !== user._id ? follow ?
+                                                <ul className="profile-controls"
+                                                    onClick={() => handleActionUnfollow()}
+                                                >
+                                                    Đã theo dõi
+                                                </ul>
+                                                :
+                                                <ul className="profile-controls"
+                                                    onClick={() => handleActionFollow()}
+                                                >
+                                                    Theo dõi
+                                                </ul>
+                                                :
+                                                ""
 
-                                                    <div className="author-changeAvatar">
-                                                        <div className="profile-author-change">
-                                                            <img className="avatar" alt="author"
-                                                                 style={{background: "#ffffff"}}
-                                                                 src= { onChangeAvatar ? URL.createObjectURL(imagesAvatar[0]) :
-                                                                     user.avatar
-                                                                 }/>
+                                        }
 
-                                                            <div className="edit-dp"
-                                                            >
-                                                                <label className="fileContainer">
-                                                                    <i className="fa fa-camera"></i>
-                                                                    <input type="file"
-                                                                           onChange={handleOnChangeAvatar}/>
-                                                                </label>
-                                                            </div>
+                                        <Rating className="rating"
+                                            readOnly
+                                            defaultValue={rating} />
 
+                                        <div className="profile-author">
+                                            <div className="profile-author-thumb">
+
+                                                <img className="avatar" alt="author"
+                                                    style={{ background: "#ffffff" }}
+                                                    src={user.avatar} />
+
+                                                {
+                                                    currentUser && currentUser._id === user._id ?
+                                                        <div className="edit-dp"
+                                                            onClick={() => setOpenModalChangeAvatar(true)}
+                                                        >
+                                                            <label className="fileContainer">
+                                                                <i className="fa fa-camera"></i>
+                                                            </label>
+                                                        </div> : ""
+                                                }
+
+                                                <Modal
+                                                    overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
+                                                    overlayOpacity={0.55}
+                                                    overlayBlur={3}
+                                                    size="lg"
+                                                    closeOnClickOutside={true}
+                                                    opened={openModalChangeAvatar}
+                                                    onClose={() => setOpenModalChangeAvatar(!openModalChangeAvatar)}
+                                                >
+                                                    <div className="modal-changeAvatar">
+                                                        <div className="title">
+                                                            Thay đổi ảnh đại diện
                                                         </div>
-                                                    </div>
 
-                                                    <div className= "group-action">
-                                                        <div className="group-btn">
-                                                            <button type="button"
+                                                        <div className="author-changeAvatar">
+                                                            <div className="profile-author-change">
+                                                                <img className="avatar" alt="author"
+                                                                    style={{ background: "#ffffff" }}
+                                                                    src={onChangeAvatar ? URL.createObjectURL(imagesAvatar[0]) :
+                                                                        user.avatar
+                                                                    } />
+
+                                                                <div className="edit-dp"
+                                                                >
+                                                                    <label className="fileContainer">
+                                                                        <i className="fa fa-camera"></i>
+                                                                        <input type="file"
+                                                                            onChange={handleOnChangeAvatar} />
+                                                                    </label>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="group-action">
+                                                            <div className="group-btn">
+                                                                <button type="button"
                                                                     className="cancel"
-                                                                    onClick={()=> {
+                                                                    onClick={() => {
                                                                         setOnChangeAvatar(false)
                                                                         setOpenModalChangeAvatar(false)
                                                                     }}
 
-                                                            >Hủy</button>
-                                                            <button type="button"
+                                                                >Hủy</button>
+                                                                <button type="button"
                                                                     className="save"
-                                                                    onClick={()=>handleSummitAvatar()}
-                                                            >Lưu thay đổi</button>
+                                                                    onClick={() => handleSummitAvatar()}
+                                                                >Lưu thay đổi</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </Modal>
+                                                </Modal>
 
+                                            </div>
                                         </div>
-                                    </div>
 
-                                </figure>
-                            </div>
-
-                            <div className="user-profile-bottom">
-                                <div className="author-content">
-                                    <a className="h4 author-name" > {user.userName}</a>
-                                    <div className="address"><i className="fas fa-map-marker-alt"></i>{user.address}</div>
+                                    </figure>
                                 </div>
 
-                                <ol className="folw-detail">
-                                    <li><span>Bài đăng</span>
-                                        <a>{listPost.filter(post => post.user._id === user._id).length}</a>
-                                    </li>
-                                    <li><span>Người theo dõi</span>
-                                        <a>{user.followers.length}</a>
-                                    </li>
-                                    <li><span>Đang theo dõi</span>
-                                        <a>{user.following.length}</a>
-                                    </li>
-                                </ol>
+                                <div className="user-profile-bottom">
+                                    <div className="author-content">
+                                        <a className="h4 author-name" > {user.userName}</a>
+                                        <div className="address"><i className="fas fa-map-marker-alt"></i>{user.address}</div>
+                                    </div>
+
+                                    <ol className="folw-detail">
+                                        <li><span>Bài đăng</span>
+                                            <a>{listPost.filter(post => post.user._id === user._id).length}</a>
+                                        </li>
+                                        <li><span>Người theo dõi</span>
+                                            <a>{user.followers.length}</a>
+                                        </li>
+                                        <li><span>Đang theo dõi</span>
+                                            <a>{user.following.length}</a>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                {
+                                    currentUser &&
+                                    <PostShareModal
+                                        user={user}
+                                        listPost={listPost} />
+                                }
+
+                                {
+                                    user.role === "RESTAURANT" &&
+                                    <InfoRestaurant posts={listPost} user={user} />
+                                }
+
+                                <ListPost posts={listPost} user={user} />
+
                             </div>
-
-                            {
-                                currentUser &&
-                                <PostShareModal
-                                    user = {user}
-                                    listPost = {listPost}/>
-                            }
-
-                            {
-                                user.role === "RESTAURANT" &&
-                                <InfoRestaurant posts = {listPost}  user = {user} />
-                            }
-
-                            <ListPost posts = {listPost} user = {user}/>
-
                         </div>
-                    </div>
 
-                </div> : <LoadingPage/>
+                    </div> : <LoadingPage />
             }
 
-            <Footer/>
+            <Footer />
 
         </>
     )
