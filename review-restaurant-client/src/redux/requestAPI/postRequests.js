@@ -38,7 +38,7 @@ export const createPost = async (currentID, restaurantID, rating, content, image
         const msg = customErrMessage(err)
         dispatch(createPostFail());
         dispatch(notifyError(msg));
-        toast.error(msg);
+        toast.error(msg, { autoClose: 1000 });
     }
 
 }
