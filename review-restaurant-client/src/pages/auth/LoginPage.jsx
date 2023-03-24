@@ -9,9 +9,8 @@ import "../../assets/css/style.css";
 import "../../assets/css/responsive.css";
 import "../../assets/js/scripts";
 
-import Header from "../../components/main/Header";
+import Header from "../../components/main/Header/Header";
 import MobileMenu from "../../components/main/MobileMenu";
-import Footer from "../../components/main/Footer";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

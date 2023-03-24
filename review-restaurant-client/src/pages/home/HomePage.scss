@@ -1,0 +1,60 @@
+.wrapper {
+    .main-banner {
+        padding: 60px;
+        height: 100vh;
+
+        .container {
+
+            .banner-text {
+                align-items: center;
+                margin: auto;
+
+                >span {
+                    text-align: center;
+                    margin-bottom: 30px;
+                }
+
+                >form {
+                    >input {
+                        height: 66px;
+                        font-size: 16px;
+                    }
+
+                    >button {
+                        height: 51px;
+                        line-height: 0px;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+    .sec-block {
+        .container {
+            .section-title {
+                margin-top: 1rem;
+                margin-bottom: 10px;
+
+                .text-capitalize {
+                    font-size: 28px;
+                    text-transform: inherit !important;
+                    padding: 10px;
+                    margin-bottom: 0px;
+                }
+
+                .line {
+                    width: 160px;
+                    height: 6px;
+                    border-radius: 6px;
+                    background-color: #d8ab37;
+                    margin: auto;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+
+    }
+}

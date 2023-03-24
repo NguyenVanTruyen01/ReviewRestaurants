@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import "./Header.scss"
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
-import logo from '../../assets/images/logo.png';
+import logo from '../../../assets/images/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { logout } from '../../redux/requestAPI/authRequests';
-import { getProfileUser } from '../../redux/requestAPI/userRequests'
-import PostReviews from "../../modals/post_reviews/PostReviews";
+import { logout } from '../../../redux/requestAPI/authRequests';
+import PostReviews from "../../../modals/post_reviews/PostReviews";
 
 const Header = () => {
 	const user = useSelector((state) => state.auth.login.currentUser);
@@ -21,12 +21,11 @@ const Header = () => {
 	};
 
 	return (
-		<header style={{ width: "100%", height: "66px" }}>
+		<header style={{ width: "100%", height: "60px" }}>
 			<div className="container-fluid" style={{
 				position: "fixed",
 				zIndex: 100,
-				background: "#ffffff",
-				borderBottom: "2px solid #d8ab37"
+				background: "#34465d",
 			}}>
 				<div className="header-content d-flex flex-wrap align-items-center">
 					<div className="logo">
@@ -45,7 +44,7 @@ const Header = () => {
 							<ul>
 								<li>
 									<NavLink to="/home" title>
-										Home
+										Trang chủ
 									</NavLink>
 								</li>
 								<li>
@@ -63,41 +62,33 @@ const Header = () => {
 								}
 							</ul>
 						</nav>
-						{/*navigation end*/}
-						<div className="menu-btn">
-							<span className="bar1" />
-							<span className="bar2" />
-							<span className="bar3" />
-						</div>
 
-						{/*menu-bar end*/}
 						<nav>
-							<ul className="oth-lnks ml-auto">
+							<ul >
 
-								<li style={{ color: "black", cursor: "pointer" }}
-									onClick={() => {
-										if (user)
-											setOpenModal(true)
-										else navigate('/login');
-									}
-									}
-								>
-									Viết Review
+								<li>
+									<span to="#"
+										onClick={() => {
+											if (user)
+												setOpenModal(true)
+											else navigate('/login');
+										}}
+									>Viết Review</span>
 									<PostReviews openModal={openModal} setOpenModal={setOpenModal} />
 								</li>
 
+
 								{user ? (
-									<li>
-										<>
-											<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
-											<a title className="cart-ico" href={`/profile/${user._id}`}
-											>
-												Hi,{user.userName}
-											</a>
-											<i className="fal fa-sign-out-alt"
-												style={{ fontSize: "20px", cursor: "pointer" }}
-												onClick={handleLogout} ></i>
-										</>
+									<li style={{ marginRight: "0px" }}>
+										< NavLink title className="cart-ico" to={`/profile/${user._id}`}>
+											Hi,{user.userName}
+										</NavLink>
+
+										<img src={user.avatar} style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: "18px" }} alt="" />
+
+										<i className="fal fa-sign-out-alt"
+											style={{ fontSize: "20px", cursor: "pointer" }}
+											onClick={handleLogout} ></i>
 									</li>
 
 								) : (
@@ -119,12 +110,6 @@ const Header = () => {
 					</div>
 
 				</div>
-				{/* <div className="search-bar">
-					<div className="container">
-						<form></form>
-						<input type="text" name="search" placeholder="Search" />
-					</div>
-				</div> */}
 			</div>
 		</header>
 	);

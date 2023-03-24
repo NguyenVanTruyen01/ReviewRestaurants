@@ -1,12 +1,11 @@
-import { Axios } from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Collapse, Slider, Tooltip } from 'antd';
+import React, { useState } from 'react';
+import { Collapse, Slider, } from 'antd';
 
-import Header from '../../components/main/Header';
+import Header from '../../components/main/Header/Header';
 import MobileMenu from '../../components/main/MobileMenu';
 import ListSearch from '../../components/restaurant/ListSearch';
 import HeaderFilter from './HeaderFilter';
-import Footer from "../../components/main/Footer";
+import Footer from "../../components/main/Footer/Footer";
 
 
 import './styleSearch.css';

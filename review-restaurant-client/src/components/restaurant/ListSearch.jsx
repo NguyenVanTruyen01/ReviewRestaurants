@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import useAxios from 'axios-hooks';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Rating } from '@mantine/core';
 
 import { Pagination } from 'antd';
@@ -15,8 +14,6 @@ const ListSearch = (props) => {
   const [purposesApi, setPurposesApi] = useState([])
   const [benefitsApi, setBenefitsApi] = useState([])
   const [loading, setLoading] = useState(true)
-
-  const navigate = useNavigate();
 
 
   useEffect(() => {

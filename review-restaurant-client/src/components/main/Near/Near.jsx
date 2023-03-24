@@ -1,24 +1,24 @@
 import React from 'react'
 import Slider from 'react-slick';
 
-import chillImage from "../../assets/images/home/category/chill.jpg"
-import readBook from "../../assets/images/home/category/read-book.jpg"
-import work from "../../assets/images/home/category/work.jpg"
-import beautiful from "../../assets/images/home/category/beautiful.jpg"
-import dating from "../../assets/images/home/category/dating.jpg"
+// import chillImage from "../../../assets/images/home/category/chill.jpg"
+// import readBook from "../../../assets/images/home/category/read-book.jpg"
+// import work from "../../../assets/images/home/category/work.jpg"
+// import beautiful from "../../../assets/images/home/category/beautiful.jpg"
+// import dating from "../../../assets/images/home/category/dating.jpg"
 
-import q1 from "../../assets/images/home/near/1.jpg"
-import q2 from "../../assets/images/home/near/2.jpg"
-import q3 from "../../assets/images/home/near/3.jpg"
-import q4 from "../../assets/images/home/near/4.jpg"
-import q5 from "../../assets/images/home/near/5.jpg"
-import q6 from "../../assets/images/home/near/6.jpg"
-import q7 from "../../assets/images/home/near/7.jpg"
-import q8 from "../../assets/images/home/near/8.jpg"
-import q9 from "../../assets/images/home/near/9.jpg"
-import q10 from "../../assets/images/home/near/10.jpg"
-import thuDuc from "../../assets/images/home/near/thu-duc.jpg"
-import binhThanh from "../../assets/images/home/near/binh-thanh.jpg"
+import q1 from "../../../assets/images/home/near/1.jpg"
+import q2 from "../../../assets/images/home/near/2.jpg"
+import q3 from "../../../assets/images/home/near/3.jpg"
+import q4 from "../../../assets/images/home/near/4.jpg"
+import q5 from "../../../assets/images/home/near/5.jpg"
+import q6 from "../../../assets/images/home/near/6.jpg"
+import q7 from "../../../assets/images/home/near/7.jpg"
+import q8 from "../../../assets/images/home/near/8.jpg"
+import q9 from "../../../assets/images/home/near/9.jpg"
+import q10 from "../../../assets/images/home/near/10.jpg"
+import thuDuc from "../../../assets/images/home/near/thu-duc.jpg"
+// import binhThanh from "../../../assets/images/home/near/binh-thanh.jpg"
 import './near.css';
 import { useNavigate } from 'react-router-dom';
 

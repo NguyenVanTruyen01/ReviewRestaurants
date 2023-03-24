@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ListPost from "../../components/listpost/ListPost"
 import { useSelector } from "react-redux";
 import Post from "../../components/post/Post";
-import Header from "../../components/main/Header";
+import Header from "../../components/main/Header/Header";
 import './ExplorePage.scss'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

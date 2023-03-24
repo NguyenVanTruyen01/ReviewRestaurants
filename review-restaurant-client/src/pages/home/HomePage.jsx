@@ -1,34 +1,28 @@
 import React from 'react';
-// import '../../assets/css/all.min.css';
-// import '../../assets/css/animate.min.css';
-// import '../../assets/js/lib/slick/slick.css';
-// import '../../assets/js/lib/slick/slick-theme.css';
-// import '../../assets/css/flaticon.css';
+import './HomePage.scss'
 import '../../assets/css/style.css';
-// import '../../assets/css/responsive.css';
-
 import '../../assets/js/scripts';
 
-import Header from '../../components/main/Header';
+import Header from '../../components/main/Header/Header';
 import MobileMenu from '../../components/main/MobileMenu';
 import SearchUsers from '../../components/search-user/SearchUsers';
 
 import { TypeAnimation } from 'react-type-animation';
-import Category from '../../components/main/Category';
-import Near from '../../components/main/Near';
-import Footer from "../../components/main/Footer";
+import Category from '../../components/main/Category/Category';
+import Near from '../../components/main/Near/Near';
+import Footer from "../../components/main/Footer/Footer";
 
 const Home = () => {
 
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return <div className={className} style={{ ...style, display: 'block', background: 'red' }} onClick={onClick} />;
-  }
+  // function SampleNextArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return <div className={className} style={{ ...style, display: 'block', background: 'red' }} onClick={onClick} />;
+  // }
 
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return <div className={className} style={{ ...style, display: 'block', background: 'green' }} onClick={onClick} />;
-  }
+  // function SamplePrevArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return <div className={className} style={{ ...style, display: 'block', background: 'green' }} onClick={onClick} />;
+  // }
 
   return (
     <div>
@@ -43,9 +37,9 @@ const Home = () => {
               {/* <h2>KHÁM PHÁ</h2> */}
               <TypeAnimation
                 // Same String at the start will only be typed once, initially
-                sequence={['ĐI ĐU ĐƯA ĐI', 2000, 'CÙNG NHAU SỐNG ẢO', 2000]}
+                sequence={['UỐNG GÌ HÔM NAY', 2000, 'ĐI ĐU ĐƯA ĐI', 2000, 'CÙNG NHAU SỐNG ẢO', 2000]}
                 speed={50} // Custom Speed from 1-99 - Default Speed: 40
-                style={{ fontSize: '70px', color: '#d8ab37', fontWeight: 700 }}
+                style={{ fontSize: '50px', color: '#d8ab37', fontWeight: 700 }}
                 wrapper="span" // Animation will be rendered as a <span>
                 repeat={Infinity} // Repeat this Animation Sequence infinitely
               />
@@ -59,7 +53,8 @@ const Home = () => {
           <div className="container">
             <div className="section-title text-center">
               {/* <span>Nổi Bật </span> */}
-              <h2 className="text-capitalize">Mục đích bạn là gì ?</h2>
+              <h2 className="text-capitalize" >Mục đích bạn là gì ?</h2>
+              <div className='line'></div>
             </div>
             <Category />
 
@@ -71,6 +66,7 @@ const Home = () => {
             <div className="section-title text-center">
               {/* <span>Nổi Bật </span> */}
               <h2 className="text-capitalize">Địa điểm gần đây ?</h2>
+              <div className='line'></div>
             </div>
             <Near />
 

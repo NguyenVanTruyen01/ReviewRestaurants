@@ -1,8 +1,8 @@
 import React from "react";
-import imgPayment from "../../assets/images/imgs.png";
-import btn1 from "../../assets/images/btn1.png";
-import btn2 from "../../assets/images/btn2.png";
-import logo from "../../assets/images/logo.png";
+import imgPayment from "../../../assets/images/imgs.png";
+import btn1 from "../../../assets/images/btn1.png";
+import btn2 from "../../../assets/images/btn2.png";
+import logo from "../../../assets/images/logo.png";
 import "./Footer.scss"
 
 const Footer = () => {

@@ -31,7 +31,7 @@ const SearchUsers = () => {
         <input
           type="text"
           className="half-radius"
-          placeholder="Enter your location"
+          placeholder="Nhập địa điểm muốn tìm"
           value={key}
           onChange={(e) => setKey(e.target.value)}
         />

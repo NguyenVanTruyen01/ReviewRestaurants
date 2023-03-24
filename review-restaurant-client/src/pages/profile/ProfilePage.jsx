@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import PostShareModal from "../../modals/postshare/PostShareModal";
 import ListPost from "../../components/listpost/ListPost";
 import "./ProfilePage.scss"
-import { Modal, useMantineTheme, Rating, SimpleGrid, Textarea } from '@mantine/core';
+import { Modal, useMantineTheme, Rating, } from '@mantine/core';
 import InfoRestaurant from "../../components/info-restaurent/InfoRestaurant";
 import { useDispatch, useSelector } from "react-redux";
-import Header from "../../components/main/Header";
+import Header from "../../components/main/Header/Header";
 import { changeCoverPicture, changeAvatar } from "../../redux/requestAPI/userRequests"
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import LoadingPage from "../loading/LoadingPage";
 import { followUser, unfollowUser } from "../../redux/requestAPI/userRequests";
-import Footer from "../../components/main/Footer";
+import Footer from "../../components/main/Footer/Footer";
 
 
 const ProfilePage = () => {

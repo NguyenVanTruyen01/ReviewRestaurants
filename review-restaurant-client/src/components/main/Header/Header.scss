@@ -1,0 +1,37 @@
+.container-fluid {
+    .header-content {
+        .nav {
+            >nav {
+                >ul {
+                    >li {
+
+                        >a,
+                        >span {
+                            text-transform: uppercase;
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: #fff;
+                            cursor: pointer;
+                            transition: all 0.2s ease-in-out;
+
+                            &:hover {
+                                color: #ef8744;
+                            }
+                        }
+
+                        >i {
+                            color: #fff;
+
+                            transition: all 0.2s ease-in-out;
+
+                            &:hover {
+                                color: #ef8744;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

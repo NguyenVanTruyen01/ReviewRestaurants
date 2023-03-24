@@ -1,17 +1,15 @@
-import React, {useEffect, useState} from "react";
-import ListPost from "../../components/listpost/ListPost"
-import {useSelector} from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Post from "../../components/post/Post";
-import Header from "../../components/main/Header";
+import Header from "../../components/main/Header/Header";
 import '../explore/ExplorePage.scss'
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import empty from '../../assets/images/empty.gif'
 
-const TimelinePage = () =>{
+const TimelinePage = () => {
 
-    const {currentUser} = useSelector((state) => state.auth.login);
-    const {listPost} = useSelector(state => state.post)
+    const { currentUser } = useSelector((state) => state.auth.login);
+    const { listPost } = useSelector(state => state.post)
 
     const timeline = listPost.filter(post => {
         for (let key in listPost) {
@@ -24,7 +22,7 @@ const TimelinePage = () =>{
 
     const navigate = useNavigate()
 
-    const [restaurants,setRestaurant] = useState([])
+    const [restaurants, setRestaurant] = useState([])
 
     function getMultipleRandom(arr, num) {
         const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -32,11 +30,11 @@ const TimelinePage = () =>{
         return shuffled.slice(0, num);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
         const getListRestaurant = async () => {
             try {
-                const restaurants  = getMultipleRandom(currentUser.following,5);
+                const restaurants = getMultipleRandom(currentUser.following, 5);
                 console.log(restaurants)
                 setRestaurant(restaurants);
 
@@ -51,8 +49,8 @@ const TimelinePage = () =>{
 
     return (
 
-        <div className= "ExplorePage">
-            <Header/>
+        <div className="ExplorePage">
+            <Header />
             {
                 timeline.length > 0 ?
                     <div className="PageContent">
@@ -60,7 +58,7 @@ const TimelinePage = () =>{
                         <div className="ExploreReview">
                             {
                                 timeline.length > 0 ?
-                                    timeline.map(post =>  <Post key = {post._id} post={ post} />) :
+                                    timeline.map(post => <Post key={post._id} post={post} />) :
                                     <h1>Chưa có bài review nào</h1>
                             }
                         </div>
@@ -73,22 +71,22 @@ const TimelinePage = () =>{
                                     <div className="list-restaurants">
 
                                         {
-                                            restaurants.map((res,index) => {
-                                                return(
+                                            restaurants.map((res, index) => {
+                                                return (
                                                     <div className='restaurant-card' key={index}
-                                                         onClick={()=> navigate(`/profile/${res._id}`)}
+                                                        onClick={() => navigate(`/profile/${res._id}`)}
                                                     >
                                                         <div className="image">
-                                                            <img src= { res.infoRestaurant.images.length > 0 ?
+                                                            <img src={res.infoRestaurant.images.length > 0 ?
                                                                 res.infoRestaurant.images[0]?.url : res.avatar}
-                                                                 alt=""/>
+                                                                alt="" />
                                                         </div>
 
 
                                                         <div className="in4-restaurant">
                                                             <div className="name-restaurant"> {res.userName}</div>
 
-                                                            <small className= "address-restaurant">
+                                                            <small className="address-restaurant">
                                                                 {res.address}
                                                             </small>
                                                         </div>
@@ -109,18 +107,19 @@ const TimelinePage = () =>{
                     </div>
                     :
                     <div className="empty-data"
-                    style={{width:"100%",
-                        background: "#ffffff",
-                        display:"flex",
-                        flexDirection: "column",
-                        justifyContent:"center",
-                        alignItems:"center",
-                        padding: "2rem"
-                    }}>
+                        style={{
+                            width: "100%",
+                            background: "#ffffff",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "2rem"
+                        }}>
                         <span className="title">Chưa có bài đăng nào !</span>
                         <img
-                            style={{width:"30%", margin: "auto"}}
-                            src={empty} alt=""/>
+                            style={{ width: "30%", margin: "auto" }}
+                            src={empty} alt="" />
                     </div>
             }
 

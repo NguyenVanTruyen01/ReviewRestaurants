@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
-import chillImage from "../../assets/images/home/category/chill.jpg"
-import readBook from "../../assets/images/home/category/read-book.jpg"
-import work from "../../assets/images/home/category/work.jpg"
-import beautiful from "../../assets/images/home/category/beautiful.jpg"
-import dating from "../../assets/images/home/category/dating.jpg"
+import chillImage from "../../../assets/images/home/category/chill.jpg"
+import readBook from "../../../assets/images/home/category/read-book.jpg"
+import work from "../../../assets/images/home/category/work.jpg"
+import beautiful from "../../../assets/images/home/category/beautiful.jpg"
+import dating from "../../../assets/images/home/category/dating.jpg"
 
 import './category.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-// import '../../assets/css/style.css';
 
 const Category = () => {
   function NextArrow(props) {

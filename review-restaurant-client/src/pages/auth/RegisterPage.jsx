@@ -1,35 +1,33 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import Footer from "../../components/main/Footer";
-import Header from "../../components/main/Header";
-import MobileMenu from "../../components/main/MobileMenu";
-import {useDispatch} from "react-redux";
-import {toast, ToastContainer} from "react-toastify";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../../components/main/Header/Header";
+import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./RegisterPage.scss"
 
-import {register} from "../../redux/requestAPI/authRequests";
+import { register } from "../../redux/requestAPI/authRequests";
 
 import { useForm } from '@mantine/form';
-import {MultiSelect, PasswordInput, NumberInput, TextInput, Button, Radio, Textarea, SimpleGrid} from '@mantine/core';
+import { MultiSelect, PasswordInput, NumberInput, TextInput, Button, Radio, Textarea, SimpleGrid } from '@mantine/core';
 
 
 const RegisterPage = () => {
 
-	const [openFormRes,setOpenFormRes] = useState(false);
+	const [openFormRes, setOpenFormRes] = useState(false);
 
 	//---------------VALIDATE FORM INPUT-----------------------
 	const form = useForm({
 		initialValues: {
 			firstName: '',
 			lastName: '',
-			userName:'',
+			userName: '',
 			email: '',
 			password: '',
 			confirmPassword: '',
-			address:'',
+			address: '',
 			gender: 'male',
-			role : 'REVIEWER',
+			role: 'REVIEWER',
 			infoRestaurant: {
 				characteristics: [],
 				menu: [],
@@ -37,7 +35,7 @@ const RegisterPage = () => {
 				maxPrice: 0,
 				openTime: null,
 				closeTime: null,
-				utilities:[],
+				utilities: [],
 				facebook: "",
 				instagram: "",
 				introduce: "",
@@ -55,12 +53,12 @@ const RegisterPage = () => {
 			confirmPassword: (value, values) =>
 				value !== values.password ? 'Passwords did not match' : null,
 			infoRestaurant: {
-				characteristics: (value, values) => ( values.role === "RESTAURANT" && value.length <1  ? 'Please choose characteristics of restaurant ' : null),
+				characteristics: (value, values) => (values.role === "RESTAURANT" && value.length < 1 ? 'Please choose characteristics of restaurant ' : null),
 				openTime: (value, values) =>
 					values.role === "RESTAURANT" && value === null ? 'Please select opening hours' : null,
 				closeTime: (value, values) =>
 					values.role === "RESTAURANT" && value === null ? 'Please select close hours' : null,
-				introduce: (value,values) =>  ( values.role === "RESTAURANT" && value.length < 30 ? 'Name must have at least 30 letters' : null),
+				introduce: (value, values) => (values.role === "RESTAURANT" && value.length < 30 ? 'Name must have at least 30 letters' : null),
 			}
 
 
@@ -70,29 +68,29 @@ const RegisterPage = () => {
 	//------------------XỬ LÝ FORM I4 RESTAURANT---------------------
 	// const [content,setContent] = useState("");
 
-	const [images,setImages] = useState([]);
+	const [images, setImages] = useState([]);
 
-	const deleteImages = (index) =>{
+	const deleteImages = (index) => {
 		const newArr = [...images]
-		newArr.splice(index,1);
+		newArr.splice(index, 1);
 		setImages(newArr)
 	}
 
-	const handleOnChangeImage = (e)=>{
+	const handleOnChangeImage = (e) => {
 		const files = [...e.target.files]
 		console.log(...e.target.files)
 
 		let err = "";
 		let newImages = [];
 
-		files.forEach((file)=>{
-			if(!file) return err = "File does not exist"
-			if(file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/jpg")
+		files.forEach((file) => {
+			if (!file) return err = "File does not exist"
+			if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/jpg")
 				return err = "Image format is incorrect"
 			return newImages.push(file)
 		})
 
-		if(err){
+		if (err) {
 			console.log(err)
 		}
 		else
@@ -102,42 +100,42 @@ const RegisterPage = () => {
 
 	//------------------XỬ LÝ FORM I4 USER---------------------
 
-	const [data, setData] = useState({
-		email: "",
-		password: "",
-		firstName: "",
-		lastName: "",
-		address: "",
-	});
+	// const [data, setData] = useState({
+	// 	email: "",
+	// 	password: "",
+	// 	firstName: "",
+	// 	lastName: "",
+	// 	address: "",
+	// });
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const handleChange = (e) => {
-		setData({ ...data, [e.target.name]: e.target.value.trim() });
-	};
+	// const handleChange = (e) => {
+	// 	setData({ ...data, [e.target.name]: e.target.value.trim() });
+	// };
 
-	const  validateInput = (data) =>{
-		const isEmpty = Object.values(data).some(x => x === null || x === '');
-		return isEmpty
-	}
+	// const validateInput = (data) => {
+	// 	const isEmpty = Object.values(data).some(x => x === null || x === '');
+	// 	return isEmpty
+	// }
 
-	const handleSummit = async (data,images) => {
+	const handleSummit = async (data, images) => {
 
-		await register(data,images,dispatch,navigate);
+		await register(data, images, dispatch, navigate);
 	};
 
 	return (
 		<>
 			<Header></Header>
 
-			<div className= "RegisterPage">
+			<div className="RegisterPage">
 				<ToastContainer autoClose={2000} />
 
 				<div className="group-form">
-					<div className= "form-in4">
+					<div className="form-in4">
 						<span className="title title-re">User information</span>
-						<form onSubmit={form.onSubmit((values) => handleSummit(values,images) )}>
+						<form onSubmit={form.onSubmit((values) => handleSummit(values, images))}>
 
 							<div className="row-form">
 								<TextInput name="firstName" withAsterisk label="First Name" placeholder="First name" {...form.getInputProps('firstName')} />
@@ -146,7 +144,7 @@ const RegisterPage = () => {
 
 							<div className="row-form">
 								<TextInput name="userName" withAsterisk label="User Name" placeholder="Used to display on the website" {...form.getInputProps('userName')} />
-								<TextInput name="email" withAsterisk  label="Email" placeholder="Email will be used to login  " {...form.getInputProps('email')} />
+								<TextInput name="email" withAsterisk label="Email" placeholder="Email will be used to login  " {...form.getInputProps('email')} />
 							</div>
 
 							<TextInput name="address" withAsterisk label="Address" placeholder="Address" {...form.getInputProps('address')} />
@@ -188,9 +186,9 @@ const RegisterPage = () => {
 									{...form.getInputProps('role')}
 								>
 									<Radio value="REVIEWER" label="REVIEWER"
-										   onClick={()=> setOpenFormRes(false)}/>
+										onClick={() => setOpenFormRes(false)} />
 									<Radio value="RESTAURANT" label="RESTAURANT"
-									onClick={()=> setOpenFormRes(true)}/>
+										onClick={() => setOpenFormRes(true)} />
 								</Radio.Group>
 							</div>
 
@@ -203,7 +201,7 @@ const RegisterPage = () => {
 
 					{
 						openFormRes &&
-						<div className= "form-in4">
+						<div className="form-in4">
 							<span className="title title-re">Restaurant information</span>
 							<form onSubmit={form.onSubmit(console.log)}>
 
@@ -254,12 +252,12 @@ const RegisterPage = () => {
 								<div className="row-form">
 
 									<TextInput name="openTime" type={"time"}
-											   withAsterisk  label="Open"
-											   {...form.getInputProps('infoRestaurant.openTime')} />
+										withAsterisk label="Open"
+										{...form.getInputProps('infoRestaurant.openTime')} />
 
 									<TextInput name="closeTime" type={"time"}
-											   withAsterisk  label="Close"
-											   {...form.getInputProps('infoRestaurant.closeTime')} />
+										withAsterisk label="Close"
+										{...form.getInputProps('infoRestaurant.closeTime')} />
 								</div>
 
 								<MultiSelect
@@ -295,24 +293,24 @@ const RegisterPage = () => {
 
 								<div className="row-form">
 									<TextInput name="facebook"
-											   label="Facebook"
-											   placeholder="Restaurant's facebook link"
-											   {...form.getInputProps('infoRestaurant.facebook')} />
+										label="Facebook"
+										placeholder="Restaurant's facebook link"
+										{...form.getInputProps('infoRestaurant.facebook')} />
 
 									<TextInput name="instagram"
-											   label="instagram"
-											   placeholder="Restaurant's instagram link  "
-											   {...form.getInputProps('infoRestaurant.instagram')} />
+										label="instagram"
+										placeholder="Restaurant's instagram link  "
+										{...form.getInputProps('infoRestaurant.instagram')} />
 								</div>
 
-								<div  className="row-form">
+								<div className="row-form">
 									<div className="row-img">
 										<div className="input_image">
 											<label>
 												<i className="fa fa-camera"></i>
-												<input type="file" name = "file" id={"file"}
-													   multiple accept="image/*"
-													   onChange={handleOnChangeImage}
+												<input type="file" name="file" id={"file"}
+													multiple accept="image/*"
+													onChange={handleOnChangeImage}
 												/>
 											</label>
 										</div>
@@ -326,20 +324,20 @@ const RegisterPage = () => {
 											className="show-img"
 										>
 											{
-												images.map((img,index) => {
+												images.map((img, index) => {
 													return (
 														<div key={index}
-															 className="grid-img"
-															 id="file_img"
-															 style={{width: "128px", height: "128px" ,gap:0}} >
+															className="grid-img"
+															id="file_img"
+															style={{ width: "128px", height: "128px", gap: 0 }} >
 
 															<img src={URL.createObjectURL(img)}
-																 alt={"images"}
-																 style={{objectFit: "cover",width: "128px", height: "128px"}}
+																alt={"images"}
+																style={{ objectFit: "cover", width: "128px", height: "128px" }}
 															/>
 															<span
 																className="delete-img"
-																onClick={()=>deleteImages(index)}
+																onClick={() => deleteImages(index)}
 															><i className="fas fa-times"></i></span>
 														</div>
 													)
