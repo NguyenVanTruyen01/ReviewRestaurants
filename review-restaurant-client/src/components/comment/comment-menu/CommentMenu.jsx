@@ -1,19 +1,19 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-import {deleteComment} from "../../../redux/requestAPI/commentRequest"
+import { useDispatch } from "react-redux";
+import { deleteComment } from "../../../redux/requestAPI/commentRequest"
 
-const CommentMenu = ({post,comment,auth,onEdit,setOnEdit}) =>{
+const CommentMenu = ({ post, comment, auth, onEdit, setOnEdit }) => {
 
     const dispatch = useDispatch()
 
-    const handleRemove =async () => {
-        if(post.user._id === auth._id || comment.user._id === auth._id){
-          await  deleteComment({post, auth, comment,dispatch})
+    const handleRemove = async () => {
+        if (post.user._id === auth._id || comment.user._id === auth._id) {
+            await deleteComment({ post, auth, comment, dispatch })
         }
     }
 
     const MenuItem = () => {
-        return(
+        return (
             <>
                 <div className="dropdown-item" onClick={() => setOnEdit(!onEdit)}>
                     <i className="fal fa-edit"></i>

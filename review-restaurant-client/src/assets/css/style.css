@@ -137,6 +137,7 @@ body {
   position: relative;
 
 }
+
 body.no-scroll {
   overflow-y: hidden;
 }
@@ -265,7 +266,7 @@ h2 {
 }
 
 a:hover {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .text-capitalize {
@@ -286,7 +287,7 @@ a:hover {
 
 .btn-default {
   display: inline-block;
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   height: 64px;
   line-height: 64px;
   padding: 0 45px;
@@ -306,7 +307,7 @@ a:hover {
 }
 
 .btn-default.gradient-bg {
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
 }
 
 .btn-default.height-2 {
@@ -406,12 +407,12 @@ a:hover {
 .slick-prev:hover,
 .slick-next:hover {
   background-color: #fff;
-  border-color: #d8ab37;
+  border-color: #ef8744;
 }
 
 .slick-prev:hover:before,
 .slick-next:hover:before {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .slick-prev:before {
@@ -501,7 +502,7 @@ a:hover {
 
 .rating li i {
   font-size: 12px;
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .ul-list li {
@@ -555,7 +556,7 @@ a:hover {
 
 .btn-default2 {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
   font-weight: 600;
   font-size: 14px;
   text-transform: capitalize;
@@ -575,7 +576,7 @@ a:hover {
 
 .failed,
 .text-info {
-  background: #d8ab37;
+  background: #ef8744;
   color: #fff;
   padding: 15px 20px;
 }
@@ -707,7 +708,7 @@ header nav ul li a:after {
 }
 
 header nav ul li a.active {
-  color: #d8ab37;
+  color: #ef8744 !important;
 }
 
 header nav ul li a.active:after {
@@ -811,7 +812,7 @@ header .oth-lnks li .cart-item-num {
   right: -16px;
   width: 22px;
   height: 22px;
-  background-color: #d8ab37;
+  background-color: #ef8744;
   text-align: center;
   -webkit-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -877,7 +878,7 @@ header .menu-btn.active span.bar3 {
   -webkit-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
 }
 
 .responsive-mobile-menu.active {
@@ -952,7 +953,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .search-bar {
-  background-color: #d8ab37;
+  background-color: #ef8744;
   position: absolute;
   top: 100%;
   left: 0;
@@ -1010,7 +1011,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .main-banner .banner-text h2 {
-  color: #d8ab37;
+  color: #ef8744;
   text-transform: capitalize;
   font-weight: 800;
   font-size: 80px;
@@ -1039,7 +1040,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .main-banner .banner-text form button {
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   font-size: 16px;
   padding: 0 45px;
   height: 64px;
@@ -1077,7 +1078,7 @@ header .menu-btn.active span.bar3 {
 
 .services-sec .service>span {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
   font-size: 14px;
   margin-bottom: 12px;
   font-weight: 500;
@@ -1107,7 +1108,7 @@ header .menu-btn.active span.bar3 {
 .section-title>span {
   display: block;
   font-size: 30px;
-  color: #d8ab37;
+  color: #ef8744;
   font-family: 'Norican', cursive;
   margin-bottom: 16px;
 }
@@ -1197,7 +1198,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .featured-sec .featured-item .ftz:hover li>span {
-  background-color: #d8ab37;
+  background-color: #ef8744;
 }
 
 .featured-sec .featured-item .ftz:hover li>span svg path {
@@ -1212,7 +1213,7 @@ header .menu-btn.active span.bar3 {
 
 .featured-sec .featured-item .feat-optz>span {
   display: inline-block;
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   border-radius: 0px 50px 50px 0px;
   font-size: 14px;
   font-weight: 600;
@@ -1257,7 +1258,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .promotion>h2 span {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .promotion>span {
@@ -1333,9 +1334,9 @@ header .menu-btn.active span.bar3 {
 
 .popular-dishes .filters-nav li a.selected,
 .popular-dishes .filters-nav li a:hover {
-  border-color: #d8ab37;
+  border-color: #ef8744;
   background-color: #fff;
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .popular-dishes .masonary {
@@ -1405,7 +1406,7 @@ header .menu-btn.active span.bar3 {
 
 .order-appliction h2 span {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .order-appliction .vl-fzt {
@@ -1428,7 +1429,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .order-appliction .vl-fzt li>span svg path {
-  stroke: #d8ab37;
+  stroke: #ef8744;
 }
 
 .order-appliction .vl-fzt li .vs-info {
@@ -1536,7 +1537,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .newsletter-sec form button {
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   font-size: 16px;
   padding: 0 45px;
   height: 64px;
@@ -1574,7 +1575,7 @@ header .menu-btn.active span.bar3 {
   color: #fff;
   font-size: 14px;
   font-weight: 600;
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   border-radius: 0px 50px 50px 0px;
   padding: 0 20px;
   height: 28px;
@@ -1649,7 +1650,7 @@ header .menu-btn.active span.bar3 {
 
 .blog-posts .blog .blog-info .meta li .category {
   color: #fff;
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   border-radius: 50px;
   padding: 0 21px;
   display: inline-block;
@@ -1777,7 +1778,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .blog-posts .blog.single .share-tags .share-options ul li a:hover {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .blog-posts .blog.single .share-tags .post-tags {
@@ -1805,7 +1806,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .blog-posts .blog.single .share-tags .post-tags ul li a:hover {
-  background-color: #d8ab37;
+  background-color: #ef8744;
   color: #fff;
 }
 
@@ -1845,7 +1846,7 @@ header .menu-btn.active span.bar3 {
 
 .blog-posts.blog-page .blog.v2 .blog-info .read-more {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
   font-size: 14px;
   font-weight: 600;
   float: right;
@@ -1904,16 +1905,16 @@ header .menu-btn.active span.bar3 {
 }
 
 .blog-posts .post-controler>a:hover {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .blog-posts .post-controler>a:hover>span {
   background-color: #fff;
-  border-color: #d8ab37;
+  border-color: #ef8744;
 }
 
 .blog-posts .post-controler>a:hover>span svg path {
-  fill: #d8ab37;
+  fill: #ef8744;
 }
 
 .blog-posts .post-controler>a span {
@@ -1983,7 +1984,7 @@ header .menu-btn.active span.bar3 {
 
 .deli-pagination ul li a.active,
 .deli-pagination ul li a:hover {
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   color: #fff;
 }
 
@@ -2374,7 +2375,7 @@ header .menu-btn.active span.bar3 {
   left: 4px;
   width: 12px;
   height: 12px;
-  background-color: #d8ab37;
+  background-color: #ef8744;
   border-radius: 50%;
 }
 
@@ -2396,7 +2397,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .sidebar .widget-tags ul li a:hover {
-  background-color: #d8ab37;
+  background-color: #ef8744;
   color: #fff;
 }
 
@@ -2412,7 +2413,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .sidebar .widget-price-filter .ui-slider-horizontal .ui-slider-range {
-  background-color: #d8ab37;
+  background-color: #ef8744;
   border: 0;
 }
 
@@ -2420,7 +2421,7 @@ header .menu-btn.active span.bar3 {
   width: 20px;
   height: 20px;
   border-radius: 50px;
-  background-color: #d8ab37;
+  background-color: #ef8744;
   border: 0;
   outline: none;
 }
@@ -2460,7 +2461,7 @@ header .menu-btn.active span.bar3 {
   height: 100%;
   line-height: 60px;
   text-align: center;
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   border-radius: 50px;
 }
 
@@ -2507,7 +2508,7 @@ header .menu-btn.active span.bar3 {
 
 .sidebar .widget-categories ul li a:hover {
   padding-left: 5px;
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .sidebar .widget-categories ul li>span {
@@ -2560,7 +2561,7 @@ header .menu-btn.active span.bar3 {
 
 .faqs .toggle-item h4>span {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
   margin-right: 20px;
   font-weight: 500;
   font-size: 20px;
@@ -2603,7 +2604,7 @@ header .menu-btn.active span.bar3 {
 
 .error-page>span a {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .search-prod {
@@ -2693,7 +2694,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .listing-products .listing-product .product-info>h3:hover {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .listing-products .listing-product .product-info .rating {
@@ -2709,7 +2710,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .listing-products .listing-product .product-info .rating li i {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .listing-products .listing-product .product-info p {
@@ -2784,7 +2785,7 @@ header .menu-btn.active span.bar3 {
   float: right;
   display: inline-block;
   margin-left: auto;
-  color: #d8ab37;
+  color: #ef8744;
   font-size: 14px;
   font-weight: 600;
   text-transform: capitalize;
@@ -2893,7 +2894,7 @@ header .menu-btn.active span.bar3 {
 
 .restaurant-details .food-info .meta>li .rating li i {
   font-size: 12px;
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .restaurant-details .food-info>h4 {
@@ -3058,7 +3059,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .cart-page .update-cart>a:hover {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .cart-page .update-cart>a img {
@@ -3171,7 +3172,7 @@ header .menu-btn.active span.bar3 {
 
 .checkout-head ul li>h2 span {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 50px;
@@ -3430,8 +3431,8 @@ header .menu-btn.active span.bar3 {
 
 .profile-section .nav-tabs li a.active {
   background-color: #fff;
-  border-color: #d8ab37;
-  color: #d8ab37;
+  border-color: #ef8744;
+  color: #ef8744;
 }
 
 .profile-section .profile-table {
@@ -3543,7 +3544,7 @@ header .menu-btn.active span.bar3 {
 }
 
 .profile-section .order-tables-sec .ord-tablez .oc-table .oct-table-head ul li.status.active {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .profile-section .order-tables-sec .ord-tablez .oc-table .oct-table-body {
@@ -3715,7 +3716,7 @@ header .menu-btn.active span.bar3 {
 
 .delitaste-form .btm-tx>span a {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 .delitaste-form .btm-tx>span.d-block {
@@ -3725,7 +3726,7 @@ header .menu-btn.active span.bar3 {
 
 .delitaste-form .btm-tx>a {
   display: inline-block;
-  color: #d8ab37;
+  color: #ef8744;
   margin-left: auto;
   font-size: 14px;
 }
@@ -3772,7 +3773,7 @@ footer .top-footer .phone-div .border-circle:before {
   top: 0;
   left: 0;
   width: 100%;
-  border: 2px solid #d8ab37;
+  border: 2px solid #ef8744;
   height: 100%;
   -webkit-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -3794,7 +3795,7 @@ footer .top-footer .phone-div .border-circle .phone-circle {
   line-height: 110px;
   text-align: center;
   filter: blur(0);
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   position: relative;
   z-index: 2;
 }
@@ -3837,7 +3838,7 @@ footer .top-footer .widget-contact>h2 {
 }
 
 footer .top-footer .widget-contact>h2 span {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 footer .top-footer .widget-contact p {
@@ -3942,7 +3943,7 @@ footer .bottom-footer .find-us .social-links-text li a {
 }
 
 footer .bottom-footer .find-us .social-links-text li a:hover {
-  color: #d8ab37;
+  color: #ef8744;
 }
 
 @media only screen and (max-width: 1760px) {

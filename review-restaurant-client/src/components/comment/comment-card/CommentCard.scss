@@ -1,14 +1,15 @@
-.CommentCard{
+.CommentCard {
   display: flex;
   flex-direction: column;
   gap: .3rem;
+  margin-top: 10px;
 
-  .comment-header{
+  .comment-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    >div{
+    >div {
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -16,23 +17,25 @@
 
   }
 
-  .comment_content{
+  .comment_content {
     margin-left: 50px;
-    .flex-fill{
+
+    .flex-fill {
       display: flex;
       flex-direction: column;
-      gap:.3rem;
+      gap: .3rem;
       background: #eee;
       padding: 6px 6px;
-      border-radius: 8px;
+      border-radius: 5px;
     }
   }
 
-  .comment-footer{
+  .comment-footer {
     display: flex;
     font-size: 13px;
     gap: 2rem;
-    >small{
+
+    >small {
       display: flex;
       gap: 0.3rem;
       align-items: center;
@@ -42,28 +45,29 @@
 }
 
 
-.choose-edit{
+.choose-edit {
   display: flex;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   gap: 1rem;
-  >span{
+
+  >span {
     padding: 5px 8px;
-    border-radius: 6px;
+    border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
   }
 
-  span:nth-child(1){
+  span:nth-child(1) {
     background: #2CCD6D;
   }
 
-  span:nth-child(2){
+  span:nth-child(2) {
     background: coral;
   }
 
 }
 
-.dropdown{
+.dropdown {
   display: flex;
   gap: 0.5rem;
 }

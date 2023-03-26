@@ -47,7 +47,7 @@
 }
 
 .near-item .ftz:hover li>span {
-  background-color: #d8ab37;
+  background-color: #ef8744;
 }
 
 .near-item .ftz:hover li>span svg path {
@@ -62,7 +62,7 @@
 
 .near-item .feat-optz>span {
   display: inline-block;
-  background: linear-gradient(93.93deg, #d8ab37 0%, #f18345 100%);
+  background: linear-gradient(93.93deg, #ef8744 0%, #f18345 100%);
   border-radius: 0px 50px 50px 0px;
   font-size: 14px;
   font-weight: 600;
@@ -91,8 +91,8 @@
   content: '\279C' !important;
 
   font-size: 30px !important;
-  /* background-color: #d8ab37 !important; */
-  color: #d8ab37 !important;
+  /* background-color: #ef8744 !important; */
+  color: #ef8744 !important;
   left: 22px !important;
   bottom: -10px !important;
 }
@@ -101,8 +101,8 @@
   content: '\279C' !important;
 
   font-size: 30px !important;
-  /* background-color: #d8ab37 !important; */
-  color: #d8ab37 !important;
+  /* background-color: #ef8744 !important; */
+  color: #ef8744 !important;
   left: 10px !important;
   bottom: 6px !important;
   transform: rotate(180deg);

@@ -1,7 +1,4 @@
 import React from "react";
-import imgPayment from "../../../assets/images/imgs.png";
-import btn1 from "../../../assets/images/btn1.png";
-import btn2 from "../../../assets/images/btn2.png";
 import logo from "../../../assets/images/logo.png";
 import "./Footer.scss"
 
@@ -11,7 +8,7 @@ const Footer = () => {
 			<footer className="footer">
 				<div class="top-footer">
 					<div class="fixed-bg bg3"></div>
-					<div class="phone-div">
+					{/* <div class="phone-div">
 						<div class="border-circle">
 							<div class="phone-circle">
 								<a href="#" title="" class="ext-link"></a>
@@ -32,7 +29,7 @@ const Footer = () => {
 								</svg>
 							</div>
 						</div>
-					</div>
+					</div> */}
 					<div class="container">
 						<div class="row align-items-center">
 							<div class="col-lg-3 col-md-6">

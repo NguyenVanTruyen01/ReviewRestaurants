@@ -39,7 +39,7 @@ const Home = () => {
                 // Same String at the start will only be typed once, initially
                 sequence={['UỐNG GÌ HÔM NAY', 2000, 'ĐI ĐU ĐƯA ĐI', 2000, 'CÙNG NHAU SỐNG ẢO', 2000]}
                 speed={50} // Custom Speed from 1-99 - Default Speed: 40
-                style={{ fontSize: '50px', color: '#d8ab37', fontWeight: 700 }}
+                style={{ fontSize: '50px', color: '#ef8744', fontWeight: 700 }}
                 wrapper="span" // Animation will be rendered as a <span>
                 repeat={Infinity} // Repeat this Animation Sequence infinitely
               />

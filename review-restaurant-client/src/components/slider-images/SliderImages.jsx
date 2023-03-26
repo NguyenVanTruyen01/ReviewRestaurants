@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Button, InputNumber, Image } from 'antd';
-const SliderImages = ({images,visible, setVisible}) => {
+import React from 'react';
+import { Image } from 'antd';
+const SliderImages = ({ images, visible, setVisible }) => {
     console.log("dsa")
     // const [scaleStep, setScaleStep] = useState(0.5);
     return (
         <div
             style={{
-            display: 'none',
+                display: 'none',
             }}
         >
             <Image.PreviewGroup
@@ -17,18 +17,18 @@ const SliderImages = ({images,visible, setVisible}) => {
                     },
                 }}
             >
-            {
-                images.map((image,index) =>{
+                {
+                    images.map((image, index) => {
                         return (
                             <Image
                                 style={{
                                     display: 'none',
                                 }}
-                                src= {image.url}
+                                src={image.url}
                             />
                         )
-                })
-            }
+                    })
+                }
             </Image.PreviewGroup>
 
         </div>

@@ -1,7 +1,12 @@
-.footer{
-  background: #1c1c1c;
+.footer {
+  background: #34465d;
+
+  .top-footer {
+    padding: 20px 0;
+  }
 }
-.cooperate{
+
+.cooperate {
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -9,58 +14,68 @@
   cursor: pointer;
   border-radius: 8px;
   padding: 8px;
-  >i{
+
+  >i {
     font-size: 3rem;
     color: #ffffff;
   }
-  >span{
-   color: #ffffff;
+
+  >span {
+    color: #ffffff;
   }
 
-  &:hover{
-    border: 3px solid #d8ab37;
-    >i, >span{
-      color: #d8ab37;
+  &:hover {
+    border: 3px solid #ef8744;
+
+    >i,
+    >span {
+      color: #ef8744;
     }
   }
 }
 
-.about-us{
-  >p{
+.about-us {
+  >p {
     cursor: pointer;
-    &:hover{
-      color: #d8ab37 !important;
+
+    &:hover {
+      color: #ef8744 !important;
     }
   }
 }
 
-.col-lg-3{
-  .contact{
+.col-lg-3 {
+  .contact {
     width: 100% !important;
-    >h2{
+
+    >h2 {
       margin: auto;
     }
-    span{
+
+    span {
       margin: auto;
       display: inline-block;
       width: 104px !important;
       text-align: center;
-      color: #d8ab37;
+      color: #ef8744;
     }
 
-    >div{
+    >div {
       cursor: pointer;
       display: flex;
       gap: 0.5rem;
       width: 100px;
       margin: auto;
 
-      &:hover{
-        >i, p{
-          color: #d8ab37;
+      &:hover {
+
+        >i,
+        p {
+          color: #ef8744;
         }
       }
-      >i{
+
+      >i {
         font-size: 1.5rem;
         color: #ffffff;
       }

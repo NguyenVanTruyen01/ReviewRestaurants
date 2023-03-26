@@ -2,6 +2,7 @@
   max-height: 300px;
   overflow-y: auto;
 }
+
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -20,21 +21,26 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
+
 .price-text {
   text-align: center;
   font-size: 20px;
   font-weight: 500;
-  color: #d8ab37;
+  color: #ef8744;
 }
+
 .ant-slider-track {
-  background-color: #d8ab37 !important;
+  background-color: #ef8744 !important;
 }
+
 .ant-slider-handle-1::after {
-  box-shadow: 0 0 0 2px #d8ab37 !important;
+  box-shadow: 0 0 0 2px #ef8744 !important;
 }
+
 .ant-slider-handle-2::after {
-  box-shadow: 0 0 0 2px #d8ab37 !important;
+  box-shadow: 0 0 0 2px #ef8744 !important;
 }
+
 .ant-slider-handle:focus::after {
-  box-shadow: 0 0 0 2px #d8ab37 !important;
+  box-shadow: 0 0 0 2px #ef8744 !important;
 }

@@ -1,21 +1,26 @@
-.CommentInput{
+.CommentInput {
   display: flex;
+  height: fit-content;
   align-items: center;
+  border: 1px solid #ef8744;
+  border-radius: 5px;
+  overflow: hidden;
 
-  >input{
+  >input {
     background: #f7f7f7;
     border: none;
     outline: none;
     flex: 1;
     overflow: auto;
+    padding: 8px;
   }
 
-  .postBtn{
+  .postBtn {
     border: none;
+    height: 100%;
     outline: none;
-    background: #23d2e2;
-    padding: 6px 20px;
-    border-radius: 8px;
+    background: #ef8744;
+    padding: 8px 20px;
     font-weight: bold;
     color: #ffffff;
   }
